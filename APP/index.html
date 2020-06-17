@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+	
+<div class="container">
+	<div class="jumbotron" style="background-color:lightgrey;">
+	  <h1>SportWatch</h1>      
+    	  <p>DESCRIPTION HERE</p>
+</div>
+
+<div class="container-fluid">
+	<h1>Welcome!</h1>
+  	<div class="row">
+    		<div class="col" style="background-color:white;">Already have an account? Login below!<br><br>
+			<form action = "cases.php" method="POST">
+			<input type="hidden" id="type" name="type" value="Login">
+			<label for uname>Username:</label><br>
+			<input type="text" id="uname" name="uname"><br><br>
+			<label for pw>Password:</label><br>
+			<input type="password" id="pw" name="pw"><br><br>
+			<input type="submit" class="btn btn-dark" value="Login"><br><br><br>
+			</form>
+		</div>
+    		<div class="col" style="background-color:white;">Don't have an account? Create one below!<br><br>
+			<form action = "cases.php" method="POST">
+			<input type="hidden" id="type" name="type" value="SignUp">
+        		<label for Fullname>Full Name:</label><br>
+        		<input type="text" id="Fullname" name="Fullname"><br><br>
+			<label for uname>Username:</label><br>
+        		<input type="text" id="uname" name="uname"><br><br>
+        		<label for pw>Password:</label><br>
+        		<input type="password" id="pw" name="pw"><br><br>
+			<label for confirmPw>Confirm password:</label><br>
+        		<input type="password" id="confirmPw" name="confirmPw"><br><br>
+			<input type="submit" class="btn btn-dark" value="Sign Up"><br><br><br>
+			</form>
+		</div>
+	</div>
+</div>
+	
+</body>
+</html>
