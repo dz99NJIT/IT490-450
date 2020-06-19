@@ -43,7 +43,7 @@ switch ($type){
 	  $confirmPw = $_POST["confirmPw"];
 
 	if ($confirmPw!=$pw){
-        return '<div class="alert alert-danger" role="alert">Passwords do not match, try again</div>';
+        echo '<div class="alert alert-danger" role="alert">Passwords do not match, try again</div>';
 	}
   else{
     $response = signUp($Fullname, $uname, $pw);

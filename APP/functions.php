@@ -18,15 +18,15 @@ require_once('AppRabbitMQClient.php');
 
 	//Login function
     function login($uname, $pw){
-        
+
         $request = array();
-        
+
         $request['type'] = "Login";
         $request['uname'] = $uname;
         $request['pw'] = $pw;
 
         $returnedValue = createClientForDb($request);
-        
+
         if($returnedValue == 1){
             $_SESSION["uname"] = $uname;
             $_SESSION["logged"] = true;
@@ -42,11 +42,11 @@ require_once('AppRabbitMQClient.php');
 
     //Sign up function
     function SignUp($Fullname, $uname, $pw){
-        
+
         $request = array();
-        
+
         $request['type'] = "SignUp";
-	$request['Fullname'] = $Fullname;
+				$request['Fullname'] = $Fullname;
         $request['uname'] = $uname;
         $request['pw'] = $pw;
 
@@ -57,14 +57,14 @@ require_once('AppRabbitMQClient.php');
 
     //Search user function
     function searchUser($friend){
-        
+
         $request = array();
-        
+
         $request['type'] = "UserSearch";
         $request['friend'] = $friend;
 
         $returnedValue = createClientForDb($request);
-		
+
         return $returnedValue;
     }
 
