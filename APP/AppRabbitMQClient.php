@@ -15,7 +15,7 @@ function createClientForDb($request){
             $msg = "client";
         }
 
-        //$response = $client->send_request($request);
+        $response = $client->send_request($request);
         return $response;
     }
 ?>
