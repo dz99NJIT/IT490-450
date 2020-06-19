@@ -9,10 +9,10 @@ include("functions.php");
 include("landingPage.php");
 
 session_start();
-console.log("pass1");
+echo "<script>console.log('pass1');</script>";
 
 $type = $_POST["type"];
-console.log("pass2");
+echo "<script>console.log('pass2 ');</script>";
 
 switch ($type){
   
@@ -32,7 +32,7 @@ switch ($type){
 			echo $response; 
 		}
     break;  
-console.log("pass3;);
+ echo "<script>console.log('pass3 ');</script>";
   
   //Sign up Case
   case "SignUp":
