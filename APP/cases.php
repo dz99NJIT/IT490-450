@@ -10,7 +10,7 @@ include("landingPage.php");
 
 session_start();
 echo "<script>console.log('pass1');</script>";
-
+echo "hello";
 $type = $_POST["type"];
 echo "<script>console.log('pass2 ');</script>";
 /*
