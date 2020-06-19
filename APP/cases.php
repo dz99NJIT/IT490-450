@@ -9,10 +9,10 @@ include("functions.php");
 include("landingPage.php");
 
 session_start();
-echo "<script>console.alert('pass1');</script>";
+echo "<script>alert('pass1');</script>";
 
 $type = $_POST["type"];
-echo "<script>console.alert('pass2 ');</script>";
+echo "<script>alert('pass2 ');</script>";
 
 switch ($type){
   //Login Case
