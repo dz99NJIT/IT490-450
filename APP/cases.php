@@ -1,19 +1,19 @@
 <?php
 
 //Required files
-//require_once('path.inc');
-//require_once('get_host_info.inc');
-//require_once('rabbitMQLib.inc');
-//require_once('AppRabbitMQClient.php');
-//include("functions.php");
-//include("landingPage.php");
+require_once('path.inc');
+require_once('get_host_info.inc');
+require_once('rabbitMQLib.inc');
+require_once('AppRabbitMQClient.php');
+include("functions.php");
+include("landingPage.php");
 
 session_start();
 echo "<script>console.log('pass1');</script>";
-echo "made it here";
+
 $type = $_POST["type"];
 echo "<script>console.log('pass2 ');</script>";
-
+/*
 switch ($type){
 
   //Login Case
@@ -56,4 +56,5 @@ switch ($type){
     return "Default Case";
 }
 echo "done";
+*/
 ?>
