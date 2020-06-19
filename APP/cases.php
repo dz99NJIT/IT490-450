@@ -55,4 +55,5 @@ switch ($type){
   default:
     return "Default Case";
 }
+echo "done";
 ?>
