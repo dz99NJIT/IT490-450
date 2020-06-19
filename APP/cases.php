@@ -45,7 +45,7 @@ switch ($type){
         echo '<div class="alert alert-danger" role="alert">Passwords do not match, try again</div>';
 	}
   else{
-    echo "<script>alert('pass1 ');</script>";
+    //error in signup is here 
     $response = signUp($Fullname, $uname, $pw);
     echo "<script>alert('pass2 ');</script>";
 
