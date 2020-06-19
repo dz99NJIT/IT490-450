@@ -15,6 +15,7 @@ function createClientForDb($request){
         else{
             $msg = "client";
         }
+        echo "<script>alert('message: $msg ');</script>";
 
         $response = $client->send_request($request);
         return $response;

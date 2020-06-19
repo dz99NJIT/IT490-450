@@ -10,19 +10,12 @@ include("landingPage.php");
 
 session_start();
 $type = $_POST["type"];
-echo "<script>alert('$type');</script>";
-
 switch ($type){
   //Login Case
   case "Login":
-
     $uname = $_POST["uname"];
     $pw = $_POST["pw"];
-    echo "<script>alert('pass1');</script>";
-
     $response = login($uname, $pw);
-    echo "<script>alert('pass2 ');</script>";
-
     if (!$response){
      	echo $response;
 		echo '<div class="alert alert-danger" role="alert">Incorrect login, please try again!</div>';
@@ -31,28 +24,25 @@ switch ($type){
 			echo $response;
 		}
     break;
- echo "<script>console.log('pass3 ');</script>";
-
   //Sign up Case
   case "SignUp":
-
     $Fullname = $_POST["Fullname"];
     $uname = $_POST["uname"];
     $pw = $_POST["pw"];
 	  $confirmPw = $_POST["confirmPw"];
 
-	if ($confirmPw!=$pw){
-        echo '<div class="alert alert-danger" role="alert">Passwords do not match, try again</div>';
-	}
-  else{
-    //error in signup is here
-    $response = signUp($Fullname, $uname, $pw);
-    echo "<script>alert('Signup successfull');</script>";
+  	if ($confirmPw!=$pw){
+          echo '<div class="alert alert-danger" role="alert">Passwords do not match, try again</div>';
+  	}
+    else{
+      //error in signup is here
+      $response = signUp($Fullname, $uname, $pw);
+      echo "<script>alert('Signup successfull');</script>";
 
-		if ($response == true){
-			return '<div class="alert alert-success" role="alert">Successfully created your account, please login to the left!</div>';}
-	}
-	break;
+  		if ($response == true){
+  			return '<div class="alert alert-success" role="alert">Successfully created your account, please login to the left!</div>';}
+  	}
+  	break;
 
   default:
     return "Default Case";
