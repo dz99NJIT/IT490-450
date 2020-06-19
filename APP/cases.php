@@ -9,19 +9,17 @@ include("functions.php");
 include("landingPage.php");
 
 session_start();
-echo "<script>alert('pass1');</script>";
-
 $type = $_POST["type"];
-echo "<script>alert('pass2 ');</script>";
-
 switch ($type){
   //Login Case
   case "Login":
 
     $uname = $_POST["uname"];
     $pw = $_POST["pw"];
+    echo "<script>alert('pass1');</script>";
 
     $response = login($uname, $pw);
+    echo "<script>alert('pass2 ');</script>";
 
     if (!$response){
      	echo $response;
