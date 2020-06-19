@@ -1,9 +1,9 @@
 <?php
 
 //Required files
-require_once('path.inc');
-require_once('get_host_info.inc');
-require_once('rabbitMQLib.inc');
+//require_once('path.inc');
+//require_once('get_host_info.inc');
+//require_once('rabbitMQLib.inc');
 //require_once('AppRabbitMQClient.php');
 include("functions.php");
 include("landingPage.php");
