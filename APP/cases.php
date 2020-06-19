@@ -10,10 +10,10 @@ include("landingPage.php");
 
 session_start();
 echo "<script>console.log('pass1');</script>";
-echo "<h1>something</h1>";
+
 $type = $_POST["type"];
 echo "<script>console.log('pass2 ');</script>";
-/*
+
 switch ($type){
 
   //Login Case
@@ -56,5 +56,4 @@ switch ($type){
     return "Default Case";
 }
 echo "done";
-*/
 ?>
