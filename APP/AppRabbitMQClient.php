@@ -6,6 +6,8 @@ require_once('rabbitMQLib.inc');
 
 //Creates Rabbit client for the DB query requests
 function createClientForDb($request){
+        echo "<script>console.log('pass1');</script>";
+
         $client = new rabbitMQClient("rabbitMQ_db.ini", "testServer");
         if(isset($argv[1])){
             $msg = $argv[1];
