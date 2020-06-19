@@ -8,12 +8,6 @@ require_once('AppRabbitMQClient.php');
 include("functions.php");
 include("landingPage.php");
 
-//enables error messages
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-
 session_start();
 echo "<script>console.log('pass1');</script>";
 
