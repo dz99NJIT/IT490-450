@@ -10,7 +10,7 @@
 
 session_start();
 echo "<script>console.log('pass1');</script>";
-
+echo "made it here";
 $type = $_POST["type"];
 echo "<script>console.log('pass2 ');</script>";
 
