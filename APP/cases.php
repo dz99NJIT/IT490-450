@@ -5,8 +5,8 @@
 //require_once('get_host_info.inc');
 //require_once('rabbitMQLib.inc');
 //require_once('AppRabbitMQClient.php');
-include("functions.php");
-include("landingPage.php");
+//include("functions.php");
+//include("landingPage.php");
 
 session_start();
 echo "<script>console.log('pass1');</script>";
