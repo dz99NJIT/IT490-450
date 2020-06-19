@@ -7,16 +7,12 @@ require_once('rabbitMQLib.inc');
 //Creates Rabbit client for the DB query requests
 function createClientForDb($request){
         $client = new rabbitMQClient("rabbitMQ_db.ini", "testServer");
-        echo "<script>alert('here');</script>";
-
         if(isset($argv[1])){
             $msg = $argv[1];
         }
         else{
             $msg = "client";
         }
-        echo "<script>alert('message: $msg ');</script>";
-
         $response = $client->send_request($request);
         return $response;
     }

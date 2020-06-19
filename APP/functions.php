@@ -49,7 +49,6 @@ require_once('AppRabbitMQClient.php');
 				$request['Fullname'] = $Fullname;
         $request['uname'] = $uname;
         $request['pw'] = $pw;
-				//error in createclientfordb
         $returnedValue = createClientForDb($request);
 
         return $returnedValue;
