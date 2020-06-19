@@ -10,6 +10,8 @@ include("landingPage.php");
 
 session_start();
 $type = $_POST["type"];
+echo "<script>alert('$type');</script>";
+
 switch ($type){
   //Login Case
   case "Login":
