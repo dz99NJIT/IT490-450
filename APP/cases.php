@@ -40,7 +40,7 @@ switch ($type){
     $Fullname = $_POST["Fullname"];
     $uname = $_POST["uname"];
     $pw = $_POST["pw"];
-	$confirmPw = $_POST["confirmPw"];
+	  $confirmPw = $_POST["confirmPw"];
 
 	if ($confirmPw!=$pw){
         return '<div class="alert alert-danger" role="alert">Passwords do not match, try again</div>';
