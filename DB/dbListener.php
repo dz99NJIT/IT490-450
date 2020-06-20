@@ -15,7 +15,9 @@
         if(!isset($request['type'])){
             return array('message'=>"ERROR: Message type is not supported");
         }
-        switch($request['type']){
+        
+        $type = $request['type'];
+        switch($type){
                 
             //Login & Authentication request    
             case "Login":
