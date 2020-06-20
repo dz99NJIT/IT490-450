@@ -1,0 +1,13 @@
+{
+    "name": "SportWatch/it490",
+    "type": "SportWatch_Project",
+    "authors": [
+        {
+            "name": "SportWatch-Team",
+            "email": "jj356@njit.edu"
+        }
+    ],
+    "require": {
+        "php-amqplib/php-amqplib": "^2.10"
+    }
+}
