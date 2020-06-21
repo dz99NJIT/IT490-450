@@ -27,7 +27,7 @@
     }
 
     //Sign up function
-    function signUp($Fullname, $uname, $pw){
+    function signUp($Fullname,$email, $uname, $pw){
         
         $mydb = dbConnect();
         
