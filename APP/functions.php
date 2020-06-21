@@ -41,12 +41,13 @@ require_once('AppRabbitMQClient.php');
     }
 
     //Sign up function
-    function SignUp($Fullname, $uname, $pw){
+    function SignUp($Fullname,$email, $uname, $pw){
 
         $request = array();
 
         $request['type'] = "SignUp";
-				$request['Fullname'] = $Fullname;
+	$request['Fullname'] = $Fullname;
+	$request['email'] = $email;
         $request['uname'] = $uname;
         $request['pw'] = $pw;
         $returnedValue = createClientForDb($request);
