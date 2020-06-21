@@ -45,7 +45,7 @@
                 
             case "SignUp":
                 echo "<br>sign up";
-                $response_msg = signUp($request['Fullname'],$request['uname'],$request['pw']);
+                $response_msg = signUp($request['Fullname'],$request['email'],$request['uname'],$request['pw']);
                 break;
                 
             case "UserSearch":
