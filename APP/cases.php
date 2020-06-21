@@ -27,6 +27,7 @@ switch ($type){
   //Sign up Case
   case "SignUp":
     $Fullname = $_POST["Fullname"];
+    $email = $_POST["email"];
     $uname = $_POST["uname"];
     $pw = $_POST["pw"];
 	  $confirmPw = $_POST["confirmPw"];
