@@ -3,7 +3,7 @@
     //Connects to database
     function dbConnect(){
         
-      $mydb = new mysqli('127.0.0.1','it490admin','dbPassword','LetM3in!');
+      $mydb = new mysqli('127.0.0.1','prodDb','dbPassword','SportWatch');
       
       if ($mydb->errno != 0)
       {
