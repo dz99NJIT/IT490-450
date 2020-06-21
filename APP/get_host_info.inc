@@ -5,10 +5,10 @@
     Uses the default path of /var/system_ini/ unless $INIPATH is set
     @return parsed ini machine information
 */
-function getHostInfo($server, array $extra = NULL)
+function getHostInfo(array $extra = NULL)
 {
     $machine;
-    $machine[$server] = parse_ini_file("host.ini",$process_sections=true);
+    $machine = parse_ini_file("host.ini",$process_sections=true);
     if ($extra != NULL)
     {
         foreach ($extra as $ini)
