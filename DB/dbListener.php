@@ -6,6 +6,19 @@
 
     require_once('dbFunctions.php');
 
+    function logger($log_msg) {
+    $log_filename = '/var/log/rabbit_log';
+    if (!file_exists($log_filename))
+    {
+        // create directory/folder uploads.
+        mkdir($log_filename, 0777, true);
+    }
+    $log_msg = print_r($log_msg, true);
+    $log_file_data = $log_filename.'/log_' . 'rabbit' . '.log';
+    file_put_contents($log_file_data, $log_msg . "\n", FILE_APPEND);
+}
+
+
     //Takes request from server and pushes to db
     function requestProcessor($request){
         echo "received request".PHP_EOL;
