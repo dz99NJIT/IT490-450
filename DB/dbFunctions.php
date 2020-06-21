@@ -28,7 +28,7 @@
 
     //Sign up function
     function signUp($Fullname,$email, $uname, $pw){
-        $pw = password_hash($pw, algo:PASSWORD_BCRYPT);
+        $pw = password_hash($pw, PASSWORD_DEFAULT);
         $mydb = dbConnect();
 	 
 	$query = "INSERT INTO `users`(`fullname`, `email`, `username`, `pw`) VALUES ('$Fullname','$email','$uname','$pw');";
