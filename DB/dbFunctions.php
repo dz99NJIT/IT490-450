@@ -33,7 +33,7 @@
         
 	$query = "INSERT INTO `users`(`fullname`, `email`, `username`, `pw`) VALUES ('$Fullname','$email','$uname','$pw');";
         //$query = "insert into users values ('$Fullname', '$uname', '$pw');";
-        $response = $mydb->query($mydb,$query);
+        $response = $mydb->query($query);
 	    
     	return true;
        
