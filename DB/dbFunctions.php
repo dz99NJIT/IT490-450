@@ -11,12 +11,12 @@
         
         $mydb = dbConnect();
         
-        $query = "select * from users where username = '$uname' && pw = '$pw';";
+        $query = "select pw from users where username = '$uname';";
         $response = $mydb->query($query);
-    
-        $numRows = mysqli_num_rows($response);
+	 
+        $numRows = password_verify($pw,$response);
 
-        if ($numRows>0)
+        if ($numRows==1)
         {
             return true;
         }
