@@ -24,14 +24,19 @@
         echo "received request".PHP_EOL;
         echo $request['type'];
         var_dump($request);
-        
+	
+	logger($request);
+
         if(!isset($request['type'])){
             return array('message'=>"ERROR: Message type is not supported");
         }
         
         $type = $request['type'];
-        switch($type){
-                
+	
+	logger($type);
+
+	switch($type){
+		
             //Login & Authentication request    
             case "Login":
                 echo "<br>login";
@@ -49,13 +54,18 @@
                 break;
         }
         
-        echo $response_msg;
-        return $response_msg;        
+	echo $response_msg;
+
+	logger($response_msg);
+	
+	return $response_msg;        
     }        
 
     //Creates new rabbit server
     $server = new rabbitMQServer('rabbitMQ_db.ini', 'testServer');
-    
+
+    logger($server);
+
     //processes requests sent by client
     $server->process_requests('requestProcessor');
         
