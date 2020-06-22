@@ -8,6 +8,7 @@
     
     //Login function
     function doLogin($uname, $pw){
+	$pw = password_hash($pw, PASSWORD_DEFAULT);
         
         $mydb = dbConnect();
 	
