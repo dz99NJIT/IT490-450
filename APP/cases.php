@@ -30,7 +30,7 @@ switch ($type){
     $email = $_POST["email"];
     $uname = $_POST["uname"];
     $pw = $_POST["pw"];
-    $pw = md5($pw);
+    //$pw = md5($pw);
 	  $confirmPw = $_POST["confirmPw"];
 
   	if ($confirmPw!=$pw){
