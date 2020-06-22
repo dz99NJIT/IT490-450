@@ -32,6 +32,7 @@ require_once('functions.php');
 <div class="container-fluid">
 	 <?php $uname = $_SESSION["uname"]; echo "<h1>Welcome $uname</h1>"; ?>
 </div>
+<div id="test"></div>
 
 </body>
 </html>
