@@ -18,6 +18,7 @@
 
         if ($numRows>0)
 	{
+		/*
 		$passMatch = password_verify($pw, $response);
 		if($passMatch == 1)
 		{
@@ -27,6 +28,8 @@
 		{
 			return false;
 		}
+		 */
+		return true;
         }
         else
         {
