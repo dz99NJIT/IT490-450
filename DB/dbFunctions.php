@@ -10,7 +10,6 @@
     function doLogin($uname, $pw){
         
         $mydb = dbConnect();
-        $pw = password_hash($pw, PASSWORD_DEFAULT);
         $query = "select * from users where username = '$uname' && pw = '$pw';";
         $response = $mydb->query($query);
 	 
@@ -18,7 +17,14 @@
 	    
         if ($numRows>0)
         {
-            return true;
+	    $row = mysqli_fetch_array($response);
+	    $password_hash = $row['pw'];
+	    if(password_verify ($pw,$password_hash))
+	    {
+            	$msg = 'Creds match login Successfull';
+		return true;
+	    }
+		return true;
         }
         else
         {
