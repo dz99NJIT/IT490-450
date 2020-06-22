@@ -10,13 +10,13 @@
     function doLogin($uname, $pw){
         
         $mydb = dbConnect();
-        
-        $query = "select pw from users where username = '$uname';";
+        $pw = password_hash($pw, PASSWORD_DEFAULT);
+        $query = "select * from users where username = '$uname' && pw = '$pw';";
         $response = $mydb->query($query);
 	 
-        $numRows = password_verify($pw,$response);
-
-        if ($numRows==1)
+ 	$numRows = mysqli_num_rows($response);
+	    
+        if ($numRows>0)
         {
             return true;
         }
