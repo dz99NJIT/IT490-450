@@ -1,5 +1,6 @@
 <?php   
 session_start();
 session_destroy();
-header('location:index.html');
+echo "User Logged out Succesfully";
+header("refresh:2; url=index.html");
 ?>
