@@ -12,16 +12,21 @@
         $mydb = dbConnect();
 	
         $query = "select pw from users where username = '$uname';";
-        $response = $mydb->query($query);
+	$response = $mydb->query($query);
 	 
  	$numRows = mysqli_num_rows($response);
-	    
+
         if ($numRows>0)
-        {
-		if(password_verify($pw, $query))
+	{
+		$passMatch = password_verify($pw, $query);
+		if($passMatch == 1)
+		{
 			return true;
+		}
 		else
+		{
 			return false;
+		}
         }
         else
         {
