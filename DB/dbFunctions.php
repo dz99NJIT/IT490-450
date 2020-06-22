@@ -30,9 +30,10 @@
     //Sign up function
     function signUp($Fullname,$email, $uname, $pw){
         $pw = password_hash($pw, PASSWORD_DEFAULT);
+	$key = md5(time().$uname);
         $mydb = dbConnect();
 	 
-	$query = "INSERT INTO `users`(`fullname`, `email`, `username`, `pw`) VALUES ('$Fullname','$email','$uname','$pw');";
+	$query = "INSERT INTO `users`(`fullname`, `email`, `username`, `pw`, `verificationkey`) VALUES ('$Fullname','$email','$uname','$pw', '$key');";
         //$query = "insert into users values ('$Fullname', '$uname', '$pw');";
         $response = mysqli_query($mydb, $query);
 	    
