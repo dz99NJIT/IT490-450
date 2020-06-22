@@ -7,7 +7,8 @@ $url= "http://api.sportradar.us/draft/nba/trial/v1/en/2019/prospects.json?api_ke
 $json = file_get_contents($url);
 $json = json_decode($json);
 $result = $json->draft->id;
-echo "hello";
-
+echo "hello<br>";
+echo "results: ";
 echo $result;
+echo "<br>"
 ?>
