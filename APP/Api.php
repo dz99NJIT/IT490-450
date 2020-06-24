@@ -4,7 +4,7 @@
     //first one if to get team
     //second is to get player
     //third one is for getting player stats
-$url=array(
+$urls=array(
         "nfl"=>array(
             "http://api.sportradar.us/draft/nfl/trial/v1/en/2019/prospects.json?api_key=wdyztaakwe8sny3vb4prt863",
             "http://api.sportradar.us/nfl/official/trial/v5/en/teams/97354895-8c77-4fd4-a860-32e62ea7382a/profile.json?api_key=wdyztaakwe8sny3vb4prt863",
@@ -33,30 +33,33 @@ $url=array(
             "http://api.sportradar.us/dota2-t1/en/tournaments/sr:tournament:2390/summaries.json?api_key=tvkmchnyurfvyez8jzv4hma4",
             "http://api.sportradar.us/dota2-t1/en/teams/sr:competitor:220602/profile.json?api_key=tvkmchnyurfvyez8jzv4hma4",
             "http://api.sportradar.us/dota2-t1/en/players/sr:player:917768/profile.json?api_key=tvkmchnyurfvyez8jzv4hma4")
-        )
+          );
+$sports=array("lol","dota2","nfl","nba","csgo");
+$returnval=array(
+  "sports"=>array(),
+  "esports"=>array()
 );
-$keys = array(
-  "nba"=>"nyfttfgabf7hq86m79kmxjy4", //done
-  "lol"=> "fws7zff8ytnyzmugw6ba8vxc", // done
-  "dota2"=>"tvkmchnyurfvyez8jzv4hma4", //done
-  "mlb"=> "2ftdna96n3yx6q9rkekbrbbc", // cant be used
-  "nfl"=> "wdyztaakwe8sny3vb4prt863", // done
-  "ufc"=> "yyutm7yrpzbexfehgaeqj289", //cant be used
-  "csgo"=> "rxnve45j95ac742auc5xt329" //done
-);
-$version = array (
-  "nfl"=>"v5"
-  "nba"=>
-)
-$Sports=array("LOL","DOTA2","MLB","NFL","UFC","NBA","CSGO");
+foreach($sports as $sport){
+    foreach($urls[$sport] as $url){
+        $json = file_get_contents($url);
+        $json = json_decode($json);
+        $add = array();
+        if ($sport=="nba" or $sport=="nfl"){
+          array_push($returnval["sports"],$url);
+        }
+        else{
+          array_push($returnval["esports"],$url);
+        }
+    }
+}
 //call api
     // gets json frm api
-$json = file_get_contents($url);
+//$json = file_get_contents($url);
     //decodes the data
-$json = json_decode($json);
+//$json = json_decode($json);
     //gets data from decoded data
-$result = $json->draft;
+//$result = $json->draft;
 
 //echo json_encode($result);
-echo json_encode($json);
+//echo json_encode($json);
 ?>
