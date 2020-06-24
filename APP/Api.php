@@ -52,6 +52,17 @@ foreach($sports as $sport){
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 //call api
     // gets json frm api
 //$json = file_get_contents($url);
