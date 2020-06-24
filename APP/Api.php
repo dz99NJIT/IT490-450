@@ -39,10 +39,20 @@ $returnval=array(
   "sports"=>array(),
   "esports"=>array()
 );
+
+$context = stream_context_create(
+  array(
+      'http' => array(
+          "method"=>"GET",
+          "header"=>"Accept-language: en\r\n" . "Cookie: foo=bar\r\n"
+      ),
+));
 foreach($sports as $sport){
     foreach($urls[$sport] as $url){
-        $json = file_get_contents($url);
+        $json = file_get_contents($url,false,$context);
+        echo "<br><br>";
         $json = json_decode($json);
+        echo $url;
         $add = array();
         if ($sport=="nba" or $sport=="nfl"){
           array_push($returnval["sports"],$url);
@@ -52,6 +62,8 @@ foreach($sports as $sport){
         }
     }
 }
+echo "hello<br>";
+
 
 
 
