@@ -16,9 +16,6 @@ window.onload=function(){
         if (this.readyState == 4 && this.status == 200) {
             //var j = this.responseText;
             var j = JSON.parse(this.responseText);
-            alert(this.responseText);
-            alert(j);
-            alert(j.draft.id);
         }
     };
     http.open("GET","update.php",true);
