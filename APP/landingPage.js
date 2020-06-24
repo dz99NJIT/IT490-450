@@ -5,7 +5,7 @@ function update(){
         if (this.readyState == 4 && this.status == 200) {
         }
     };
-    http.open("GET","Api.php",true);
+    http.open("GET","update.php",true);
     http.send();
 }
 
@@ -21,6 +21,6 @@ window.onload=function(){
             alert(j.draft.id);
         }
     };
-    http.open("GET","Api.php",true);
+    http.open("GET","update.php",true);
     http.send();
 }
