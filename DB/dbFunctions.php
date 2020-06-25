@@ -15,10 +15,11 @@
 	$response = $mydb->query($query);
 	 
  	$numRows = mysqli_num_rows($response);
-
+	$responseArray = $response -> fetch_assoc();
+	
         if ($numRows>0)
 	{
-		if(password_verify($pw, $response['pw']))
+		if(password_verify($pw, $responseArray['pw']))
 		{
 			return true;
 		}
