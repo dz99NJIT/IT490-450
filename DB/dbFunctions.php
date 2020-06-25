@@ -18,9 +18,7 @@
 
         if ($numRows>0)
 	{
-		/*
-		$passMatch = password_verify($pw, $response);
-		if($passMatch == 1)
+		if(password_verify($pw, $response['pw']))
 		{
 			return true;
 		}
@@ -28,7 +26,6 @@
 		{
 			return false;
 		}
-		 */
 		return true;
         }
         else
