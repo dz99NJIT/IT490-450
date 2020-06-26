@@ -5,7 +5,7 @@ $context = stream_context_create(
       'http' => array(
         'method'  => 'GET',
         'header'  => "Content-Type: application/json\r\n",
-        //'ignore_errors' => TR\UE,
+        //'ignore_errors' => TRUE,
         'content' => $reqBody),
   )
 );
@@ -40,107 +40,184 @@ $urls = array(
       //"http://api.sportradar.us/csgo-t1/en/players/sr:player:917768/profile.json?api_key=rxnve45j95ac742auc5xt329"
     ,
   "dota2-t1"=>
-      "http://api.sportradar.us/dota2-t1/en/tournaments.json?api_key=tvkmchnyurfvyez8jzv4hma4",
+      "http://api.sportradar.us/dota2-t1/en/tournaments.json?api_key=tvkmchnyurfvyez8jzv4hma4"
       //"http://api.sportradar.us/dota2-t1/en/tournaments/sr:tournament:14029/summaries.json?api_key=tvkmchnyurfvyez8jzv4hma4",
       //"http://api.sportradar.us/dota2-t1/en/teams/sr:competitor:220602/profile.json?api_key=tvkmchnyurfvyez8jzv4hma4",
       //"http://api.sportradar.us/dota2-t1/en/players/sr:player:917768/profile.json?api_key=tvkmchnyurfvyez8jzv4hma4"
-
 );
 $sports=array("lol-t1","dota2-t1","csgo-t1","nfl","nba");
 $returnval=array();
-//goes through each url and gets json data
+//gets tournament id for the esports
+//no sport information needed from here
 function tournamentarray($url,$sport,$key){
   sleep(1);
   $json = json_decode(file_get_contents($url,true,$context));
-  $returnval=array($sport=>array("key"=>$key, "tournamentsId"=>array()));
+  $returnval=array($sport=>array("tournamentsId"=>array()));
+  //to limit api calls
+  $tries=0;
   foreach($json->tournaments as $tournament){
-      if(!in_array($tournament->id,$returnval[$sport]["tournamentsId"])){
+      if($tries==1){break;}
+      $tries+=1;
+      if(!array_key_exists($tournament->id,$returnval[$sport]["tournamentsId"])){
+      //if(!in_array($tournament->id,$returnval[$sport]["tournamentsId"])){
         array_push($returnval[$sport]["tournamentsId"],$tournament->id);
       }
   }
-  echo "here";
+  /* for testing
   if(file_exists("tournaments.json")){
       $jsonfile=json_decode(file_get_contents("tournaments.json"),true);
-      array_push($jsonfile,$returnval);
-      file_put_contents("tournaments.json",json_encode($jsonfile));
+      if(!array_key_exists($sport,$returnval)){
+          $jsonfile[$sport]=$returnval;
+          //array_push($jsonfile,$returnval);
+          file_put_contents("tournaments.json",json_encode($jsonfile));
+      }
   }
   else{
       $jsonfile=fopen("tournaments.json","w");
       fwrite($jsonfile,json_encode($returnval));
       fclose($jsonfile);
-      return $returnval;
-  }
-}
-function teamsarray($sport,$teamId="",$tournamentId="",$version="",$keys){
-  sleep(1);
-  $returnval=array();
-  //for esports
-  if($tournamentid!=""){
-    foreach($tournamentId as $tournament){
-      $url ="http://api.sportradar.us/" . $sport . "/en/tournaments/" . $tournament . "/summaries.json?api_key=" . $keys[$sport];
-      sleep(1);
-      $json = json_decode(file_get_contents($url,true,$context));
-      foreach($json->summaries as $match){
-          foreach($match->sport_event->competitors as $team){
-              if(!array_key_exists($team->id,$returnval)){
-                  //array_push($returnval,array("name"=>$team->name,"abbreviation"=>$team->abbreviation));
-                  //$add["teamsId"][$team->id]=array("name"=>$team->name,"abbreviation"=>$team->abbreviation);
-                  $returnval[$team->id]= array("name"=>$team->name,"abbreviation"=>$team->abbreviation);
-              }
-          }
-      }
-    }
-  }
-  //for normal sports
-  else{}
+  }*/
   return $returnval;
 }
-if(file_exists("tournaments.json")){
+//tournamentId is for Sport
+//version is for normal sports
+function teamsarray($sport,$teamId,$tournamentId,$version,$keys){
+    sleep(1);
+    $returnval=array();
+    //for esports
+    if($sport=="lol-t1" or $sport=="csgo-t1" or $sport="dota2-t1"){
+      $tries=0;
+      foreach($tournamentId as $tournament){
+        if($tries==1){break;}
+        $tries+=1;
+        $url ="http://api.sportradar.us/" . $sport . "/en/tournaments/" . $tournament . "/summaries.json?api_key=" . $keys[$sport];
+        sleep(1);
+        $json = json_decode(file_get_contents($url,true,$context));
+        foreach($json->summaries as $match){
+            foreach($match->sport_event->competitors as $team){
+                if(!array_key_exists($team->id,$returnval)){
+                    $returnval[$team->id]= array("name"=>$team->name,"abbreviation"=>$team->abbreviation);
+                }
+            }
+        }
+      }
+    }
+    //for normal sports
+    else{}
+    /* for testing
+    if(file_exists("teams.json")){
+        $jsonfile=json_decode(file_get_contents("teams.json"),true);
+        if(!array_key_exists($sport,$returnval)){
+            $jsonfile[$teamId]=$returnval;
+
+        }
+        //array_push($jsonfile,$returnval);
+        file_put_contents("teams.json",json_encode($jsonfile));
+    }
+    else{
+        $jsonfile=fopen("teams.json","w");
+        fwrite($jsonfile,json_encode($returnval));
+        fclose($jsonfile);
+    }*/
+    return $returnval;
+}
+function player($teamId,$sport,$key){
+    $returnval=array();
+    sleep(1);
+    $url="http://api.sportradar.us/" . $sport . "/en/teams/" . $teamId . "/profile.json?api_key=" . $key ;
+    $json = json_decode(file_get_contents($url,true,$context));
+    $tries=0;
+    foreach($json->players as $player){
+        if($tries==12){break;}
+        $tries+=1;
+        if(!array_key_exists($player->id,$returnval)){
+            $returnval[$player->id]=array("name"=>$player->name,"Birth_day"=>$player->date_of_birth,"nationality"=>$player->nationality,"gender"=>$player->gender);
+
+        }
+    }
+    /*
+    if(file_exists("playersssss.json")){
+        $jsonfile=json_decode(file_get_contents("teams.json"),true);
+        $jsonfile[$teamId]=$returnval;
+        //array_push($jsonfile,$returnval);
+        file_put_contents("players.json",json_encode($jsonfile));
+    }
+    else{
+        $jsonfile=fopen("players.json","w");
+        fwrite($jsonfile,json_encode($returnval));
+        fclose($jsonfile);
+    }*/
+    return $returnval;
+
+}
+function playerstat($sport,$playerId,$key){
+    sleep(1);
+    $url="http://api.sportradar.us/" . $sport . "/en/players/" . $playerId . "/profile.json?api_key=" . $key ;
+    $json = json_decode(file_get_contents($url,true,$context));
+    $tries=0;
+    if($sport=="lol-t1" or $sport=="csgo-t1" or $sport="dota2-t1"){
+        $returnval=array("maps_played"=>0,"maps_won"=>0,"maps_lost"=>0,"rounds_played"=>0,"rounds_won"=>0,"rounds_lost"=>0,"kills"=>0,"deaths"=>0,"assists"=>0,"headshots"=>0);
+        foreach($json->statistics as $stats){
+            foreach(array_keys($returnval) as $stat){
+                if($stats->$stat>$returnval[$stat]){
+                  $returnval[$stat]=$stats->$stat;
+                }
+            }
+        }
+    }
+    else{}
+    //for testing
+    /*
+    if(file_exists("statsssssss.json")){
+        $jsonfile=json_decode(file_get_contents("teams.json"),true);
+        $jsonfile[$teamId]=$returnval;
+        file_put_contents("players.json",json_encode($jsonfile));
+    }
+    else{
+        $jsonfile=fopen("stats.json","w");
+        fwrite($jsonfile,json_encode($returnval));
+        fclose($jsonfile);
+    }*/
+    return $returnval;
+}
+if(file_exists("teamsss.json")==true){
 }
 else{
     foreach($sports as $sport){
-        if($sport=="lol-t1" or $sport=="nba" or $sport=="nfl"){continue;}
+        //if($sport!="csgo-t1" ){continue;}
+        if($sport=="nfl" or $sport=="nba" or $sport=="lol-t1"){continue;}
         $add=array("sport"=>$sport, "teamsId"=>array());
         if($sport=="lol-t1" or $sport=="dota2-t1" or $sport=="csgo-t1"){
             //adds tournamentId
-            $add["tournamentId"]=tournamentarray($urls[$sport],$sport,$keys[$sport]);
+            $add["tournamentId"]=tournamentarray($urls[$sport],$sport,$keys[$sport])[$sport]["tournamentsId"];
             //add TeamId
-            //$add["teamsId"]=teamsarray($sport,"",$add["tournamentId"],"",$keys);
-            /*
-            //add player id
-            $add["teamsId"][$teamId]["players"]=array();
+            $add["teamsId"]=teamsarray($sport,"",$add["tournamentId"],"",$keys);
+            //add players to each TeamId
+            $tries=0;
             foreach(array_keys($add["teamsId"]) as $teamId){
-                $url="http://api.sportradar.us/" . $sport . "/en/teams/" . $teamId . "/profile.json?api_key=" . $keys[$sport];
-                $json= json_decode(file_get_contents($url,true,$context));
-                sleep(1);
-                foreach($json->players as $player){
-                  if(!array_key_exists($player->id,$add["teamsId"][$teamId]["players"])){
-                      $add["teamsId"][$teamId]["players"][$player->id]=array("name"=>$player->name,"birthday"=>$player->date_of_birth,"nationality"=>$player->nationality,"gender"=>$player->gender);
-                  }
+              if($tries==1){break;}
+              $tries+=1;
+              $add["teamsId"][$teamId]["players"]=player($teamId,$sport,$keys[$sport]);
+            }
+            //add player stats for players
+            $tries=0;
+            foreach(array_keys($add["teamsId"]) as $teamId){
+                if($tries>=1){break;}
+                foreach(array_keys($add["teamsId"][$teamId]["players"]) as $playerId){
+                    if($tries>=1){break;}
+                    $tries+=1;
+                    $add["teamsId"][$teamId]["players"][$playerId]["stats"]=playerstat($sport,$playerId,$keys[$sport]);
                 }
             }
-        */}
+        }
         else{
         }
-        //adds
-        $num+= 1;
-
         //print thing out
-        echo "<h1>{$add['sport']}</h1>";
-        echo count($add["teamsId"]);
-        foreach($add["teamsId"] as $item){
-            echo $item . "<br>";
-        }
-        $sportnum+=1;
-        //add $add to returnval
+
         array_push($returnval,$add);
     }
-    //saves data as json file to make updating easier
-    //$jsonfile=fopen("things.json","w");
-    //fwrite($jsonfile,json_encode($returnval));
-    //fclose($jsonfile);
 }
-
-echo "hello<br>";
-
+$jsonfile=fopen("data.json","w");
+fwrite($jsonfile,json_encode($returnval));
+fclose($jsonfile);
 ?>
