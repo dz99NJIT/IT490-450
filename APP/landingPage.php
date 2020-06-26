@@ -16,16 +16,26 @@ require_once('functions.php');
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 	<a class="navbar-brand" href="landingPage.php">SportWatch</a>
-  <ul class="navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="landingPage.php">Home</a>
-    </li>
-  </ul>
-  <ul class="navbar-nav ml-auto">
-	<li class="nav-item active">
-      <a class="nav-link" href="logout.php">Logout</a>
-    </li>
-  </ul>
+  	<ul class="navbar-nav">
+   		<li class="nav-item active">
+    		<a class="nav-link" href="landingPage.php">Home</a>
+			</li>
+			<li class="nav-item active">
+      	<a class="nav-link" href="events.php">Events</a>
+    	</li>
+  	</ul>
+  	<ul class="navbar-nav ml-auto">
+   		<form class="form-inline" action="teamSearch.php">
+     		<input class="form-control mr-sm-2" type="text" placeholder="Search for Teams">
+     		<button class="btn btn-success" type="submit">Search</button>
+   		</form>
+			<a class="navbar-brand pl-4" href="profile.php">
+   			<img src="person.png" alt="logo" style="width:40px;">
+  		</a>
+  		<li class="nav-item active">
+   			<a class="nav-link" href="logout.php">Logout</a>
+ 			</li>
+		</ul>
 </nav>
 <br><br><br>
 
