@@ -20,9 +20,14 @@ require_once('functions.php');
    		<li class="nav-item active">
     		<a class="nav-link" href="landingPage.php">Home</a>
 			</li>
-			<li class="nav-item active">
-      	<a class="nav-link" href="events.php">Events</a>
+			<li class="nav-item dropdown">
+      	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Events Search</a>
     	</li>
+			<div class="dropdown-menu">
+				<form class="form-inline" action="events.php" method="POST">
+    			<input class="form-control mr-sm-2" type="text" placeholder="Search an event">
+    			<button class="btn btn-success" type="submit">Search</button>
+  			</form>
   	</ul>
   	<ul class="navbar-nav ml-auto">
    		<form class="form-inline" action="teamSearch.php">
