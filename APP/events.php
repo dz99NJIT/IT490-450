@@ -39,8 +39,10 @@ require_once('functions.php');
 </nav>
 <br><br><br>
 
-<div class="container-fluid">	 
-	<div w-type="event-discovery" w-tmapikey="ZFMGvqAbAeLyfwAymqLmH9RWy5cod7wo" w-googleapikey="YOUR_GOOGLE_API_KEY" 
+<div class="container-fluid">
+	<div class="row">
+	<div class="col-sm" 
+	     w-type="event-discovery" w-tmapikey="ZFMGvqAbAeLyfwAymqLmH9RWy5cod7wo" w-googleapikey="YOUR_GOOGLE_API_KEY" 
 	     w-keyword="MLB" 
 	     w-theme="grid" 
 	     w-colorscheme="dark" 
@@ -63,9 +65,11 @@ require_once('functions.php');
 	     w-countrycode="US" 
 	     w-postalcode="07055" 
 	     w-city="Los Angeles" 
-	     w-latlong=""></div>
+	     w-latlong="">
+	</div>
 	<script src="https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js"></script>
-	<div w-type="calendar" w-tmapikey="ZFMGvqAbAeLyfwAymqLmH9RWy5cod7wo" w-googleapikey="YOUR_GOOGLE_API_KEY" 
+	<div class="row" 
+	     w-type="calendar" w-tmapikey="ZFMGvqAbAeLyfwAymqLmH9RWy5cod7wo" w-googleapikey="YOUR_GOOGLE_API_KEY" 
 	     w-keyword="NFL" 
 	     w-theme="calendar" 
 	     w-colorscheme="dark" 
@@ -88,8 +92,10 @@ require_once('functions.php');
 	     w-affiliateid="" 
 	     w-segmentid="" 
 	     w-proportion="standart" 
-	     w-latlong=""></div>
+	     w-latlong="">
+	</div>
 	    <script src="https://ticketmaster-api-staging.github.io/products-and-docs/widgets/calendar/1.0.0/lib/main-widget.js"></script>
+</div>
 </div>
 </body>
 </html>
