@@ -40,7 +40,11 @@ require_once('functions.php');
 <br><br><br>
 
 <div class="container-fluid">
-	 THIS IS WHERE THE TICKETMASTER API WILL BE
+	 
+	<div w-type="event-discovery" w-tmapikey="ZFMGvqAbAeLyfwAymqLmH9RWy5cod7wo" w-googleapikey="YOUR_GOOGLE_API_KEY" w-keyword="MLB" w-theme="grid" w-colorscheme="dark" w-width="100%" w-height="550" w-size="25" w-border="2" w-borderradius="4" w-radius="25" w-period="week" w-layout="fullwidth" w-attractionid="" w-promoterid="" w-venueid="" w-affiliateid="" w-segmentid="" w-proportion="custom" w-titlelink="off" w-sorting="groupByName" w-id="id_mv63s" w-source="" w-branding="Ticketmaster" w-showfulleventsnames="true" w-showloadmorebutton="true" w-countrycode="US" w-postalcode="07055" w-city="Los Angeles" w-latlong=""></div>
+	<script src="https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js"></script>
+
+
 </div>
 </body>
 </html>
