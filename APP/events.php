@@ -65,6 +65,31 @@ require_once('functions.php');
 	     w-city="Los Angeles" 
 	     w-latlong=""></div>
 	<script src="https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js"></script>
+	<div w-type="calendar" w-tmapikey="ZFMGvqAbAeLyfwAymqLmH9RWy5cod7wo" w-googleapikey="YOUR_GOOGLE_API_KEY" 
+	     w-keyword="NFL" 
+	     w-theme="calendar" 
+	     w-colorscheme="dark" 
+	     w-width="298" 
+	     w-height="400" 
+	     w-size="25" 
+	     w-border="1" 
+	     w-borderradius="4" 
+	     w-postalcode="" 
+	     w-radius="25" 
+	     w-countrycode="US" 
+	     w-city="Los Angeles" 
+	     w-period="week" 
+	     w-periodweek="week" 
+	     w-layout="vertical" 
+	     w-classificationid="" 
+	     w-attractionid="" 
+	     w-promoterid="" 
+	     w-venueid="" 
+	     w-affiliateid="" 
+	     w-segmentid="" 
+	     w-proportion="standart" 
+	     w-latlong=""></div>
+	    <script src="https://ticketmaster-api-staging.github.io/products-and-docs/widgets/calendar/1.0.0/lib/main-widget.js"></script>
 </div>
 </body>
 </html>
