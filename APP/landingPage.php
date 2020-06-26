@@ -42,7 +42,7 @@ require_once('functions.php');
 <div class="container-fluid">
 	 <?php $uname = $_SESSION["uname"]; echo "<h1>Welcome $uname</h1>"; ?>
 </div>
-<div id="test"></div>
-
+	<a class="twitter-timeline" data-theme="dark" href="https://twitter.com/espn?ref_src=twsrc%5Etfw">ESPN
+	</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
