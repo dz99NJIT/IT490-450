@@ -28,6 +28,7 @@ require_once('functions.php');
     			<input class="form-control mr-sm-2" type="text" placeholder="Search an event">
     			<button class="btn btn-success" type="submit">Search</button>
   			</form>
+			</div>
   	</ul>
   	<ul class="navbar-nav ml-auto">
    		<form class="form-inline" action="teamSearch.php">
