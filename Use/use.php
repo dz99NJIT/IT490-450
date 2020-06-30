@@ -7,7 +7,7 @@
     //data.json is supposed to be the response
 function process($request){
     $change=0;
-    if(file_exists("saved.json")){
+    if(file_exists("savedd.json")){
         $saved=json_decode(file_get_contents("saved.json"),true);
         $json=json_decode(file_get_contents($request),true);
         $index=0;
@@ -47,7 +47,7 @@ function process($request){
         }
     }
     else{
-        $json=json_decode(file_get_contents($request),true);
+        $json=json_decode($request,true);
         //add every sport into database
         foreach($json as $sport){
             $sportName=$sport["sport"];
@@ -98,4 +98,6 @@ function process($request){
         fclose($jsonfile);
     }
 }
+$request=file_get_contents("data.json");
+process($request);
 ?>
