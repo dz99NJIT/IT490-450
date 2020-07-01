@@ -65,9 +65,6 @@ function tournamentarray($sport,$url,$keys){
                 array_push($returnval[$sport]["tournamentsId"],$tournament->id);
               }
           }
-          $jsonfile=fopen("tournamentsId.json","w");
-          fwrite($jsonfile,json_encode($returnval[$sport]["tournamentsId"]));
-          fclose($jsonfile);
           return $returnval[$sport]["tournamentsId"];
   }
 }
@@ -88,9 +85,6 @@ function EsportTeams($sport,$tournamentIds,$keys){
                   }
               }
           }
-          $jsonfile=fopen("teamsId.json","w");
-          fwrite($jsonfile,json_encode($returnval));
-          fclose($jsonfile);
           return $returnval;
       }
       catch(Exception $e){
@@ -106,25 +100,18 @@ function player($teamId,$sport,$keys){
     $returnval=array();
     foreach($keys as $key){
         try{
-            sleep(1);
             if($sport=="lol-t1" or $sport=="dota2-t1" or $sport=="csgo-t1"){
               $url="http://api.sportradar.us/" . $sport . "/en/teams/" . $teamId . "/profile.json?api_key=" . $key ;
               $json = json_decode(file_get_contents($url,true,$context));
               $tries=0;
               foreach($json->players as $player){
-                  if($tries==12){break;}
-                  $tries+=1;
                   if(!array_key_exists($player->id,$returnval)){
                       $returnval[$player->id]=array("name"=>$player->name,"Birth_day"=>$player->date_of_birth,"nationality"=>$player->nationality,"gender"=>$player->gender);
-
                   }
               }
             }
             //for normal sports if group decides to add
             else{}
-            $jsonfile=fopen("players.json","w");
-            fwrite($jsonfile,json_encode($returnval));
-            fclose($jsonfile);
             return $returnval;
         }
         catch(Exception $e){
@@ -141,7 +128,7 @@ function populate(){
     global $sports,$keys,$context,$urls;
     $returnval=array();
     foreach($sports as $sport){
-        if($sport=="nba" or $sport="nfl"){continue;}
+        if($sport=="nba" or $sport=="nfl"){continue;}
         echo $sport;
         //each sport to be added to returnval;
         $add=array("sport"=>$sport, "teamsId"=>array());
@@ -176,7 +163,9 @@ function playerstat($sport,$playerId){
             try{
               sleep(1);
               $url="http://api.sportradar.us/" . $sport . "/en/players/" . $playerId . "/profile.json?api_key=" . $key ;
-              $json = json_decode(file_get_contents($url,true,$context));
+              echo $url . "<br>";
+              $json = json_decode(file_get_contents($url,true,$context),true);
+              $jsonfile= json_decode(file_get_contents("data.json"),true);
               if($sport=="lol-t1" or $sport=="csgo-t1" or $sport="dota2-t1"){
                   $returnval=array("last_updated"=>date("M d, Y"),"maps_played"=>0,"maps_won"=>0,"maps_lost"=>0,"rounds_played"=>0,"rounds_won"=>0,"rounds_lost"=>0,"kills"=>0,"deaths"=>0,"assists"=>0,"headshots"=>0);
                   if(isset($json->statistics)){
@@ -188,13 +177,29 @@ function playerstat($sport,$playerId){
                         }
                     }
                   }
+                  //looks for right sport
+                  $index=0;
+                  foreach($jsonfile as $sportArray){
+                      //check if it's the right sport
+                      if($sportArray["sport"]==$sport){
+                          foreach(array_keys($sportArray["teamsId"]) as $teamId){
+                              foreach(array_keys($sportArray["teamsId"][$teamId]["players"]) as $playerId2){
+                                  if($playerId==$playerId2){
+                                      $jsonfile[$index]["teamsId"][$teamId]["players"][$playerId2]["stats"]=$returnval;
+                                      $file=fopen("data.json","w");
+                                      fwrite($file,json_encode($jsonfile));
+                                      fclose($file);
+                                      return 1;
+                                  }
+                              }
+                          }
+                      }
+                      $index+=1;
+                  }
               }
               //if we decide to also include normal sports
               else{}
-              $jsonfile=fopen("stats.json","w");
-              fwrite($jsonfile,json_encode($returnval));
-              fclose($jsonfile);
-              return $returnval;
+
             }
             catch(Exception $e){
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
@@ -205,9 +210,7 @@ function playerstat($sport,$playerId){
 
     }
     else{
-        echo "ERROR: data.json doing exist";
+        echo "ERROR: data.json doing exist!!!!";
     }
 }
-//playerstat("csgo-t1","sr:player:917768");
-populate();
 ?>
