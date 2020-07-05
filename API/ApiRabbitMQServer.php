@@ -33,12 +33,16 @@ function requestProcessor($request){
         //Login & Authentication request
         case "populate":
             echo "<br>Populate DB";
+            //populate returns string version of json file to be sent to db
             $response_msg = populate();
             break;
 
         case "Search_Player":
             echo "<br>Search for Player";
-            $response_msg = Search_Player();
+            //Search_Player finds player and if they exist, update their data if it's old enough
+            Search_Player();
+            //gets string version of json file to return to db
+            $response_msq = file_get_contents("data.json")
             break;
     }
     echo $response_msg;

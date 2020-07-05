@@ -166,6 +166,7 @@ function playerstat($sport,$playerId){
               $jsonfile= json_decode(file_get_contents("data.json"),true);
               if($sport=="lol-t1" or $sport=="csgo-t1" or $sport="dota2-t1"){
                   $returnval=array("last_updated"=>date("M d, Y"),"maps_played"=>0,"maps_won"=>0,"maps_lost"=>0,"rounds_played"=>0,"rounds_won"=>0,"rounds_lost"=>0,"kills"=>0,"deaths"=>0,"assists"=>0,"headshots"=>0);
+                  //checks to see if that player has any stats
                   if(isset($json->statistics)){
                     foreach($json->statistics as $stats){
                         foreach(array_keys($returnval) as $stat){
@@ -203,8 +204,6 @@ function playerstat($sport,$playerId){
                 continue;
             }
         }
-        return json_encode($returnval);
-
     }
     else{
         echo "ERROR: data.json doing exist!!!!";
@@ -213,6 +212,32 @@ function playerstat($sport,$playerId){
 function Search_Player($name){
     if(file_exists("data.json")){
         $json=json_decode(file_get_contents("data.json"),true);
+        foreach ($json as $sport){
+            $sportname=$sport["sport"];
+            foreach(array_keys($sport["teamsId"]) as $teamId){
+                //checks if team has players
+                if(array_key_exists("players", $sport["teamsId"][$teamId])){
+                    foreach(array_keys($sport["teamsId"][$teamId]["players"]) as $playerId){
+                        if($sport["teamsId"][$teamId]["players"][$playerId]["name"]==$name){
+                            //checks if player has stats
+                            if(array_key_exists("stats",$sport["teamsId"][$teamId]["players"][$playerId])){
+                                //check if player stats has the last_updated attribute
+                                if(array_key_exists("last_updated",$sport["teamsId"][$teamId]["players"][$playerId]["stats"])){
+                                    $timediff=strtotime(date("M d, Y")) - strtotime($sport["teamsId"][$teamId]["players"][$playerId]["stats"]["last_updated"]);
+                                    //updates only if atleast a day old
+                                    if($timediff!=0){
+                                        playerstat($sportname,$playerId)
+                                    }
+                                }
+                                else{
+                                    playerstat($sportname,$playerId);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     else{
       echo "ERROR: data.json doing exist!!!!";
