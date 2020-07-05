@@ -151,6 +151,7 @@ function populate(){
   $jsonfile=fopen("data.json","w");
   fwrite($jsonfile,json_encode($returnval));
   fclose($jsonfile);
+  return json_encode($returnval);
 }
 function playerstat($sport,$playerId){
     global $context,$keys;
@@ -186,7 +187,6 @@ function playerstat($sport,$playerId){
                                       $file=fopen("data.json","w");
                                       fwrite($file,json_encode($jsonfile));
                                       fclose($file);
-                                      return 1;
                                   }
                               }
                           }
@@ -203,11 +203,20 @@ function playerstat($sport,$playerId){
                 continue;
             }
         }
-        return $returnval;
+        return json_encode($returnval);
 
     }
     else{
         echo "ERROR: data.json doing exist!!!!";
+    }
+}
+function Search_Player($name){
+    if(file_exists("data.json")){
+        $json=json_decode(file_get_contents("data.json"),true);
+    }
+    else{
+      echo "ERROR: data.json doing exist!!!!";
+
     }
 }
 ?>
