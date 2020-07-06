@@ -9,7 +9,8 @@ function process(){
     $change=0;
     if(file_exists("saved.json")){
         $saved=json_decode(file_get_contents("saved.json"),true);
-        $json=json_decode($request,true);
+        //change back later
+        $json=json_decode(fiel_get_contents("data.json"),true);
         $index=0;
         //loop through each sport
         foreach($saved as $sport){
