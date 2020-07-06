@@ -44,5 +44,11 @@ require_once('functions.php');
 </div>
 	<a class="twitter-timeline" data-theme="dark" href="https://twitter.com/espn?ref_src=twsrc%5Etfw">ESPN
 	</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	<a class="twitter-timeline" href="https://twitter.com/LCSOfficial?ref_src=twsrc%5Etfw">Tweets by LCSOfficial</a> 
+	<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	<a class="twitter-timeline" href="https://twitter.com/ESLCS?ref_src=twsrc%5Etfw">Tweets by ESLCS</a> 
+	<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	<a class="twitter-timeline" href="https://twitter.com/ESLDota2?ref_src=twsrc%5Etfw">Tweets by ESLDota2</a> 
+	<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
