@@ -42,12 +42,6 @@ session_start();
 <div class="container-fluid">
 	 <?php $uname = $_SESSION["uname"]; echo "<h1>Welcome $uname</h1>"; ?>
 </div>
-<<<<<<< HEAD
-<div class="container-fluid">
-	<a class="twitter-timeline" data-theme="dark" href="https://twitter.com/espn?ref_src=twsrc%5Etfw">ESPN
-	</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
-=======
 	<button type="button" value= "espn" onclick="buttonclick(this)">ESPN</button>
 	<button type="button" value= "lol" onclick="buttonclick(this)">League Of Legends</button>
 	<button type="button" value="csgo"onclick="buttonclick(this)">Counter-Strike: Global Offensive</button>
@@ -68,6 +62,5 @@ session_start();
 			<a id= "dota2" class="twitter-timeline" href="https://twitter.com/ESLDota2?ref_src=twsrc%5Etfw">Tweets by ESLDota2</a>
 			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</div>
->>>>>>> fbc8e97d795b90d8fdb7a79a566b011897226074
 </body>
 </html>
