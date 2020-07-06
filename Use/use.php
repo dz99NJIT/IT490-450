@@ -2,14 +2,13 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
-    //data.json is supposed to be the response
-function process(){
+function process($response){
     $change=0;
     require_once("connection.php");
     if(file_exists("saved.json")){
         $saved=json_decode(file_get_contents("saved.json"),true);
         //change back later
-        $json=json_decode(fiel_get_contents("data.json"),true);
+        $json=json_decode($response,true);
         $index=0;
         //loop through each sport
         foreach($saved as $sport){
@@ -47,7 +46,7 @@ function process(){
         }
     }
     else{
-        $json=json_decode(file_get_contents("data.json"),true);
+        $json=json_decode($response,true);
         //add every sport into database
         foreach($json as $sport){
             $sportName=$sport["sport"];
@@ -93,10 +92,9 @@ function process(){
         }
     }
     if($change==1){
-      //  $jsonfile=fopen("saved.json","w");
-      //  fwrite($jsonfile,json_encode($json));
-      //  fclose($jsonfile);
+      $jsonfile=fopen("saved.json","w");
+      fwrite($jsonfile,json_encode($json));
+      fclose($jsonfile);
     }
 }
-process();
 ?>
