@@ -43,6 +43,18 @@ switch ($type){
   	}
   	break;
 
+	switch ($type){
+  //Search Case
+  case "Search":
+    $searchText = $_POST["searchText"];
+    $response = search($searchText);
+    if (!$response){
+//	some sort of error message saying no results found
+		else{
+			echo $response;
+		}
+    break;
+	
   default:
     return "Default Case";
 }
