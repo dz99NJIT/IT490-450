@@ -48,9 +48,9 @@
                 $response_msg = signUp($request['Fullname'],$request['email'],$request['uname'],$request['pw']);
                 break;
                 
-            case "UserSearch":
+            case "Search":
                 echo "<br>search user";
-                $response_msg = searchUser($request['friend']);
+                $response_msg = search($request['searchText']);
                 break;
         }
         
