@@ -43,7 +43,6 @@ switch ($type){
   	}
   	break;
 
-	switch ($type){
   //Search Case
   case "Search":
     $searchText = $_POST["searchText"];
