@@ -56,12 +56,12 @@ require_once('AppRabbitMQClient.php');
     }
 
     //Search user function
-    function searchUser($friend){
+    function search($searchText){
 
         $request = array();
 
-        $request['type'] = "UserSearch";
-        $request['friend'] = $friend;
+        $request['type'] = "Search";
+        $request['searchText'] = $searchText;
 
         $returnedValue = createClientForDb($request);
 
