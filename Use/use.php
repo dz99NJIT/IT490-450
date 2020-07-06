@@ -94,9 +94,9 @@ function process(){
         }
     }
     if($change==1){
-        $jsonfile=fopen("saved.json","w");
-        fwrite($jsonfile,json_encode($json));
-        fclose($jsonfile);
+      //  $jsonfile=fopen("saved.json","w");
+      //  fwrite($jsonfile,json_encode($json));
+      //  fclose($jsonfile);
     }
 }
 process();
