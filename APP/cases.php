@@ -53,6 +53,7 @@ switch ($type){
 		else{
 			echo $response;
 		}
+    }
     break;
 	
   default:
