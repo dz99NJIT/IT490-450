@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 $servername = "localhost";//change to group database
 $username = "it490admin";
 $password = "LetM3in!";
-$dbname = "SportWatchz";
+$dbname = "SportWatch";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
