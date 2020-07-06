@@ -1,0 +1,93 @@
+<?php
+ini_set('display_errors', 1);
+     ini_set('display_startup_errors', 1);
+      error_reporting(E_ALL);
+
+
+$servername = "localhost";//change to group database
+$username = "it490admin";
+$password = "LetM3in!";
+$dbname = "SportWatch";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+
+$sql = "SELECT * FROM `Esport_Stats` `Player_ID``Maps_played``Maps_Won``Maps_Lost``Rounds_Played``Rounds_Won``Rounds_Lost``Kills``Deaths``Assists``Headshots`";
+
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+
+while($row = $result->fetch_assoc()) {
+    echo "Player ID: "  . " ".$row["Player_ID"] . " - Maps_played: " ." ".$row["Maps_played"] . " Maps_Won: " . " ".$row["Maps_Won"] . "Maps_Lost".  " ".$row["Maps_Lost"] . " Rounds_Played: " . " ".$row["Rounds_Played"] . " Rounds_Won" . " ".$row["Rounds_Won"]  ."Rounds_Lost". " ".$row["Rounds_Lost"]. "Kills" . " ".$row["Kills"]. "Deaths" .  " ".$row["Deaths"] . " Assists". " ".$row["Assists"] .  " Headshots".  " ".$row["Headshots"] .   "\n";
+  }
+} else {
+  echo "0 results";
+}
+$sql = "SELECT * FROM `Players` `Name``ID``Team_ID`";
+
+
+ $result = $conn->query($sql);
+ if ($result->num_rows > 0) {
+  // output data of each row
+
+while($row = $result->fetch_assoc()) {
+     echo "Name: "  . $row["Name"] . " ID: " . $row["ID"] . " Team_ID: " . $row["Team_ID"] .  "\n" ;
+   }
+ } else {
+   echo "0 results";
+ }
+
+
+
+
+$sql = "SELECT * FROM `Sports` `Name`";
+
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+   // output data of each row
+
+ while($row = $result->fetch_assoc()) {
+     echo "Name: "  . $row["Name"] .   "\n" ;
+    }
+  } else {
+    echo "0 results";
+ }
+
+
+
+
+
+$sql = "SELECT * FROM `Teams` `ID``Name``Sport`";
+
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+   // output data of each row
+ while($row = $result->fetch_assoc()) {
+      echo "ID: "  . $row["ID"] . " Name: " . $row["Name"] . " Sport: " . $row["Sport"] .  "\n " ;
+     }
+   } else {
+     echo "0 results";
+  }
+
+
+
+
+
+
+$conn->close();
+
+
+
+
+
+
+
+?>

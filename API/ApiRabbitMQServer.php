@@ -53,7 +53,7 @@ function requestProcessor($request){
 }
 
 //Creates new rabbit server
-$server = new rabbitMQServer('rabbitMQ_db.ini', 'testApi');
+$server = new rabbitMQServer('rabbitMQ_API.ini', 'testApi');
 
 //logger($server);
 
