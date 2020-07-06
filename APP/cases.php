@@ -50,10 +50,10 @@ switch ($type){
     $response = search($searchText);
     if (!$response){
 //	some sort of error message saying no results found
+    }
 		else{
 			echo $response;
 		}
-    }
     break;
 	
   default:
