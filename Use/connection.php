@@ -1,5 +1,5 @@
 <?php
-$servername = "127.0.0.1:3306";
+$servername = "127.0.0.1";
 $username = "it490admin";
 $password = "LetM3in!";
 $dbname = "SportWatch";
