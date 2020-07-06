@@ -46,7 +46,26 @@
         $response = mysqli_query($mydb, $query);
 	    
     	return true;
-       
+    }
+
+    function search($searchText){
+        
+        $mydb = dbConnect();
+	
+        $query = "select * from Teams where Name = '$searchText';";
+	$response = $mydb->query($query);
+	 
+ 	$numRows = mysqli_num_rows($response);
+	$responseArray = $response -> fetch_assoc();
+	
+        if ($numRows>0)
+	{
+		return $responseArray();
+        }
+        else
+        {
+            //API call
+        }
     }
 
 ?>
