@@ -58,6 +58,7 @@ session_start();
 	<div id="csgo" class="sportNews">
 			<a id="csgo" class="twitter-timeline" href="https://twitter.com/ESLCS?ref_src=twsrc%5Etfw">Tweets by ESLCS</a>
 			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</div>	
 	<div id ="dota2" class="sportNews">
 			<a id= "dota2" class="twitter-timeline" href="https://twitter.com/ESLDota2?ref_src=twsrc%5Etfw">Tweets by ESLDota2</a>
 			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
