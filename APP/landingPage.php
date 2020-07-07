@@ -45,10 +45,10 @@ session_start();
 				</div>
 		</div>
 		<div id="teamsearch">
-				<form action = "cases.php" method="POST">
+				<form method="POST">
 					<input type="hidden" id="type" name="type" value="Search">
 					<input type="text" id="searchText" placeholder="Search for a Team" name="searchText"><br><br>
-					<input type="submit" class="btn btn-dark" value="Search"><br><br><br>
+					<input type="button" onclick="teamsearch()" class="btn btn-dark" value="Search"><br><br><br>
 				</form>
 		</div>
 		<div id="posts"> make a post first</div>

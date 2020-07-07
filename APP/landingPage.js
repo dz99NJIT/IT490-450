@@ -9,7 +9,10 @@ function update(){
     http.send();
 }
 function teamsearch(){
-  
+  var teamname=document.getElementById("searchText").value;
+  alert(teamname);
+
+
 }
 function buttonclick(button){
     //alert(button.value);
