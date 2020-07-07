@@ -1,5 +1,5 @@
 <?php
-
-		echo $_GET["searchText"];
-
+	include("function.php");	
+	$teamReturn[] = search($_GET["searchText"]);
+	print_r($teamReturn);
 ?>
