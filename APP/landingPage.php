@@ -38,11 +38,9 @@ session_start();
 						</ul>
 				</nav>
 				<br><br><br>
-
-				<div class="container-fluid">
-					 <?php $uname = $_SESSION["uname"]; echo "<h1>Welcome $uname</h1>"; ?>
-
-				</div>
+		</div>
+		<div class="container-fluid">
+			<?php $uname = $_SESSION["uname"]; echo "<h1>Welcome $uname</h1>"; ?>
 		</div>
 		<div id="teamsearch">
 			<h2>Teams</h2>
