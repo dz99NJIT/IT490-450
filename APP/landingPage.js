@@ -22,6 +22,7 @@ function teamsearch(){
     };
     http.open("GET","teamSearch.php?searchText=" + teamname,true);
     http.send();
+    var teamname=document.getElementById("searchText").value="";
     update();
 }
 }
