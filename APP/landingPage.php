@@ -43,24 +43,21 @@ session_start();
 						</div>
 				</div>
 				<div id="teamsearch">
-						<form method="POST">
-							<input type="hidden" id="type" name="type" value="Search">
-							<input type="text" id="searchText" placeholder="Search for a Team" name="searchText"><br><br>
-							<input type="button" onclick="teamsearch()" class="btn btn-dark" value="Search"><br><br><br>
-						</form>
+						<input type="hidden" id="type" name="type" value="Search">
+						<input type="text" id="searchText" placeholder="Search for a Team" name="searchText"><br><br>
+						<input type="button" onclick="teamsearch()" class="btn btn-dark" value="Search"><br><br><br>
 						<div id="teamresult"></div>
 				</div>
 				<div id="post">
 						<div id=message>
-								<input type="text"  name="message"><br>
-
+								<input id= "message" type="text"  name="message">
 						</div>
 						<div id="posts"></div>
 				</div>
 				<div id="sport_feed">
 						<button type="button" value= "espn" onclick="buttonclick(this)">ESPN</button>
 						<button type="button" value= "lol" onclick="buttonclick(this)">League Of Legends</button>
-						<button type="button" value="csgo"onclick="buttonclick(this)">Counter-Strike: Global Offensive</button>
+						<button type="button" value="csgo"onclick="buttonclick(this)">CSGO</button>
 						<button type="button" value="dota2" onclick="buttonclick(this)">DOTA2</button>
 
 						<div id="espn" class="sportNews">

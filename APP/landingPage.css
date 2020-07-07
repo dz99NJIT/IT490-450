@@ -20,3 +20,10 @@ main{
 #sport_feed{
   grid-area:sn;
 }
+#message{
+  width:100%;
+  height: 80px;
+}
+#searchText,#searchbutton{
+  display:inline;
+}
