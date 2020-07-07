@@ -44,7 +44,7 @@ session_start();
 
 				</div>
 		</div>
-		<div id="teamsearch">Search Team First
+		<div id="teamsearch">
 				<form action = "cases.php" method="POST">
 					<input type="hidden" id="type" name="type" value="Search">
 					<input type="text" id="searchText" placeholder="Search for a Team" name="searchText"><br><br>

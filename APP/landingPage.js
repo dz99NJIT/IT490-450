@@ -8,6 +8,9 @@ function update(){
     http.open("GET","update.php",true);
     http.send();
 }
+function teamsearch(){
+  
+}
 function buttonclick(button){
     //alert(button.value);
     var sports =document.getElementsByClassName("sportNews");
@@ -20,5 +23,5 @@ function buttonclick(button){
 
         }
     }
-
+    update();
 }
