@@ -61,7 +61,7 @@
         if ($numRows>0)
 	{
 		$team = $responseArray['Name'];
-		$sport = $responseArray['sport']
+		$sport = $responseArray['sport'];
 		return array ($team, $sport);
         }
         else
