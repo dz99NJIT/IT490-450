@@ -1,0 +1,22 @@
+main{
+  display:grid;
+  margin:0;
+  grid-template-columns:30% 40% 30%;
+  grid-template-rows: 70px auto;
+  grid-template-areas: "hd hd hd"
+                       "ts p  sn";
+}
+#header{
+  grid-area:hd;
+  overflow:hidden;
+  border:2px solid black;
+}
+#teamsearch{
+  grid-area:ts;
+}
+#posts{
+  grid-area: p;
+}
+#sport_feed{
+  grid-area:sn;
+}
