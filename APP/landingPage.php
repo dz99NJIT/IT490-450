@@ -29,11 +29,6 @@ session_start();
 							</li>
 						</ul>
 						<ul class="navbar-nav ml-auto">
-							<form class="form-inline" action="cases.php" method="POST">
-							<input type="hidden" id="type" name="type" value="Search">
-									<input id= "teamsearch"class="form-control mr-sm-2" type="text" placeholder="Search for Teams" aria-label="searchText">
-									<button class="btn btn-success" type="submit" onsubmit="teamsearch()">Search</button>
-							</form>
 							<a class="navbar-brand pl-4" href="profile.php">
 								<img src="person.png" alt="logo" style="width:40px;">
 							</a>
@@ -49,7 +44,13 @@ session_start();
 
 				</div>
 		</div>
-		<div id="teamsearch">Search Team First</div>
+		<div id="teamsearch">Search Team First
+				<form action = "cases.php" method="POST">
+					<input type="hidden" id="type" name="type" value="Search">
+					<input type="text" id="searchText" placeholder="Search for a Team" name="searchText"><br><br>
+					<input type="submit" class="btn btn-dark" value="Search"><br><br><br>
+				</form>
+		</div>
 		<div id="posts"> make a post first</div>
 		<div id="sport_feed">
 				<button type="button" value= "espn" onclick="buttonclick(this)">ESPN</button>
