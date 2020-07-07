@@ -50,6 +50,7 @@ session_start();
 					<input type="text" id="searchText" placeholder="Search for a Team" name="searchText"><br><br>
 					<input type="button" onclick="teamsearch()" class="btn btn-dark" value="Search"><br><br><br>
 				</form>
+				<div id="teamresult"></div>
 		</div>
 		<div id="posts"> make a post first</div>
 		<div id="sport_feed">

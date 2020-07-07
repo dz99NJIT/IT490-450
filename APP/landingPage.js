@@ -10,7 +10,18 @@ function update(){
 }
 function teamsearch(){
   var teamname=document.getElementById("searchText").value;
-  alert(teamname);
+  var teamresult=document.getElementById("teamresult");
+  if(teamname!=""){
+    var http=new XMLHttpRequest();
+    var test=document.getElementById("test");
+    http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            teamresult.innerHTML=this.responseText;
+        }
+    };
+    http.open("GET","teamSearch.php?searchText=" + teamname,true);
+    http.send();
+  }
 
 
 }
