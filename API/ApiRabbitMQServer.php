@@ -40,6 +40,7 @@ function requestProcessor($request){
         case "Search_Player":
             echo "<br>Search for Player";
             //Search_Player finds player and if they exist, update their data if it's old enough
+            //takes player name as parameter
             Search_Player();
             //gets string version of json file to return to db
             $response_msq = file_get_contents("data.json")
