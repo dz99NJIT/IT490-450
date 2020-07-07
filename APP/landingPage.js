@@ -21,12 +21,10 @@ function teamsearch(){
     };
     http.open("GET","teamSearch.php?searchText=" + teamname,true);
     http.send();
-  }
-
-
+    update();
+}
 }
 function buttonclick(button){
-    //alert(button.value);
     var sports =document.getElementsByClassName("sportNews");
     for(var i=0; i<sports.length; i++){
         if(button.value==sports[i].id){
@@ -38,4 +36,7 @@ function buttonclick(button){
         }
     }
     update();
+}
+window.onload=function(){
+  update();
 }
