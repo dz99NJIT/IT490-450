@@ -10,6 +10,22 @@ function update(){
       http.send();
     }, 5000);
 }
+function sendmessage(){
+    var username=document.getElementById("username").value;
+    var message=document.getElementById("message").value;
+    if(message!=""){
+        var http=new XMLHttpRequest();
+        http.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                teamresult.innerHTML=this.responseText;
+            }
+        };
+        http.open("GET","sendMessage.php?username=" + username + "?message="+message,true);
+        http.send();
+        var teamname=document.getElementById("searchText").value="";
+        update();
+    }
+}
 function teamsearch(){
   var teamname=document.getElementById("searchText").value;
   var teamresult=document.getElementById("teamresult");

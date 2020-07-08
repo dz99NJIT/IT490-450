@@ -49,8 +49,10 @@ session_start();
 						<div id="teamresult"></div>
 				</div>
 				<div id="post">
-						<div id=message>
+						<input type="hidden" id="username" name="username" value="<?php echo $_SESSION['uname']?>">
+						<div id=messagebox>
 								<input id= "message" type="text"  name="message">
+								<input type="button" onclick="sendmessage()" class="btn btn-dark" value="Search"><br><br><br>
 						</div>
 						<div id="posts"></div>
 				</div>
