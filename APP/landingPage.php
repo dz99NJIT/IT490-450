@@ -43,10 +43,12 @@ session_start();
 						</div>
 				</div>
 				<div id="teamsearch">
-						<input type="hidden" id="type" name="type" value="Search">
-						<input type="text" id="searchText" placeholder="Search for a Team" name="searchText">
-						<input type="button" onclick="teamsearch()" class="btn btn-dark" value="Search">
-						<div id="teamresult"></div>
+						<div id="teamSearchbox">
+								<input type="hidden" id="type" name="type" value="Search">
+								<input type="text" id="searchText" placeholder="Search for a Team" name="searchText">
+								<input type="button" onclick="teamsearch()" class="btn btn-dark" value="Search">
+								<div id="teamresult"></div>
+						</div>
 				</div>
 				<div id="post">
 						<input type="hidden" id="username" name="username" value="<?php echo $_SESSION['uname']?>">
