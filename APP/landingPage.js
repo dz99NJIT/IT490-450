@@ -1,9 +1,10 @@
 function update(){
     setInterval(function(){
       var http=new XMLHttpRequest();
-      var test=document.getElementById("test");
+      var post=document.getElementById("posts");
       http.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
+            post.innerHTML=this.responseText;
           }
       };
       http.open("GET","update.php",true);
@@ -15,17 +16,13 @@ function sendmessage(){
     var message=document.getElementById("message").value;
     if(message!=""){
         var http=new XMLHttpRequest();
-        http.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                teamresult.innerHTML=this.responseText;
-            }
-        };
-        http.open("GET","sendMessage.php?username=" + username + "?message="+message,true);
+        http.open("GET","sendMessage.php?username=" + username + "&message="+message,true);
         http.send();
-        var teamname=document.getElementById("searchText").value="";
+        var message="";
         update();
     }
 }
+//not done yet on the php side
 function teamsearch(){
   var teamname=document.getElementById("searchText").value;
   var teamresult=document.getElementById("teamresult");
@@ -38,7 +35,7 @@ function teamsearch(){
     };
     http.open("GET","teamSearch.php?searchText=" + teamname,true);
     http.send();
-    var teamname=document.getElementById("searchText").value="";
+    var teamname="";
     update();
 }
 }
