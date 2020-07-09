@@ -44,8 +44,8 @@ session_start();
 				</div>
 				<div id="teamsearch">
 						<input type="hidden" id="type" name="type" value="Search">
-						<input type="text" id="searchText" placeholder="Search for a Team" name="searchText"><br><br>
-						<input type="button" onclick="teamsearch()" class="btn btn-dark" value="Search"><br><br><br>
+						<input type="text" id="searchText" placeholder="Search for a Team" name="searchText">
+						<input type="button" onclick="teamsearch()" class="btn btn-dark" value="Search">
 						<div id="teamresult"></div>
 				</div>
 				<div id="post">
@@ -61,7 +61,6 @@ session_start();
 						<button type="button" value= "lol" onclick="buttonclick(this)">League Of Legends</button>
 						<button type="button" value="csgo"onclick="buttonclick(this)">CSGO</button>
 						<button type="button" value="dota2" onclick="buttonclick(this)">DOTA2</button>
-
 						<div id="espn" class="sportNews">
 								<a id="espn" class="twitter-timeline" href="https://twitter.com/espn?ref_src=twsrc%5Etfw">ESPN</a>
 								<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

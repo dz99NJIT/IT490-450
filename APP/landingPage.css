@@ -16,14 +16,22 @@ main{
 }
 #posts{
   grid-area: p;
+
 }
 #sport_feed{
   grid-area:sn;
 }
-#message{
+#messagebox{
   width:100%;
-  height: 80px;
 }
-#searchText,#searchbutton{
-  display:inline;
+#message{
+  width:85%;
+  height:30px;
+}
+main > *{
+    padding:5px;
+    border:1px solid black;
+}
+#searchText{
+  width:80%;
 }
