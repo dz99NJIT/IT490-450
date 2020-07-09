@@ -22,7 +22,6 @@ function sendmessage(){
         update();
     }
 }
-//not done yet on the php side
 function teamsearch(){
   var teamname=document.getElementById("searchText").value;
   var teamresult=document.getElementById("teamresult");
