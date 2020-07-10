@@ -46,8 +46,8 @@ require_once('AppRabbitMQClient.php');
         $request = array();
 
         $request['type'] = "SignUp";
-	$request['Fullname'] = $Fullname;
-	$request['email'] = $email;
+				$request['Fullname'] = $Fullname;
+				$request['email'] = $email;
         $request['uname'] = $uname;
         $request['pw'] = $pw;
         $returnedValue = createClientForDb($request);
@@ -67,5 +67,25 @@ require_once('AppRabbitMQClient.php');
 
         return $returnedValue;
     }
-
+		//send message to DB
+		function sendMessage($username,$message){
+				$request = array();
+				$request['type']="Message";
+				$request['message']=$message;
+				$request['uname']=$username;
+				return createClientForDb($request);
+		}
+		//update twitter posts
+		function update(){
+			$request=array();
+			$request['type']="Update";
+			return createClientForDb($request);
+		}
+		//search for teams and then updates if needed
+		function teamSearch($name){
+			$request=array();
+			$request['type']="teamSearch";
+			$request['teamName']=$name
+			return createClientForDb($request);
+		}
 ?>
