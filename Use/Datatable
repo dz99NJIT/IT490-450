@@ -1,0 +1,177 @@
+<!doctype html>
+<html >
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+
+  <!-- Styles for the table-->
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    /*Background color for table*/
+    tr:nth-child(even) {
+      background-color: #b3e0ff;
+    }
+</style>
+
+</head>
+
+<body>
+
+<?php
+
+//Setting errors reporting on
+ini_set('display_errors', 1);
+     ini_set('display_startup_errors', 1);
+      error_reporting(E_ALL);
+
+//Connecting to your database
+$servername = "localhost";//change to group database
+$username = "it490admin"; //change to group username
+$password = "LetM3in!"; //change to group password
+$dbname = "SportWatch"; //change to SportWatch
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+//Prints data from Esport_Stats table
+$sql = "SELECT * FROM `Esport_Stats` `Player_ID``Maps_played``Maps_Won``Maps_Lost``Rounds_Played``Rounds_Won``Rounds_Lost``Kills``Deaths``Assists``Headshots`";
+
+
+$result = $conn->query($sql);
+echo "<h1>Esports_Stats</h1>";
+if ($result->num_rows > 0) {
+  // output data of each row
+
+//Prints out the table headers in html
+echo "<table style='border: solid 1px black;'>";
+ echo "<tr>".
+ "<th>Player_ID</th>".
+ "<th>Maps_played</th>".
+ "<th>Maps_Won</th>".
+ "<th>Maps_lost</th>".
+ "<th>Rounds_Won</th>".
+ "<th>Rounds_Lost</th>".
+ "<th>Kills</th>".
+ "<th>Deaths</th>".
+ "<th>Assists</th>".
+ "<th>Headshots</th>".
+ "</tr>";
+
+ //Prints out table data one row at a time
+ while($row = $result->fetch_assoc()) {
+    echo "<tr><td>".$row['Player_ID']."</td>" . " <td>".$row['Maps_played']." </td>" . " <td>".$row['Maps_Lost']."</td> " ."  <td>".$row['Rounds_Played']."</td> ". " <td>".$row['Rounds_Won']."</td> " ." <td>".$row['Rounds_Lost']."</td>" . " <td>".$row['Kills']."</td> " ."<td>".$row['Deaths'] ."</td>" ." <td>".$row['Assists']."</td> " ." <td>".$row['Headshots']."</td> </tr> ".  "\n";
+  }
+} else {
+  echo "0 results";
+}
+echo "</table>\n";
+
+
+//Prints out the table headers in html
+$sql = "SELECT * FROM `Players` `Name``ID``Team_ID`";
+
+
+ $result = $conn->query($sql);
+ if ($result->num_rows > 0) {
+  // output data of each row
+
+
+echo "<h1>Players</h1>";
+echo "<table style='border: solid 1px black;'>";
+ echo "<tr>".
+ "<th>Name</th>".
+ "<th>ID</th>".
+ "<th>Team_ID</th>".
+ "</tr>";
+
+ //Prints out table data one row at a time
+ while($row = $result->fetch_assoc()) {
+    echo "<tr><td>".$row['Name']."</td>" . " <td>".$row['ID']." </td>" . " <td>".$row['Team_ID']."</td> " ."</td> </tr> ".  "\n";
+  }
+} else {
+  echo "0 results";
+}
+echo "</table>\n";
+
+
+
+//Prints out the table headers in html
+
+$sql = "SELECT * FROM `Sports` `Name`";
+
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+
+
+
+// output data of each row
+
+
+
+echo "<h1>Sports</h1>";
+echo "<table style='border: solid 1px black;'>";
+ echo "<tr>".
+ "<th>Name</th>".
+ "</tr>";
+
+ //Prints out table data one row at a time
+ while($row = $result->fetch_assoc()) {
+    echo "<tr><td>".$row['Name']."</td>" . "</tr>" . "\n";
+  }
+} else {
+  echo "0 results";
+}
+echo "</table>\n";
+
+
+
+//Prints out the table headers in html
+
+$sql = "SELECT * FROM `Teams` `ID``Name``Sport`";
+
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+   // output data of each row
+
+echo "<h1>Teams</h1>";
+echo "<table style='border: solid 1px black;'>";
+ echo "<tr>".
+ "<th>ID</th>".
+ "<th>Name</th>".
+ "<th>Sport</th>".
+ "</tr>";
+
+ //Prints out table data one row at a time
+ while($row = $result->fetch_assoc()) {
+    echo "<tr><td>".$row['ID']."</td>" . " <td>".$row['Name']." </td>" . " <td>".$row['Sport']."</td> " ."</td> </tr> ".  "\n";
+  }
+} else {
+  echo "0 results";
+}
+echo "</table>\n";
+
+
+
+$conn->close();
+
+
+
+?>
+
+</body>
+
