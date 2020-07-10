@@ -1,3 +1,4 @@
 <?php
-    echo "<div> things </div>";
+    require_once("functions.php");
+    echo update();
 ?>
