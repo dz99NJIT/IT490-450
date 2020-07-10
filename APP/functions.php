@@ -55,7 +55,7 @@ require_once('AppRabbitMQClient.php');
         return $returnedValue;
     }
 
-    //Search user function
+    //Search team function
     function search($searchText){
 
         $request = array();
@@ -79,13 +79,6 @@ require_once('AppRabbitMQClient.php');
 		function update(){
 			$request=array();
 			$request['type']="Update";
-			return createClientForDb($request);
-		}
-		//search for teams and then updates if needed
-		function teamSearch($name){
-			$request=array();
-			$request['type']="teamSearch";
-			$request['teamName']=$name
 			return createClientForDb($request);
 		}
 ?>
