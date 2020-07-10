@@ -226,7 +226,7 @@ function Search_Player($name){
                                     $timediff=strtotime(date("M d, Y")) - strtotime($sport["teamsId"][$teamId]["players"][$playerId]["stats"]["last_updated"]);
                                     //updates only if atleast a day old
                                     if($timediff!=0){
-                                        playerstat($sportname,$playerId)
+                                        playerstat($sportname,$playerId);
                                     }
                                 }
                                 else{
