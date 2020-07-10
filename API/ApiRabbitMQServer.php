@@ -37,11 +37,11 @@ function requestProcessor($request){
             $response_msg = populate();
             break;
 
-        case "Search_Player":
-            echo "<br>Search for Player";
+        case "Search_Team":
+            echo "<br>Search for Team";
             //Search_Player finds player and if they exist, update their data if it's old enough
             //takes player name as parameter
-            Search_Player();
+            Search_Team();
             //gets string version of json file to return to db
             $response_msq = file_get_contents("data.json")
             break;

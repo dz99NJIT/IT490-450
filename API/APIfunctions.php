@@ -241,7 +241,27 @@ function Search_Player($name){
     }
     else{
       echo "ERROR: data.json doing exist!!!!";
-
     }
+}
+function Search_Team($name){
+  if(file_exists("data.json")){
+      $json=json_decode(file_get_contents("data.json"),true);
+      foreach ($json as $sport){
+          $sportname=$sport["sport"];
+          foreach(array_keys($sport["teamsId"]) as $teamId){
+              //checks if team has players
+              if($sport["teamsId"][$teamId]["name"]==$name){
+                  if(array_key_exists("players", $sport["teamsId"][$teamId])){
+                      foreach($sport["teamsId"][$teamId]["players"] as $player){
+                          Search_Player($player["name"]);
+                      }
+                  }
+              }
+          }
+      }
+  }
+  else{
+    echo "ERROR: data.json doing exist!!!!";
+  }
 }
 ?>
