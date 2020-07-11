@@ -64,7 +64,7 @@
 		$player = $responseArray['Player_Name'];
 		$team = $responseArray['Name'];
 		$sport = $responseArray['Sport'];
-		return array ($player, $team, $sport);
+		return array ($responseArray);
         }
         else
         {
