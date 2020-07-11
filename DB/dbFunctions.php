@@ -52,7 +52,7 @@
         
         $mydb = dbConnect();
 	
-        $query = "SELECT Players.Name AS "Player_Name", Teams.Name, Teams.Sport FROM Players INNER JOIN Teams ON Players.Team_ID = Teams.ID WHERE Teams.Name = '$searchText';";
+        $query = "SELECT Players.Name AS 'Player_Name', Teams.Name, Teams.Sport FROM Players INNER JOIN Teams ON Players.Team_ID = Teams.ID WHERE Teams.Name = '$searchText';";
 
 	$response = $mydb->query($query);
 	 
