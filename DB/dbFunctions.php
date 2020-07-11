@@ -55,16 +55,25 @@
         $query = "SELECT Players.Name AS 'Player_Name', Teams.Name, Teams.Sport FROM Players INNER JOIN Teams ON Players.Team_ID = Teams.ID WHERE Teams.Name = '$searchText';";
 
 	$response = $mydb->query($query);
-	 
  	$numRows = mysqli_num_rows($response);
-	$responseArray = $response -> fetch_assoc();
-	
-        if ($numRows>0)
+	    
+	$returnVal = "";
+	$returnVal.="<table border=1px style='width:100%'>";
+	$returnVal.="<tr>";
+      	$returnVal.="<th>Player</th>";
+     	$returnVal.="<th>Team</th>";
+      	$returnVal.="<th>Sport</th>";
+      	$returnVal.="</tr>";
+	while($responseArray = $response -> fetch_assoc()){
+	  $returnVal.="<tr>";
+          $returnVal.="<td>" . $row[0] . "</td>";
+          $returnVal.="<td>" . $row[1] . "</td>";
+          $returnVal.="<td>" . $row[2] . "</td>";
+          $returnVal.="</tr>";
+	}
+        if ($returnVal != "")
 	{
-		$player = $responseArray['Player_Name'];
-		$team = $responseArray['Name'];
-		$sport = $responseArray['Sport'];
-		return array ($responseArray);
+		return ($returnVal);
         }
         else
         {
