@@ -66,9 +66,9 @@
       	$returnVal.="</tr>";
 	while($responseArray = $response -> fetch_assoc()){
 	  $returnVal.="<tr>";
-          $returnVal.="<td>" . $row[0] . "</td>";
-          $returnVal.="<td>" . $row[1] . "</td>";
-          $returnVal.="<td>" . $row[2] . "</td>";
+          $returnVal.="<td>" . $responseArray[0] . "</td>";
+          $returnVal.="<td>" . $responseArray[1] . "</td>";
+          $returnVal.="<td>" . $responseArray[2] . "</td>";
           $returnVal.="</tr>";
 	}
         if ($returnVal != "")
