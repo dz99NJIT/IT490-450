@@ -25,6 +25,9 @@ session_start();
 									<li class="nav-item active">
 										<a class="nav-link" href="events.php">Events</a>
 									</li>
+									<li class="nav-item active">
+										<a class="nav-link" href="favorites.php">Favorites</a>
+									</li>
 								</ul>
 								<ul class="navbar-nav ml-auto">
 									<a class="navbar-brand pl-4" href="profile.php">
