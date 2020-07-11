@@ -52,7 +52,9 @@
         
         $mydb = dbConnect();
 	
-        $query = "select * from Teams where Name = '$searchText';";
+        $query = "SELECT Players.Name FROM Players INNER JOIN Teams ON Players.Team_ID = Teams.ID WHERE Teams.Name = '$searchText';";
+
+		//"select * from Teams where Name = '$searchText';";
 	$response = $mydb->query($query);
 	 
  	$numRows = mysqli_num_rows($response);
