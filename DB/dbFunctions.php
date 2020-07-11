@@ -62,9 +62,9 @@
 	
         if ($numRows>0)
 	{
-		$player = $responseArray['Players.Name'];
-		$team = $responseArray['Teams.Name'];
-		$sport = $responseArray['Teams.Sport'];
+		$player = $responseArray['Name'];
+		$team = $responseArray['Name'];
+		$sport = $responseArray['Sport'];
 		return array ($player, $team, $sport);
         }
         else
