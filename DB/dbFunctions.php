@@ -52,7 +52,7 @@
         
         $mydb = dbConnect();
 	
-        $query = "SELECT Players.Name FROM Players INNER JOIN Teams ON Players.Team_ID = Teams.ID WHERE Teams.Name = '$searchText';";
+        $query = "SELECT * FROM Players INNER JOIN Teams ON Players.Team_ID = Teams.ID WHERE Teams.Name = '$searchText';";
 
 		//"select * from Teams where Name = '$searchText';";
 	$response = $mydb->query($query);
@@ -62,9 +62,10 @@
 	
         if ($numRows>0)
 	{
-		$team = $responseArray['Name'];
-		$sport = $responseArray['Sport'];
-		return array ($team, $sport);
+		$player = $responseArray['Players.Name'];
+		$team = $responseArray['Teams.Name'];
+		$sport = $responseArray['Teams.Sport'];
+		return array ($player, $team, $sport);
         }
         else
         {
