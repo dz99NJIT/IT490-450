@@ -39,7 +39,6 @@ require_once('AppRabbitMQClient.php');
         }
         return $returnedValue;
     }
-
     //Sign up function
     function SignUp($Fullname,$email, $uname, $pw){
 
@@ -83,7 +82,7 @@ require_once('AppRabbitMQClient.php');
 		}
 		function FavoriteTeam($username,$teamId,$action){
 				$request=array(
-					'type'=>"Favorite",
+					'type'=>"AddFavorite",
 					'username'=>$username,
 					'teamId'=>$teamId,
 					'action'=>$action

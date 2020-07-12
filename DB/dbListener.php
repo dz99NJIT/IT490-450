@@ -24,42 +24,66 @@
         echo "received request".PHP_EOL;
         echo $request['type'];
         var_dump($request);
-	
+
 	//logger($request);
 
         if(!isset($request['type'])){
             return array('message'=>"ERROR: Message type is not supported");
         }
-        
+
         $type = $request['type'];
-	
+
 	//logger($type);
 
 	switch($type){
-		
-            //Login & Authentication request    
+
+            //Login & Authentication request
             case "Login":
                 echo "<br>login";
                 $response_msg = doLogin($request['uname'],$request['pw']);
                 break;
-                
+
             case "SignUp":
                 echo "<br>sign up";
                 $response_msg = signUp($request['Fullname'],$request['email'],$request['uname'],$request['pw']);
                 break;
-                
+
             case "Search":
                 echo "<br>search user";
                 $response_msg = search($request['searchText']);
                 break;
+            //not done
+            //adds message to database
+            case "Message":
+                echo "<br>Add Message to DB";
+                $response_msg=sendMessage($request["uname"],$request['message']);
+                break;
+            //not done
+            //sends chat to APP
+            case "Update":
+                echo "<br> Update Chat";
+                $response_msg=update();
+                break;
+            //not done
+            //adds a favorite or delete if exist
+            case "AddFavorite":
+                echo "<br> Adds or delete Favorite"
+                $response_msg=AddFavorite($request["username"],$request["teamId"],$request["action"]);
+                break;
+            //not done
+            //send user's favorite teams to APP
+            case "Favorite":
+                echo "<br>Printing out Favorite Teams";
+                $response_msg=FavoriteTeam($request["username"]);
+                break;
         }
-        
+
 	echo $response_msg;
 
 	//logger($response_msg);
-	
-	return $response_msg;        
-    }        
+
+	return $response_msg;
+    }
 
     //Creates new rabbit server
     $server = new rabbitMQServer('rabbitMQ_db.ini', 'testServer');
@@ -68,5 +92,5 @@
 
     //processes requests sent by client
     $server->process_requests('requestProcessor');
-        
+
 ?>
