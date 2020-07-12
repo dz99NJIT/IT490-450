@@ -36,7 +36,7 @@ function teamsearch(){
     http.send();
     var teamname="";
     update();
-}
+  }
 }
 function buttonclick(button){
     var sports =document.getElementsByClassName("sportNews");
@@ -52,5 +52,18 @@ function buttonclick(button){
     update();
 }
 window.onload=function(){
+  var http=new XMLHttpRequest();
+  http.open("GET","populate.php",true);
+  http.send();
+  update();
+}
+function favoriteteam(){
+  var username=document.getElementById("username").value;
+  var teamId="";
+  var action="add";
+  var teamresult=document.getElementById("teamresult");
+  var http=new XMLHttpRequest();
+  http.open("GET","FavoriteTeam.php?username=" + username + "&teamId=" + teamId + "action=" +action,true);
+  http.send();
   update();
 }
