@@ -64,12 +64,17 @@
      	  $returnVal.="<th>Team</th>";
       	$returnVal.="<th>Sport</th>";
       	$returnVal.="</tr>";
+        $num=0;
       	while($responseArray = mysqli_fetch_array($response)){
-      	  $returnVal.="<tr>";
-                $returnVal.="<td>" . $responseArray[0] . "</td>";
-                $returnVal.="<td>" . $responseArray[1] . "</td>";
-                $returnVal.="<td>" . $responseArray[2] . "</td>";
-                $returnVal.="</tr>";
+              if($num==0){
+                $returnval.= "<input type="hidden" id='teamId' value=''>";
+              }
+    	        $returnVal.="<tr>";
+              $returnVal.="<td>" . $responseArray[0] . "</td>";
+              $returnVal.="<td>" . $responseArray[1] . "</td>";
+              $returnVal.="<td>" . $responseArray[2] . "</td>";
+              $returnVal.="</tr>";
+              $num+=1;
       	}
         if ($returnVal != ""){
 		        return ($returnVal);
