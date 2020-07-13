@@ -79,6 +79,10 @@
     }
     //send message to database
     function sendMessage($username,$message){
+        $mydb = dbConnect();
+        $query="INSERT INTO chat (Username,Message) VALUES ('$username','$message')";
+        $response = $mydb->query($query);
+        $result=mysqli_query($con,$query);
 
     }
     //return messages for APP

@@ -11,15 +11,16 @@ function update(){
       http.send();
     }, 5000);
 }
-function sendmessage(){
+function sendMessage(){
     var username=document.getElementById("username").value;
     var message=document.getElementById("message").value;
     if(message!=""){
         var http=new XMLHttpRequest();
-        http.open("GET","sendMessage.php?username=" + username + "&message="+message,true);
+        http.open("GET","sendMessage.php?username=" + username + "&message=" + message,true);
         http.send();
         var message="";
-        update();
+        //uncomment
+        //update();
     }
 }
 function teamsearch(){
@@ -51,7 +52,8 @@ function buttonclick(button){
     }
     update();
 }
-window.onload=function(){
+//change to windows.onload
+function thing(){
   var http=new XMLHttpRequest();
   http.open("GET","populate.php",true);
   http.send();
