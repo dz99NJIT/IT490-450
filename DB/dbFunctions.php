@@ -118,7 +118,7 @@
     //not done
     function FavoriteTeam($user){
       $mydb = dbConnect();
-      $query="SELECT * FROM Favorite WHERE username='$user'";
+      $query="SELECT * FROM Favorite  WHERE username='$user'";
       $result=$mydb->query($query);
       $returnval="";
       $index=0;
