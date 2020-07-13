@@ -92,17 +92,26 @@
         $query="SELECT * FROM chat";
         $result=$mydb->query($query);
         $returnval="";
+        $index=0;
         while($row = mysqli_fetch_array($result)){
+            if($index==20){break;}
             $returnval.="<div class='chat'>";
             $returnval.= "<div>{$row[0]} </div>";
             $returnval.= "<div>{$row[1]} </div>";
             $returnval.= "</div>";
+            $index+=1;
         }
         return $returnval;
     }
     //add favorite or deletes
     //not done
-    function AddFavorite($username,$teamId,$action){}
+    function AddFavorite($username,$teamId,$action){
+      $mydb = dbConnect();
+      if($action=="add"){
+          $query="INSERT INTO chat (Username,Message) VALUES ('$username','$message')";
+      }
+      $response = $mydb->query($query);
+    }
     //prints out favorite team for a user
     //not done
     function FavoriteTeam($user){}
