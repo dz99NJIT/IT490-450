@@ -52,6 +52,9 @@
                 echo "<br>search user";
                 $response_msg = search($request['searchText']);
                 break;
+            case "Populate":
+                echo "<br> Populate db if not already";
+                $response_msg=populate();
             //not done
             //adds message to database
             case "Message":

@@ -39,7 +39,7 @@
         $response = mysqli_query($mydb, $query);
     	  return true;
     }
-
+    //searches for team in database and if exist then send team and players to APP
     function search($searchText){
         $mydb = dbConnect();
 
