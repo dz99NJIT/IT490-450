@@ -55,6 +55,7 @@
             case "Populate":
                 echo "<br> Populate db if not already";
                 $response_msg=populate();
+                break;
             //not done
             //adds message to database
             case "Message":

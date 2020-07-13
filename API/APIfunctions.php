@@ -15,7 +15,7 @@ $keys = array (
     "nba"=>array("nyfttfgabf7hq86m79kmxjy4","df5afmyf2bhbne9xcqwmznps","ssx369sfjmkaw88hx923938z"),
     "lol-t1"=>array("h5cp8u2nzqghgj7hzvwr9k8q","fws7zff8ytnyzmugw6ba8vxc","xar7avr7x3hpvnn3qyfyu8qe"),
     "csgo-t1"=>array("rk7326buc7aqc72qtsudr3pv","rxnve45j95ac742auc5xt329","255tgjsbkwjmhgj8446kvzvj"),
-    "dota2-t1"=>array("6h36hmhscj2z34x4bdj6w2a3","tvkmchnyurfvyez8jzv4hma4","ery3xdx8q5kntawq58g9e5zz")
+    "dota2-t1"=>array("ery3xdx8q5kntawq58g9e5zz")
 );
 $urls = array(
   "nfl"=>
@@ -103,6 +103,7 @@ function player($teamId,$sport,$keys){
             if($sport=="lol-t1" or $sport=="dota2-t1" or $sport=="csgo-t1"){
               $url="http://api.sportradar.us/" . $sport . "/en/teams/" . $teamId . "/profile.json?api_key=" . $key ;
               $json = json_decode(file_get_contents($url,true,$context));
+              echo $url;
               $tries=0;
               foreach($json->players as $player){
                   if(!array_key_exists($player->id,$returnval)){
@@ -116,6 +117,7 @@ function player($teamId,$sport,$keys){
         }
         catch(Exception $e){
             echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return 0;
             continue;
         }
     }
@@ -246,18 +248,28 @@ function Search_Player($name){
 function Search_Team($name){
   if(file_exists("data.json")){
       $json=json_decode(file_get_contents("data.json"),true);
+      $index=0;
+      global $keys;
       foreach ($json as $sport){
           $sportname=$sport["sport"];
           foreach(array_keys($sport["teamsId"]) as $teamId){
               //checks if team has players
               if($sport["teamsId"][$teamId]["name"]==$name){
-                  if(array_key_exists("players", $sport["teamsId"][$teamId])){
+                  if(array_key_exists("players", $sport["teamsId"][$teamId]) and count($sport["teamsId"][$teamId]["players"])>0){
                       foreach($sport["teamsId"][$teamId]["players"] as $player){
                           Search_Player($player["name"]);
                       }
                   }
+                  else{
+                      $json[$index]["teamsId"][$teamId]["players"]=player($teamId,$sportname,$keys[$sportname]);
+                      $jsonfile=fopen("data4.json","w");
+                      fwrite($jsonfile,json_encode($json));
+                      fclose($jsonfile);
+                      Search_Team($name);
+                  }
               }
           }
+          $index+=1;
       }
   }
   else{
