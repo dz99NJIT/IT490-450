@@ -20,8 +20,7 @@ function sendMessage(){
         http.open("GET","sendMessage.php?username=" + username + "&message=" + message,true);
         http.send();
         var message="";
-        //uncomment
-        //update();
+        update();
     }
 }
 function teamsearch(){
@@ -54,10 +53,10 @@ function buttonclick(button){
     update();
 }
 //change to windows.onload
-function thing(){
-  var http=new XMLHttpRequest();
-  http.open("GET","populate.php",true);
-  http.send();
+window.onload=function(){
+  //var http=new XMLHttpRequest();
+  //http.open("GET","populate.php",true);
+  //http.send();
   update();
 }
 function favoriteteam(){

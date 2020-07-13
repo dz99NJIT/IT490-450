@@ -83,12 +83,27 @@
         $query="INSERT INTO chat (Username,Message) VALUES ('$username','$message')";
         $response = $mydb->query($query);
         $result=mysqli_query($con,$query);
-
+        return "";
     }
     //return messages for APP
-    function update(){}
+    function update(){
+      require_once("connection.php");
+
+        $query="SELECT * FROM chat";
+        $result=$mydb->query($query);
+        $returnval="";
+        while($row = mysqli_fetch_array($result)){
+            $returnval.="<div class='chat'>";
+            $returnval.= "<div>{$row[0]} </div>";
+            $returnval.= "<div>{$row[1]} </div>";
+            $returnval.= "</div>";
+        }
+        return $returnval;
+    }
     //add favorite or deletes
+    //not done
     function AddFavorite($username,$teamId,$action){}
     //prints out favorite team for a user
+    //not done
     function FavoriteTeam($user){}
 ?>
