@@ -1,14 +1,15 @@
 function update(){
+    var http=new XMLHttpRequest();
+    var post=document.getElementById("posts");
+    http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          post.innerHTML=this.responseText;
+        }
+    };
+    http.open("GET","update.php",true);
+    http.send();
     setInterval(function(){
-      var http=new XMLHttpRequest();
-      var post=document.getElementById("posts");
-      http.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            post.innerHTML=this.responseText;
-          }
-      };
-      http.open("GET","update.php",true);
-      http.send();
+      update();
     }, 5000);
 }
 function sendMessage(){
