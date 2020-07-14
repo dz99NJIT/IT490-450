@@ -205,8 +205,8 @@
         while($row = mysqli_fetch_array($result)){
             if($index==20){break;}
             $returnval.="<div class='chat'>";
-            $returnval.= "<div>{$row[0]} </div>";
-            $returnval.= "<div>{$row[1]} </div>";
+            $returnval.= "<div class='chatUser'>{$row[0]} </div>";
+            $returnval.= "<div class='chatMessage'>{$row[1]} </div>";
             $returnval.= "</div>";
             $index+=1;
         }
