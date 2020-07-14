@@ -217,10 +217,10 @@
     function AddFavorite($username,$teamId,$action){
       $mydb = dbConnect();
       if($action=="add"){
-          $query="INSERT INTO Favorite (Username,TeamId) VALUES ('$username','$message')";
+          $query="INSERT INTO Favorite_Team (Username,TeamId) VALUES ('$username','$message')";
       }
       else{
-        $query="DELETE FROM Favorite WHERE Username='$username' AND TeamId='$teamId'";
+        $query="DELETE FROM Favorite_Team WHERE Username='$username' AND TeamId='$teamId'";
       }
       $response = $mydb->query($query);
     }
@@ -228,7 +228,7 @@
     //not done
     function FavoriteTeam($user){
       $mydb = dbConnect();
-      $query="SELECT * FROM Favorite  WHERE username='$user'";
+      $query="SELECT * FROM Favorite_Team  WHERE Username='$user'";
       $result=$mydb->query($query);
       $returnval="";
       $index=0;
