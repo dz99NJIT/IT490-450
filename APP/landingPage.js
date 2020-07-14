@@ -59,7 +59,7 @@ window.onload=function(){
   //http.send();
   update();
 }
-function favoriteteam(){
+function favoriteteam(teamname){
   var username=document.getElementById("username").value;
   var teamId="";
   var action="add";

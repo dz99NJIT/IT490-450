@@ -49,6 +49,7 @@
        	$numRows = mysqli_num_rows($response);
 
       	$returnVal = "<h1>$searchText</h1>";
+        $returnVal.="<button type='button' onclick='favoriteteam($searchText)'>Click Me!</button>"
       	$returnVal.="<table border=1px style='width:100%'>";
       	$returnVal.="<tr>";
       	$returnVal.="<th>Player</th>";
@@ -58,7 +59,7 @@
         $num=0;
       	while($responseArray = mysqli_fetch_array($response)){
               if($num==0){
-                $returnval.= "<input type="hidden" id='teamId' value='$responseArray[3]'>";
+                $returnVal.= "<input type="hidden" id='teamId' value='$responseArray[3]'>";
               }
     	        $returnVal.="<tr>";
               $returnVal.="<td>" . $responseArray[0] . "</td>";
