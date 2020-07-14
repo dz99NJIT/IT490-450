@@ -71,7 +71,7 @@
             //not done
             //adds a favorite or delete if exist
             case "AddFavorite":
-                echo "<br> Adds or delete Favorite"
+                echo "<br> Adds or delete Favorite";
                 $response_msg=AddFavorite($request["username"],$request["teamId"],$request["action"]);
                 break;
             //not done
