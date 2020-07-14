@@ -198,7 +198,7 @@
     //return messages for APP
     function update(){
         $mydb = dbConnect();
-        $query="SELECT * FROM chat";
+        $query="SELECT * FROM Chat";
         $result=$mydb->query($query);
         $returnval="";
         $index=0;
