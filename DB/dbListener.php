@@ -25,7 +25,7 @@
         echo $request['type'];
         var_dump($request);
 
-	//logger($request);
+      	//logger($request);
 
         if(!isset($request['type'])){
             return array('message'=>"ERROR: Message type is not supported");
@@ -33,9 +33,9 @@
 
         $type = $request['type'];
 
-	//logger($type);
+      	//logger($type);
 
-	switch($type){
+      	switch($type){
 
             //Login & Authentication request
             case "Login":
@@ -80,20 +80,18 @@
                 $response_msg=FavoriteTeam($request["username"]);
                 break;
         }
+	      echo $response_msg;
 
-	echo $response_msg;
+	      //logger($response_msg);
 
-	//logger($response_msg);
-
-	return $response_msg;
+	     return $response_msg;
     }
+//Creates new rabbit server
+$server = new rabbitMQServer('rabbitMQ_db.ini', 'testServer');
 
-    //Creates new rabbit server
-    $server = new rabbitMQServer('rabbitMQ_db.ini', 'testServer');
+//logger($server);
 
-    //logger($server);
-
-    //processes requests sent by client
-    $server->process_requests('requestProcessor');
+//processes requests sent by client
+$server->process_requests('requestProcessor');
 
 ?>
