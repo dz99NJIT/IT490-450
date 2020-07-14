@@ -171,7 +171,8 @@
         }
     }
     //checks if database if populated else gets information from API
-    function populate(){
+    
+    /*function populate(){
       $mydb = dbConnect();
       $query="SELECT * FROM Teams";
       $response = $mydb->query($query);
@@ -186,7 +187,7 @@
         return "Database already populated";
       }
     }
-
+    */
     //send message to database
     function sendMessage($username,$message){
         $mydb = dbConnect();
