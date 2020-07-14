@@ -49,7 +49,7 @@
        	$numRows = mysqli_num_rows($response);
 
       	$returnVal = "<h1>$searchText</h1>";
-        $returnVal.="<button type='button' onclick='favoriteteam($searchText)'>Click Me!</button>"
+        $returnVal.="<button type='button' onclick='favoriteteam($searchText)'>Click Me!</button>";
       	$returnVal.="<table border=1px style='width:100%'>";
       	$returnVal.="<tr>";
       	$returnVal.="<th>Player</th>";
