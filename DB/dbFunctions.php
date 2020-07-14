@@ -59,7 +59,7 @@
         $num=0;
       	while($responseArray = mysqli_fetch_array($response)){
               if($num==0){
-                $returnVal.= "<input type="hidden" id='teamId' value='$responseArray[3]'>";
+                $returnVal.= "<input type='hidden' id='teamId' value='$responseArray[3]'>";
               }
     	        $returnVal.="<tr>";
               $returnVal.="<td>" . $responseArray[0] . "</td>";
