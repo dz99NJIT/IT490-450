@@ -36,7 +36,6 @@ function teamsearch(){
     http.open("GET","teamSearch.php?searchText=" + teamname,true);
     http.send();
     var teamname="";
-    update();
   }
 }
 function buttonclick(button){
@@ -50,7 +49,6 @@ function buttonclick(button){
 
         }
     }
-    update();
 }
 //change to windows.onload
 window.onload=function(){
@@ -67,5 +65,4 @@ function favoriteteam(teamname){
   var http=new XMLHttpRequest();
   http.open("GET","FavoriteTeam.php?username=" + username + "&teamId=" + teamId + "action=" +action,true);
   http.send();
-  update();
 }
