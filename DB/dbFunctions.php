@@ -203,7 +203,9 @@
         $returnval="";
         $index=0;
         while($row = mysqli_fetch_array($result)){
-            if($index==20){break;}
+            if($index==20){
+              break;
+            }
             $returnval.="<div class='chat'>";
             $returnval.= "<div class='chatUser'>{$row[0]} </div>";
             $returnval.= "<div class='chatMessage'>{$row[1]} </div>";

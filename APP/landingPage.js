@@ -1,6 +1,7 @@
 
 function timer(){
   setInterval(function(){
+    alert("timer");
     update();
   }, 5000);
 }
@@ -14,7 +15,8 @@ function update(){
     };
     http.open("GET","update.php",true);
     http.send();
-    //timer();
+    alert("update");
+    timer();
 }
 function sendMessage(){
     var username=document.getElementById("username").value;
