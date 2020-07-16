@@ -9,7 +9,7 @@ function update(){
     http.open("GET","update.php",true);
     http.send();
     setInterval(function(){
-      update();
+      //update();
     }, 5000);
 }
 function sendMessage(){
