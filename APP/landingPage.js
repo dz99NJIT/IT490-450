@@ -1,3 +1,9 @@
+
+function timer(){
+  setInterval(function(){
+    update();
+  }, 5000);
+}
 function update(){
     var http=new XMLHttpRequest();
     var post=document.getElementById("posts");
@@ -8,9 +14,7 @@ function update(){
     };
     http.open("GET","update.php",true);
     http.send();
-    setInterval(function(){
-      //update();
-    }, 5000);
+    //timer();
 }
 function sendMessage(){
     var username=document.getElementById("username").value;
@@ -20,7 +24,7 @@ function sendMessage(){
         http.open("GET","sendMessage.php?username=" + username + "&message=" + message,true);
         http.send();
         var message="";
-        update();
+        //update();
     }
 }
 function teamsearch(){
@@ -52,9 +56,6 @@ function buttonclick(button){
 }
 //change to windows.onload
 window.onload=function(){
-  //var http=new XMLHttpRequest();
-  //http.open("GET","populate.php",true);
-  //http.send();
   update();
 }
 function favoriteteam(teamname){
