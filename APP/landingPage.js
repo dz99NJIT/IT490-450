@@ -1,4 +1,4 @@
-
+/*
 function timer(){
   setInterval(function(){
     alert("timer");
@@ -18,6 +18,9 @@ function update(){
     alert("update");
     timer();
 }
+
+*/
+
 function sendMessage(){
     var username=document.getElementById("username").value;
     var message=document.getElementById("message").value;
