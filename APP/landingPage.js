@@ -59,10 +59,14 @@ function buttonclick(button){
         }
     }
 }
+
+/*
 //change to windows.onload
 window.onload=function(){
   update();
 }
+*/
+
 function favoriteteam(teamname){
   var username=document.getElementById("username").value;
   var teamId="";
