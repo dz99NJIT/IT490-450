@@ -268,8 +268,8 @@
               break;
             }
             $returnval.="<div class='chat'>";
-            $returnval.= "<div class='chatUser'>{$row[0]} </div>";
-            $returnval.= "<div class='chatMessage'>{$row[1]} </div>";
+            $returnval.= "<div class='chatUser'>{$row[0]}</div>";
+            $returnval.= "<div class='chatMessage'>{$row[1]}</div>";
             $returnval.= "</div>";
             $index+=1;
         }

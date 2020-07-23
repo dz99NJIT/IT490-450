@@ -1,0 +1,38 @@
+main{
+  display:grid;
+  margin:0;
+  grid-template-columns:30% 40% 30%;
+  grid-template-rows: 150px 500px;
+  grid-template-areas: "hd hd hd"
+                       "ts p  sn";
+}
+#header{
+  grid-area:hd;
+  overflow:hidden;
+}
+#teamsearch{
+  grid-area:ts;
+  display:inline;
+}
+#posts{
+  grid-area: p;
+
+}
+#sport_feed{
+  grid-area:sn;
+  overflow:scroll;
+}
+#messagebox{
+  width:100%;
+}
+#message{
+  width:85%;
+  height:30px;
+}
+main > *{
+    padding:5px;
+    border:1px solid black;
+}
+#searchText{
+  width:80%;
+}
