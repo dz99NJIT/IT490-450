@@ -50,7 +50,74 @@ session_start();
 								<input type="hidden" id="type" name="type" value="Search">
 								<input type="text" id="searchText" placeholder="Search for a Team" name="searchText">
 								<input type="button" onclick="teamsearch()" class="btn btn-dark" value="Search">
-								<div id="teamresult"><h1>100 thieves</h1><button type="button" onclick="favoriteteam(100 thieves)">Click Me!</button><table border="1px" style="width:100%"><tbody><tr><th>Player</th><th>Team</th><th>Sport</th></tr><input type="hidden" id="teamId" value="sr:competitor:401559"><tr><td>Sun, Cody</td><td>100 Thieves</td><td>lol-t1</td></tr><tr><td>Garcia, Juan Arturo</td><td>100 Thieves</td><td>lol-t1</td></tr><tr><td>Le, Tommy</td><td>100 Thieves</td><td>lol-t1</td></tr><tr><td>Soong, Max</td><td>100 Thieves</td><td>lol-t1</td></tr><tr><td>Lee, Aaron</td><td>100 Thieves</td><td>lol-t1</td></tr><tr><td>Chen, William</td><td>100 Thieves</td><td>lol-t1</td></tr><tr><td>Lavoie-Giguere, Philippe</td><td>100 Thieves</td><td>lol-t1</td></tr><tr><td>Feinstein, Jacob</td><td>100 Thieves</td><td>lol-t1</td></tr><tr><td>Keesey, Brindon</td><td>100 Thieves</td><td>lol-t1</td></tr><tr><td>Kim, Chan-ho</td><td>100 Thieves</td><td>lol-t1</td></tr><tr><td>Hartman, William</td><td>100 Thieves</td><td>lol-t1</td></tr></tbody></table></div>
+								<div id="teamresult">
+										<h1>100 thieves</h1>
+										<button type="button" onclick="favoriteteam(100 thieves)">Click Me!</button>
+										<table border="1px" style="width:100%">
+												<tbody>
+														<tr>
+															<th>Player</th>
+															<th>Team</th>
+															<th>Sport</th>
+														</tr>
+														<input type="hidden" id="teamId" value="sr:competitor:401559">
+														<tr>
+															<td>Sun, Cody</td>
+															<td>100 Thieves</td>
+															<td>lol-t1</td>
+														</tr>
+														<tr>
+															<td>Garcia, Juan Arturo</td>
+															<td>100 Thieves</td>
+															<td>lol-t1</td>
+														</tr>
+														<tr>
+															<td>Le, Tommy</td>
+															<td>100 Thieves</td>
+															<td>lol-t1</td>
+														</tr>
+														<tr>
+															<td>Soong, Max</td>
+															<td>100 Thieves</td>
+															<td>lol-t1</td>
+														</tr>
+														<tr>
+															<td>Lee, Aaron</td>
+															<td>100 Thieves</td>
+															<td>lol-t1</td>
+														</tr>
+														<tr>
+															<td>Chen, William</td>
+															<td>100 Thieves</td>
+															<td>lol-t1</td>
+														</tr>
+														<tr>
+															<td>Lavoie-Giguere, Philippe</td>
+															<td>100 Thieves</td>
+															<td>lol-t1</td>
+														</tr>
+														<tr>
+															<td>Feinstein, Jacob</td>
+															<td>100 Thieves</td>
+															<td>lol-t1</td>
+														</tr>
+														<tr>
+															<td>Keesey, Brindon</td>
+															<td>100 Thieves</td>
+															<td>lol-t1</td>
+														</tr>
+														<tr>
+															<td>Kim, Chan-ho</td>
+															<td>100 Thieves</td>
+															<td>lol-t1</td>
+														</tr>
+														<tr>
+															<td>Hartman, William</td>
+															<td>100 Thieves</td>
+															<td>lol-t1</td>
+														</tr></tbody>
+													</table>
+												</div>
 						</div>
 				</div>
 				<div id="post">
