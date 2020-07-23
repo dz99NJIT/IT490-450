@@ -101,9 +101,54 @@
             $saved=json_decode(file_get_contents("saved.json"),true);
             //change back later
             $json=json_decode($response,true);
-            $index=0;
-            //loop through each sport
+            //add any new item
+            foreach($json as $sport){
+                $index=0;
+                $sportName=$sport["sport"];
+                while($sport["sport"]!=$json[$index]["sport"]){
+                    $index+=1;
+                }
+                foreach(array_keys($sport["teamsId"]) as $teamId){
+                    if(!array_key_exists($teamId,array_keys($saved[$index]["teamsId"]))){
+                      $teamName=$sport["teamsId"][$teamId]["name"];
+                      $date=date("M d, Y");
+                      $query = "INSERT INTO Teams Values ('$teamId','$teamName','$sportName','$date')";
+                      $result=mysqli_query($con,$query);
+                    }
+                    if(array_key_exists("players",$sport["teamsId"][$teamId])){
+                        foreach(array_keys($sport["teamsId"][$teamId]["players"]) as $playerId){
+                            if(!array_key_exists($playerId,array_keys($saved[$index]["teamsId"]["players"]))){
+                                $playerName=$sport["teamsId"][$teamId]["players"][$playerId]["name"];
+                                $query="INSERT INTO Players Values('$playerName','$playerId','$teamId')";
+                                $result=mysqli_query($con,$query);
+                                if(array_key_exists("stats",$sport["teamsId"][$teamId]["players"][$playerId])){
+                                    $query="INSERT INTO ";
+                                    if($sportName=="lol-t1" or $sportName=="dota2-t1" or $sportName="csgo-t1"){
+                                        $maps_played=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_played"];
+                                        $maps_won=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_won"];
+                                        $maps_lost=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_lost"];
+                                        $rounds_played=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["rounds_played"];
+                                        $rounds_won=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["rounds_won"];
+                                        $rounds_lost=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["rounds_lost"];
+                                        $kills=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["kills"];
+                                        $deaths=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["deaths"];
+                                        $assists=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["assists"];
+                                        $headshots=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["headshots"];
+                                        $query.="Esport_Stats Values('$playerId',$maps_played,$maps_won,$maps_lost,$rounds_played,$rounds_won,$rounds_lost,$kills,$deaths,$assists,$headshots)";
+                                    }
+                                    $result=mysqli_query($con,$query);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            //update player stats
             foreach($saved as $sport){
+                $index=0;
+                while($sport["sport"]!=$json[$index]["sport"]){
+                    $index+=1;
+                }
                 //loops through each team in that sport
                 foreach(array_keys($sport["teamsId"]) as $teamId){
                     //checks if their are players in that team
@@ -134,7 +179,6 @@
                         }
                     }
                 }
-                $index+=1;
             }
         }
         else{
@@ -148,7 +192,8 @@
                 if(array_key_exists("teamsId",$sport)){
                     foreach(array_keys($sport["teamsId"]) as $teamId){
                         $teamName=$sport["teamsId"][$teamId]["name"];
-                        $query = "INSERT INTO Teams Values ('$teamId','$teamName','$sportName')";
+                        $date=date("M d, Y");
+                        $query = "INSERT INTO Teams Values ('$teamId','$teamName','$sportName','$date')";
                         $result=mysqli_query($con,$query);
                         //add every player
                         if(array_key_exists("players",$sport["teamsId"][$teamId])){
@@ -170,9 +215,6 @@
                                         $assists=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["assists"];
                                         $headshots=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["headshots"];
                                         $query.="Esport_Stats Values('$playerId',$maps_played,$maps_won,$maps_lost,$rounds_played,$rounds_won,$rounds_lost,$kills,$deaths,$assists,$headshots)";
-                                    }
-                                    else{
-                                        $query.="Sport_Stats ";
                                     }
                                     $result=mysqli_query($con,$query);
                                 }
