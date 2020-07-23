@@ -51,7 +51,7 @@
                     echo "Team is up to date<br>";
                   }
                   else{
-                    echo "Team needs to be updated";
+                    echo "Team needs to be updated<br>";
                     $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
                     $response=createClientForDb($request);
                     process($response);
