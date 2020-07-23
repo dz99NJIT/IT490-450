@@ -46,14 +46,16 @@
         $index=0;
         foreach($json as $sport){
           foreach(array_keys($sport["teamsId"]) as $teamId){
-              if($json[$index]["teamsId"][$teamId]["last_updated"]==date("M d, Y")){
-                echo "Team is up to date<br>";
-              }
-              else{
-                echo "Team needs to be updated";
-                $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
-                $response=createClientForDb($request);
-                process($response);
+              if($json[$index]["teamsId"][$teamId]["name"]==$searchText){
+                  if($json[$index]["teamsId"][$teamId]["last_updated"]==date("M d, Y")){
+                    echo "Team is up to date<br>";
+                  }
+                  else{
+                    echo "Team needs to be updated";
+                    $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
+                    $response=createClientForDb($request);
+                    process($response);
+                  }
               }
           }
           $index+=1;
