@@ -42,7 +42,7 @@
     //searches for team in database and if exist then send team and players to APP
     function search($searchText){
         //if team hasnt been updated in a day it'll update it
-        $json=json_decode(file_get_contents("data3.json"),true);
+        $json=json_decode(file_get_contents("saved.json"),true);
         $index=0;
         foreach($json as $sport){
           foreach(array_keys($sport["teamsId"]) as $teamId){

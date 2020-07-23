@@ -54,7 +54,7 @@ session_start();
 						</div>
 				</div>
 				<div id="post">
-						<input type="hidden" id="username" name="username" value="<?php echo $_SESSION['uname']?>">
+						<input type="hidden" id="username" name="username" value="something">						
 						<div id=messagebox>
 								<input id= "message" type="text"  name="message">
 								<input type="button" onclick="sendMessage()" class="btn btn-dark" value="Search"><br><br><br>
