@@ -22,7 +22,7 @@ function requestProcessor($request){
     echo "received request".PHP_EOL;
     echo $request['type'];
     var_dump($request);
-//logger($request);
+    //logger($request);
     if(!isset($request['type'])){
         return array('message'=>"ERROR: Message type is not supported");
     }
@@ -31,7 +31,7 @@ function requestProcessor($request){
   	switch($type){
 
         //Login & Authentication request
-        case "populate":
+        case "Populate":
             echo "<br>Populate DB";
             //populate returns string version of json file to be sent to db
             $response_msg = populate();
@@ -41,7 +41,7 @@ function requestProcessor($request){
             echo "<br>Search for Team";
             //Search_Player finds player and if they exist, update their data if it's old enough
             //takes player name as parameter
-            Search_Team();
+            Search_Team($request["TeamName"]);
             //gets string version of json file to return to db
             $response_msq = file_get_contents("data.json")
             break;

@@ -163,7 +163,6 @@ function playerstat($sport,$playerId){
             try{
               sleep(1);
               $url="http://api.sportradar.us/" . $sport . "/en/players/" . $playerId . "/profile.json?api_key=" . $key ;
-              echo $url . "<br>";
               $json = json_decode(file_get_contents($url,true,$context),true);
               $jsonfile= json_decode(file_get_contents("data.json"),true);
               if($sport=="lol-t1" or $sport=="csgo-t1" or $sport="dota2-t1"){
@@ -180,6 +179,7 @@ function playerstat($sport,$playerId){
                   }
                   //looks for right sport
                   $index=0;
+                  //update stats in the saved json file
                   foreach($jsonfile as $sportArray){
                       //check if it's the right sport
                       if($sportArray["sport"]==$sport){
@@ -262,7 +262,7 @@ function Search_Team($name){
                   }
                   else{
                       $json[$index]["teamsId"][$teamId]["players"]=player($teamId,$sportname,$keys[$sportname]);
-                      $jsonfile=fopen("data4.json","w");
+                      $jsonfile=fopen("data.json","w");
                       fwrite($jsonfile,json_encode($json));
                       fclose($jsonfile);
                       Search_Team($name);

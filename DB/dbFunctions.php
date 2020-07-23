@@ -41,6 +41,23 @@
     }
     //searches for team in database and if exist then send team and players to APP
     function search($searchText){
+        //if team hasnt been updated in a day it'll update it
+        $json=json_decode(file_get_contents("data3.json"),true);
+        $index=0;
+        foreach($json as $sport){
+          foreach(array_keys($sport["teamsId"]) as $teamId){
+              if($json[$index]["teamsId"][$teamId]["last_updated"]==date("M d, Y")){
+                echo "Team is up to date<br>";
+              }
+              else{
+                echo "Team needs to be updated";
+                $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
+                $response=createClientForDb($request);
+                process($response);
+              }
+          }
+          $index+=1;
+        }
         $mydb = dbConnect();
 
         $query = "SELECT Players.Name AS 'Player_Name', Teams.Name, Teams.Sport,Teams.ID FROM Players INNER JOIN Teams ON Players.Team_ID = Teams.ID WHERE Teams.Name = '$searchText';";

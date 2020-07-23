@@ -1,7 +1,8 @@
-/*
+window.onload=function(){
+  timer();
+}
 function timer(){
   setInterval(function(){
-    alert("timer");
     update();
   }, 5000);
 }
@@ -16,11 +17,7 @@ function update(){
     http.open("GET","update.php",true);
     http.send();
     alert("update");
-    timer();
 }
-
-*/
-
 function sendMessage(){
     var username=document.getElementById("username").value;
     var message=document.getElementById("message").value;
@@ -29,7 +26,6 @@ function sendMessage(){
         http.open("GET","sendMessage.php?username=" + username + "&message=" + message,true);
         http.send();
         var message="";
-        //update();
     }
 }
 function teamsearch(){
@@ -59,14 +55,6 @@ function buttonclick(button){
         }
     }
 }
-
-/*
-//change to windows.onload
-window.onload=function(){
-  update();
-}
-*/
-
 function favoriteteam(teamname){
   var username=document.getElementById("username").value;
   var teamId="";
