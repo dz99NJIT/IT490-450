@@ -16,7 +16,6 @@ function update(){
     };
     http.open("GET","update.php",true);
     http.send();
-    alert("update");
 }
 function sendMessage(){
     var username=document.getElementById("username").value;
