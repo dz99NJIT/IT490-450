@@ -53,7 +53,7 @@
                   else{
                     echo "Team needs to be updated<br>";
                     $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
-                    $response=createClientForDb($request);
+                    $response=createClientForAPI($request);
                     process($response);
                   }
               }
@@ -240,7 +240,7 @@
       $numRows = mysqli_num_rows($response);
       if($numRows==0){
         $request=array("type"=>"populate");
-        $response=createClientForDb($request);
+        $response=createClientForAPI($request);
         process($response);
         return "Database has been Populated";
       }
