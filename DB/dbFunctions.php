@@ -301,7 +301,7 @@
       while($row = mysqli_fetch_array($result)){
           $teamIds[$row[1]]=$row[3];
       }
-      while(array_keys($teamIds) as $teamId){
+      foreach(array_keys($teamIds) as $teamId){
         $query="SELECT * FROM Favorite_Team INNER JOIN Players  INNER JOIN Teams WHERE Favorite_Team.TeamId=Players.Team_ID AND Username='$user' AND TeamId='$teamId'  AND Favorite_Team.TeamId=Teams.ID";
         $result=$mydb->query($query);
         $index=0;
