@@ -220,7 +220,7 @@
                                 $result=$mydb->query($query);
                                 if(array_key_exists("stats",$sport["teamsId"][$teamId]["players"][$playerId])){
                                     $query="INSERT INTO ";
-                                    if($sportName=="lol-t1" or $sportName=="dota2-t1" or $sportName="csgo-t1"){
+                                    if($sportName=="lol-t1" or $sportName=="dota2-t1" or $sportName=="csgo-t1"){
                                         $maps_played=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_played"];
                                         $maps_won=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_won"];
                                         $maps_lost=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_lost"];
