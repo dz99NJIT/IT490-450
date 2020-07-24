@@ -307,7 +307,7 @@
         $index=0;
         $returnval.="<div id='$teamId' class='FavoriteTeams'>"
         $returnval.="<h1>{$teamIds[$teamId]}</h1>"
-        $returnVal.="<button type='button' onclick='delete()'>Click Me!</button>";
+        $returnVal.="<button type='button' onclick='delete(this)'>Click Me!</button>";
         $returnVal.="<table border=1px style='width:100%'>";
         $returnVal.="<tr>";
         $returnVal.="<th>Player Name</th>";
