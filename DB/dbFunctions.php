@@ -292,17 +292,34 @@
     //not done
     function FavoriteTeam($user){
       $mydb = dbConnect();
-      $query="SELECT * FROM Favorite_Team  WHERE Username='$user'";
+      $query="SELECT * FROM Favorite_Team INNER JOIN Teams WHERE Username='$user' AND Favorite_Team.TeamId=Teams.ID";
+      //SELECT * FROM Favorite_Team INNER JOIN Players  WHERE Favorite_Team.TeamId=Players.Team_ID AND Username='jj356' ORDER by TeamId
       $result=$mydb->query($query);
+      $teamIds=array();
       $returnval="";
-      $index=0;
+      //inserts all teamsId for the favorited team for that user into a array
       while($row = mysqli_fetch_array($result)){
-          if($index==20){break;}
-          $returnval.="<div class='chat'>";
-          $returnval.= "<div>{$row[0]} </div>";
-          $returnval.= "<div>{$row[1]} </div>";
-          $returnval.= "</div>";
-          $index+=1;
+          $teamIds[$row[1]]=$row[3];
+      }
+      while(array_keys($teamIds) as $teamId){
+        $query="SELECT * FROM Favorite_Team INNER JOIN Players  INNER JOIN Teams WHERE Favorite_Team.TeamId=Players.Team_ID AND Username='$user' AND TeamId='$teamId'  AND Favorite_Team.TeamId=Teams.ID";
+        $result=$mydb->query($query);
+        $index=0;
+        $returnval.="<div id='$teamId' class='FavoriteTeams'>"
+        $returnval.="<h1>{$teamIds[$teamId]}</h1>"
+        $returnVal.="<button type='button' onclick='delete()'>Click Me!</button>";
+        $returnVal.="<table border=1px style='width:100%'>";
+        $returnVal.="<tr>";
+        $returnVal.="<th>Player Name</th>";
+        $returnVal.="<th>Sport</th>";
+        $returnVal.="</tr>";
+        while($row = mysqli_fetch_array($result)){
+          $returnVal.="<tr>";
+          $returnVal.="<td>" . $row[2] . "</td>";
+          $returnVal.="<td>" . $row[7] . "</td>";
+          $returnVal.="</tr>";
+        }
+        $returnval.="</div>";
       }
       return $returnval;
     }
