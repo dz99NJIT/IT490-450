@@ -96,6 +96,7 @@
     //process json file from API and adds to database
     //if data already exist update it
     function process($response){
+        echo "<br>Processing Json<br>";
         $change=0;
         require_once("dbConnect.php");
         if(file_exists("saved.json")){
