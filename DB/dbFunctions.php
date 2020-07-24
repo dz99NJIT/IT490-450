@@ -103,7 +103,6 @@
     function process($response){
         echo "<br>Processing Json<br>";
         $change=0;
-        require_once("dbConnect.php");
         if(file_exists("saved.json")){
             $saved=json_decode(file_get_contents("saved.json"),true);
             //change back later
