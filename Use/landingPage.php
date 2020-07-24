@@ -52,7 +52,7 @@ session_start();
 								<input type="button" onclick="teamsearch()" class="btn btn-dark" value="Search">
 								<div id="teamresult">
 										<h1>100 thieves</h1>
-										<button type="button" onclick="favoriteteam(100 thieves)">Click Me!</button>
+										<button type="button" onclick="favoriteteam()">Click Me!</button>
 										<table border="1px" style="width:100%">
 												<tbody>
 														<tr>

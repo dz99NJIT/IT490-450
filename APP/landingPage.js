@@ -56,7 +56,7 @@ function buttonclick(button){
 }
 function favoriteteam(teamname){
   var username=document.getElementById("username").value;
-  var teamId="";
+  var teamId=document.getElementById("teamId").value;
   var action="add";
   var teamresult=document.getElementById("teamresult");
   var http=new XMLHttpRequest();
