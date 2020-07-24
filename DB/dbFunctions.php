@@ -43,22 +43,28 @@
     function search($searchText){
         //if team hasnt been updated in a day it'll update it
 	$test="Hello PHP\n";
-        $json=json_decode(file_get_contents("saved.json"),true);
+ 	$test2="Hello PHP2\n";
+	$test3="Hello PHP3\n";
+	$test4="Hello PHP4\n";
+	$test5="Hello PHP5\n";
+     	$json=json_decode(file_get_contents("saved.json"),true);
         $index=0;
 	      print $test;
         foreach($json as $sport){
           foreach(array_keys($sport["teamsId"]) as $teamId){
-		          print $test;
+		          print $test2;
               if($json[$index]["teamsId"][$teamId]["name"]==$searchText){
                   if($json[$index]["teamsId"][$teamId]["last_updated"]==date("M d, Y")){
                     echo "Team is up to date<br>";
                   }
                   else{
-			              print $test;
+			              print $test3;
                     echo "Team needs to be updated<br>";
                     $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
+			print $test4;
                     $response=createClientForAPI($request);
                     $json[$index]["teamsId"][$teamId]["last_updated"]=date("M d, Y");
+			print $test5;
                     process($response);
                   }
               }
@@ -103,6 +109,7 @@
     function process($response){
         echo "<br>Processing Json<br>";
         $change=0;
+        require_once("dbConnect.php");
         if(file_exists("saved.json")){
             $saved=json_decode(file_get_contents("saved.json"),true);
             //change back later
