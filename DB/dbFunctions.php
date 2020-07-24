@@ -97,7 +97,7 @@
     //if data already exist update it
     function process($response){
         $change=0;
-        require_once("connection.php");
+        require_once("dbConnect.php");
         if(file_exists("saved.json")){
             $saved=json_decode(file_get_contents("saved.json"),true);
             //change back later
@@ -114,14 +114,15 @@
                       $teamName=$sport["teamsId"][$teamId]["name"];
                       $date=date("M d, Y");
                       $query = "INSERT INTO Teams Values ('$teamId','$teamName','$sportName','$date')";
-                      $result=mysqli_query($con,$query);
+                      $result=$mydb->query($query)
+
                     }
                     if(array_key_exists("players",$sport["teamsId"][$teamId])){
                         foreach(array_keys($sport["teamsId"][$teamId]["players"]) as $playerId){
                             if(!array_key_exists($playerId,array_keys($saved[$index]["teamsId"]["players"]))){
                                 $playerName=$sport["teamsId"][$teamId]["players"][$playerId]["name"];
                                 $query="INSERT INTO Players Values('$playerName','$playerId','$teamId')";
-                                $result=mysqli_query($con,$query);
+                                $result=$mydb->query($query)
                                 if(array_key_exists("stats",$sport["teamsId"][$teamId]["players"][$playerId])){
                                     $query="INSERT INTO ";
                                     if($sportName=="lol-t1" or $sportName=="dota2-t1" or $sportName="csgo-t1"){
@@ -137,7 +138,7 @@
                                         $headshots=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["headshots"];
                                         $query.="Esport_Stats Values('$playerId',$maps_played,$maps_won,$maps_lost,$rounds_played,$rounds_won,$rounds_lost,$kills,$deaths,$assists,$headshots)";
                                     }
-                                    $result=mysqli_query($con,$query);
+                                    $result = $mydb->query($query);
                                 }
                             }
                         }
@@ -173,7 +174,7 @@
                                             $query.="Sport_Stats ";
                                         }
                                         $query.= "SET $statname=$changevalue WHERE Player_ID='$playerId'";
-                                        $result=mysqli_query($con,$query);
+                                        $result= $mydb->query($query);
                                     }
                                 }
                             }
@@ -188,20 +189,20 @@
             foreach($json as $sport){
                 $sportName=$sport["sport"];
                 $query ="INSERT INTO Sports Values('$sportName')";
-                $result=mysqli_query($con,$query);
+                $result=$mydb->query($query);
                 //add every  team into teamId
                 if(array_key_exists("teamsId",$sport)){
                     foreach(array_keys($sport["teamsId"]) as $teamId){
                         $teamName=$sport["teamsId"][$teamId]["name"];
                         $date=date("M d, Y");
                         $query = "INSERT INTO Teams Values ('$teamId','$teamName','$sportName','$date')";
-                        $result=mysqli_query($con,$query);
+                        $result=$mydb->query($query);
                         //add every player
                         if(array_key_exists("players",$sport["teamsId"][$teamId])){
                             foreach(array_keys($sport["teamsId"][$teamId]["players"]) as $playerId){
                                 $playerName=$sport["teamsId"][$teamId]["players"][$playerId]["name"];
                                 $query="INSERT INTO Players Values('$playerName','$playerId','$teamId')";
-                                $result=mysqli_query($con,$query);
+                                $result=$mydb->query($query);
                                 if(array_key_exists("stats",$sport["teamsId"][$teamId]["players"][$playerId])){
                                     $query="INSERT INTO ";
                                     if($sportName=="lol-t1" or $sportName=="dota2-t1" or $sportName="csgo-t1"){
@@ -217,7 +218,7 @@
                                         $headshots=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["headshots"];
                                         $query.="Esport_Stats Values('$playerId',$maps_played,$maps_won,$maps_lost,$rounds_played,$rounds_won,$rounds_lost,$kills,$deaths,$assists,$headshots)";
                                     }
-                                    $result=mysqli_query($con,$query);
+                                    $result=$mydb->query($query);
                                 }
                             }
                         }
