@@ -63,7 +63,7 @@
                     $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
 			                 print $test4;
                     $response=createClientForAPI($request);
-                    $json[$index]["teamsId"][$teamId]["last_updated"]=date("M d, Y");
+                    //$json[$index]["teamsId"][$teamId]["last_updated"]=date("M d, Y");
 			print $test5;
                     process($response);
                   }
