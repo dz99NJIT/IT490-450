@@ -281,7 +281,7 @@
     function AddFavorite($username,$teamId,$action){
       $mydb = dbConnect();
       if($action=="add"){
-          $query="INSERT INTO Favorite_Team (Username,TeamId) VALUES ('$username','$message')";
+          $query="INSERT INTO Favorite_Team (Username,TeamId) VALUES ('$username','$teamId')";
       }
       else{
         $query="DELETE FROM Favorite_Team WHERE Username='$username' AND TeamId='$teamId'";
