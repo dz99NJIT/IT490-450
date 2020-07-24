@@ -61,6 +61,6 @@ function favoriteteam(){
   var action="add";
   var teamresult=document.getElementById("teamresult");
   var http=new XMLHttpRequest();
-  http.open("GET","FavoriteTeam.php?username=" + username + "&teamId=" + teamId + "&action=" +action,true);
+  http.open("GET","AddFavoriteTeam.php?username=" + username + "&teamId=" + teamId + "&action=" +action,true);
   http.send();
 }

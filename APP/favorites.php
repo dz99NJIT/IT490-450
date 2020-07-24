@@ -39,6 +39,7 @@ session_start();
 								</ul>
 						</nav>
 						<br><br><br>
+						<input type="hidden" id="username" name="username" value="<?php echo $_SESSION['uname']?>">
 
             <div id="favoriteTeams">
 

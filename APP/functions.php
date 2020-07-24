@@ -80,7 +80,7 @@ require_once('AppRabbitMQClient.php');
 			$request['type']="Update";
 			return createClientForDb($request);
 		}
-		function FavoriteTeam($username,$teamId,$action){
+		function AddFavoriteTeam($username,$teamId,$action){
 				$request=array(
 					'type'=>"AddFavorite",
 					'username'=>$username,
@@ -91,6 +91,10 @@ require_once('AppRabbitMQClient.php');
 		}
 		function populate(){
 			$request=array('type'=>"Populate");
+			return createClientForDb($request);
+		}
+		function showFavoriteTeams($username){
+			$request=array('type'=>"Favorite",'username'=>$username);
 			return createClientForDb($request);
 		}
 ?>
