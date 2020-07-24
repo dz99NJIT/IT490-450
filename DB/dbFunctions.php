@@ -115,7 +115,7 @@
                       $teamName=$sport["teamsId"][$teamId]["name"];
                       $date=date("M d, Y");
                       $query = "INSERT INTO Teams Values ('$teamId','$teamName','$sportName','$date')";
-                      $result=$mydb->query($query)
+                      $result=$mydb->query($query);
 
                     }
                     if(array_key_exists("players",$sport["teamsId"][$teamId])){
@@ -123,7 +123,7 @@
                             if(!array_key_exists($playerId,array_keys($saved[$index]["teamsId"]["players"]))){
                                 $playerName=$sport["teamsId"][$teamId]["players"][$playerId]["name"];
                                 $query="INSERT INTO Players Values('$playerName','$playerId','$teamId')";
-                                $result=$mydb->query($query)
+                                $result=$mydb->query($query)''
                                 if(array_key_exists("stats",$sport["teamsId"][$teamId]["players"][$playerId])){
                                     $query="INSERT INTO ";
                                     if($sportName=="lol-t1" or $sportName=="dota2-t1" or $sportName="csgo-t1"){
