@@ -43,7 +43,7 @@ function requestProcessor($request){
             //takes player name as parameter
             Search_Team($request["TeamName"]);
             //gets string version of json file to return to db
-            $response_msq = file_get_contents("data.json")
+            $response_msq = file_get_contents("data.json");
             break;
     }
     echo $response_msg;
