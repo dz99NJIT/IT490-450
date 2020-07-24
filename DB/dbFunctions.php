@@ -305,8 +305,8 @@
         $query="SELECT * FROM Favorite_Team INNER JOIN Players  INNER JOIN Teams WHERE Favorite_Team.TeamId=Players.Team_ID AND Username='$user' AND TeamId='$teamId'  AND Favorite_Team.TeamId=Teams.ID";
         $result=$mydb->query($query);
         $index=0;
-        $returnval.="<div id='$teamId' class='FavoriteTeams'>"
-        $returnval.="<h1>{$teamIds[$teamId]}</h1>"
+        $returnval.="<div id='$teamId' class='FavoriteTeams'>";
+        $returnval.="<h1>{$teamIds[$teamId]}</h1>";
         $returnVal.="<button type='button' onclick='delete(this)'>Click Me!</button>";
         $returnVal.="<table border=1px style='width:100%'>";
         $returnVal.="<tr>";
