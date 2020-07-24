@@ -61,7 +61,7 @@
 			              print $test3;
                     echo "Team needs to be updated<br>";
                     $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
-			print $test4;
+			                 print $test4;
                     $response=createClientForAPI($request);
                     $json[$index]["teamsId"][$teamId]["last_updated"]=date("M d, Y");
 			print $test5;
@@ -140,7 +140,7 @@
                                 if(array_key_exists("stats",$sport["teamsId"][$teamId]["players"][$playerId])){
                                     $change=1;
                                     $query="INSERT INTO ";
-                                    if($sportName=="lol-t1" or $sportName=="dota2-t1" or $sportName="csgo-t1"){
+                                    if($sportName=="lol-t1" or $sportName=="dota2-t1" or $sportName=="csgo-t1"){
                                         $maps_played=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_played"];
                                         $maps_won=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_won"];
                                         $maps_lost=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_lost"];
