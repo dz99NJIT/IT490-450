@@ -3,7 +3,7 @@ window.onload=function(){
 }
 function timer(){
   setInterval(function(){
-    update();
+    //update();
   }, 5000);
 }
 function update(){
@@ -57,6 +57,7 @@ function buttonclick(button){
 function favoriteteam(){
   var username=document.getElementById("username").value;
   var teamId=document.getElementById("teamId").value;
+  alert(teamId);
   var action="add";
   var teamresult=document.getElementById("teamresult");
   var http=new XMLHttpRequest();
