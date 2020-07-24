@@ -3,7 +3,7 @@ window.onload=function(){
 }
 function timer(){
   setInterval(function(){
-    update();
+    //update();
   }, 5000);
 }
 function update(){
