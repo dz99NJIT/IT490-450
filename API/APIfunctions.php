@@ -6,7 +6,7 @@ $context = stream_context_create(
       'http' => array(
         'method'  => 'GET',
         'header'  => "Content-Type: application/json\r\n",
-        'ignore_errors' => TRUE),
+        'ignore_errors' => TRUE)
   )
 );
 $keys = array (
