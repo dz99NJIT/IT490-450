@@ -54,6 +54,7 @@
                     echo "Team needs to be updated<br>";
                     $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
                     $response=createClientForAPI($request);
+                    $json[$index]["teamsId"][$teamId]["last_updated"]=date("M d, Y");
                     process($response);
                   }
               }
@@ -116,15 +117,18 @@
                       $date=date("M d, Y");
                       $query = "INSERT INTO Teams Values ('$teamId','$teamName','$sportName','$date')";
                       $result=$mydb->query($query);
+                      $change=1;
 
                     }
                     if(array_key_exists("players",$sport["teamsId"][$teamId])){
                         foreach(array_keys($sport["teamsId"][$teamId]["players"]) as $playerId){
                             if(!array_key_exists($playerId,array_keys($saved[$index]["teamsId"]["players"]))){
+                                $change=1;
                                 $playerName=$sport["teamsId"][$teamId]["players"][$playerId]["name"];
                                 $query="INSERT INTO Players Values('$playerName','$playerId','$teamId')";
                                 $result=$mydb->query($query);
                                 if(array_key_exists("stats",$sport["teamsId"][$teamId]["players"][$playerId])){
+                                    $change=1;
                                     $query="INSERT INTO ";
                                     if($sportName=="lol-t1" or $sportName=="dota2-t1" or $sportName="csgo-t1"){
                                         $maps_played=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_played"];
