@@ -18,4 +18,19 @@ function createClientForDb($request){
         $response = $client->send_request($request);
         return $response;
     }
+
+//Creates Rabbit client for the DB query requests
+function createClientForAPI($request){
+        $client = new rabbitMQClient("rabbitMQ_API.ini", "testApi");
+        
+        if(isset($argv[1])){
+            $msg = $argv[1];
+        }
+        else{
+            $msg = "client";
+        }
+        
+        $response = $client->send_request($request);
+        return $response;
+    }
 ?>
