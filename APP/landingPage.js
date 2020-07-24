@@ -54,7 +54,7 @@ function buttonclick(button){
         }
     }
 }
-function favoriteteam(teamname){
+function favoriteteam(){
   var username=document.getElementById("username").value;
   var teamId=document.getElementById("teamId").value;
   var action="add";
