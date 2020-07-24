@@ -42,15 +42,19 @@
     //searches for team in database and if exist then send team and players to APP
     function search($searchText){
         //if team hasnt been updated in a day it'll update it
+	$test="Hello PHP\n";
         $json=json_decode(file_get_contents("saved.json"),true);
         $index=0;
+	print $test;
         foreach($json as $sport){
           foreach(array_keys($sport["teamsId"]) as $teamId){
+		print $test;
               if($json[$index]["teamsId"][$teamId]["name"]==$searchText){
                   if($json[$index]["teamsId"][$teamId]["last_updated"]==date("M d, Y")){
                     echo "Team is up to date<br>";
                   }
                   else{
+			print $test;
                     echo "Team needs to be updated<br>";
                     $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
                     $response=createClientForAPI($request);
