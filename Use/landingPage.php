@@ -141,8 +141,10 @@ session_start();
                 </div>
                 <div class="chat">
                     <div class="chatUser">testUser </div>
-                    <div class="chatMessage">yo </div></div>
-                    <div class="chat"><div class="chatUser">jj356 </div>
+                    <div class="chatMessage">yo </div>
+								</div>
+                <div class="chat">
+										<div class="chatUser">jj356 </div>
                     <div class="chatMessage">yo v2 </div>
                 </div>
                 <div class="chat">
@@ -156,10 +158,12 @@ session_start();
                 <div class="chat">
                     <div class="chatUser">ddd </div>
                     <div class="chatMessage">Ddd </div>
-                </div><div class="chat">
+                </div>
+								<div class="chat">
                     <div class="chatUser">jj356 </div>
                     <div class="chatMessage">this is a test for the second time </div>
-                </div><div class="chat">
+                </div>
+								<div class="chat">
                     <div class="chatUser">testUser </div>
                     <div class="chatMessage">test12 </div>
                 </div>
