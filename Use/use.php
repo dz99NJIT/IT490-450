@@ -61,8 +61,11 @@ function process($response){
                     //add every player
                     if(array_key_exists("players",$sport["teamsId"][$teamId])){
                         foreach(array_keys($sport["teamsId"][$teamId]["players"]) as $playerId){
-                            $playerName=$sport["teamsId"][$teamId]["players"][$playerId]["name"];
-                            $query="INSERT INTO Players Values('$playerName','$playerId','$teamId')";
+                          $playerName=$sport["teamsId"][$teamId]["players"][$playerId]["name"];
+                          $nationality=$sport["teamsId"][$teamId]["players"][$playerId]["nationality"];
+                          $birthday=$sport["teamsId"][$teamId]["players"][$playerId]["Birth_day"];
+                          $gender=$sport["teamsId"][$teamId]["players"][$playerId]["gender"];
+                          $query="INSERT INTO Players Values('$playerName','$playerId','$teamId','$nationality','$birthday','$gender')";
                             $result=mysqli_query($con,$query);
                             if(array_key_exists("stats",$sport["teamsId"][$teamId]["players"][$playerId])){
                                 $query="INSERT INTO ";
@@ -98,4 +101,3 @@ function process($response){
     }
 }
 ?>
-
