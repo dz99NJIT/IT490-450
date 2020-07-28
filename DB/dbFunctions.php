@@ -115,11 +115,10 @@
             $sportName=$sport["sport"];
             $query = "SELECT * FROM Sports WHERE Name='$sportName'";
             $result=$mydb->query($query);
+            //if sport exist insert if not do nothing
             if( mysqli_num_rows($response)==0){
               $query ="INSERT INTO Sports Values('$sportName')";
             }
-            $query ="INSERT INTO Sports Values('$sportName')";
-            $result=$mydb->query($query);
             //add every  team into teamId
             if(array_key_exists("teamsId",$sport)){
                 foreach(array_keys($sport["teamsId"]) as $teamId){

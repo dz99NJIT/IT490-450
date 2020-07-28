@@ -2,7 +2,7 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
-function process($response){
+function process(){
     $change=0;
     require_once("connection.php");
     if(file_exists("saved.json")){
@@ -46,7 +46,7 @@ function process($response){
         }
     }
     else{
-        $json=json_decode($response,true);
+        $json=json_decode(file_get_contents("data.json"),true);
         //add every sport into database
         foreach($json as $sport){
             $sportName=$sport["sport"];
@@ -94,10 +94,6 @@ function process($response){
             $change=1;
         }
     }
-    if($change==1){
-      $jsonfile=fopen("saved.json","w");
-      fwrite($jsonfile,json_encode($json));
-      fclose($jsonfile);
-    }
 }
+process();
 ?>
