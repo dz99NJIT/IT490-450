@@ -2,9 +2,10 @@ main{
   display:grid;
   margin:0;
   grid-template-columns:30% 40% 30%;
-  grid-template-rows: 150px 500px;
+  grid-template-rows: 150px 700px;
   grid-template-areas: "hd hd hd"
                        "ts p  sn";
+  overflow:hidden;
 }
 #header{
   grid-area:hd;
@@ -16,7 +17,6 @@ main{
 }
 #posts{
   grid-area: p;
-
 }
 #sport_feed{
   grid-area:sn;
@@ -35,4 +35,20 @@ main > *{
 }
 #searchText{
   width:80%;
+}
+.chat{
+  margin-bottom:20px;
+}
+.chatUser{
+  font-size: 30px;
+  font-style:italic;
+  font-weight:bold;
+  margin:0;
+  padding:0;
+}
+.chatMessage{
+  font-size:30px;
+  font-style:oblique;
+  margin:0;
+  padding:0;
 }
