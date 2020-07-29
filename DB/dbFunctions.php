@@ -141,7 +141,6 @@
                             $query = "SELECT * FROM Players WHERE ID='$playerId'";
                             $result=$mydb->query($query);
                             $rownum=mysqli_num_rows($result);
-                            mysqli_free_result($result);
                             $playerName=$sport["teamsId"][$teamId]["players"][$playerId]["name"];
                             $nationality=$sport["teamsId"][$teamId]["players"][$playerId]["nationality"];
                             $birthday=$sport["teamsId"][$teamId]["players"][$playerId]["Birth_day"];
@@ -173,6 +172,7 @@
                                     $change=1;
                                   }
                               }
+                              mysqli_free_result($result);
                               if($a==1){
                                 //removes comma at end if it's there
                                 $query=substr($query, 0, -1);
