@@ -155,7 +155,7 @@
                               //comma check
                               $a=0;
                               $change=0;
-                              while($row = mysqli_fetch_array($response)){
+                              while($row = mysqli_fetch_array($result)){
                                   if($row[3]==null and $nationality!=null){
                                     $query.= "nationality='$nationality',";
                                     $a=1;
