@@ -52,13 +52,16 @@
         $result = $mydb->query($query);
         while($row = mysqli_fetch_array($result)){
             if($row[3]!=date("M d, Y")){
+              echo "Team needs to be updated<br>";
               $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
               $response=createClientForAPI($request);
               process($response);
               $date=date("M d, Y");
               $query="UPDATE Teams SET Created='$date' WHERE Name=$searchText";
               $result = $mydb->query($query);
-
+            }
+            else{
+              echo "Team is already updated<br>";
             }
         }
         mysqli_free_result($result);
@@ -356,5 +359,4 @@
       }
       return $returnval;
     }
-    process(file_get_contents("saved.json"));
 ?>
