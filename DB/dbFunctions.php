@@ -206,52 +206,52 @@
                                     $a=0;
                                     $query="UPDATE Esport_Stats SET ";
                                     while($row = mysqli_fetch_array($result)){
-                                      if($row[1]==0 and $maps_played!=0){
+                                      if($maps_played!=$row[1]){
                                         $query.="Maps_Played='$maps_played',";
                                         $a=1;
                                         $change=1;
                                       }
-                                      if($row[2]==0 and $maps_won!=0){
+                                      if($maps_won!=$row[2]){
                                         $query.="Maps_Won='$maps_won',";
                                         $a=1;
                                         $change=1;
                                       }
-                                      if($row[3]==0 and $maps_lost!=0){
+                                      if($maps_lost!=$row[3]){
                                         $query.="Maps_Lost='$maps_lost',";
                                         $a=1;
                                         $change=1;
                                       }
-                                      if($row[4]==0 and $rounds_played!=0){
+                                      if($rounds_played!=$row[4]){
                                         $query.="Rounds_Played='$rounds_played',";
                                         $a=1;
                                         $change=1;
                                       }
-                                      if($row[5]==0 and $rounds_won!=0){
+                                      if($rounds_won!=$row[5]){
                                         $query.="Rounds_Won='$rounds_won',";
                                         $a=1;
                                         $change=1;
                                       }
-                                      if($row[6]==0 and $rounds_lost!=0){
+                                      if($rounds_lost!=$row[6]){
                                         $query.="Rounds_Lost='$rounds_lost',";
                                         $a=1;
                                         $change=1;
                                       }
-                                      if($row[7]==0 and $kills!=0){
+                                      if($kills!=$row[7]){
                                         $query.="Kills='$kills',";
                                         $a=1;
                                         $change=1;
                                       }
-                                      if($row[8]==0 and $deaths!=0){
+                                      if($deaths!=$row[8]){
                                         $query.="Deaths='$deaths',";
                                         $a=1;
                                         $change=1;
                                       }
-                                      if($row[9]==0 and $assists!=0){
+                                      if($assists!=$row[9]){
                                         $query.="Assists='$assists',";
                                         $a=1;
                                         $change=1;
                                       }
-                                      if($row[1]==0 and $headshots!=0){
+                                      if($headshots!=$row[10]){
                                         $query.="Headshots='$headshots'";
                                         $a=0;
                                         $change=1;
