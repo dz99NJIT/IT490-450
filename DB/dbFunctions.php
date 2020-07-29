@@ -148,7 +148,7 @@
                             $gender=$sport["teamsId"][$teamId]["players"][$playerId]["gender"];
                             //if player exist update if needed else insert
                             if($rownum==0){
-                              $query = "INSERT INTO Teams Values ('$teamId','$teamName','$sportName','$date')";
+                              $query = "INSERT INTO Players Values ('$teamId','$teamName','$sportName','$date')";
                               $result=$mydb->query($query);
                             }
                             else{
@@ -182,7 +182,6 @@
                                   $query.="WHERE ID='$playerId'";
                                   $result=$mydb->query($query);
                               }
-                              echo $query . "<br>";
                             }
                             if(array_key_exists("stats",$sport["teamsId"][$teamId]["players"][$playerId])){
                                 continue;
