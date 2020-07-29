@@ -48,7 +48,7 @@
       	$test3="Hello PHP3\n";
       	$test4="Hello PHP4\n";
       	$test5="Hello PHP5\n";
-        $query="SELECT FROM Teams WHERE Name='$searchText'";
+        $query="SELECT * FROM Teams WHERE Name='$searchText'";
         $result = $mydb->query($query);
         while($row = mysqli_fetch_array($result)){
             if($row[3]!=date("M d, Y")){
