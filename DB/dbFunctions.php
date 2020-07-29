@@ -148,7 +148,7 @@
                             $gender=$sport["teamsId"][$teamId]["players"][$playerId]["gender"];
                             //if player exist update if needed else insert
                             if($rownum==0){
-                              $query = "INSERT INTO Players Values ('$teamId','$teamName','$sportName','$date')";
+                              $query = "INSERT INTO Players Values ('$playerName','$playerId','$teamId','$nationality','$birthday','$gender')";
                               $result=$mydb->query($query);
                             }
                             else{
