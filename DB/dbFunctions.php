@@ -128,7 +128,7 @@
                     $date=date("M d, Y");
                     $query="SELECT * FROM Teams WHERE ID='$teamId'";
                     $result=$mydb->query($query);
-                    $rownum=mysqli_num_rows($result)
+                    $rownum=mysqli_num_rows($result);
                     mysqli_free_result($result);
                     //if team doesn't exist insert into database else do nothing
                     if($rownum==0){
