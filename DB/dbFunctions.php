@@ -182,8 +182,10 @@
                                   $query.="WHERE ID='$playerId'";
                                   $result=$mydb->query($query);
                               }
+                              echo $query . "<br>";
                             }
                             if(array_key_exists("stats",$sport["teamsId"][$teamId]["players"][$playerId])){
+                                continue;
                                 $query="SELECT * FROM Esport_Stats WHERE Player_ID='$playerId'";
                                 $result=$mydb->query($query);
                                 $maps_played=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_played"];
