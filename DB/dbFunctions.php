@@ -109,6 +109,7 @@
     function process($response){
         echo "<br>Processing Json<br>";
         require_once("dbConnect.php");
+        $mydb = dbConnect();
         $json=json_decode($response,true);
         //loops through each sport
         foreach($json as $sport){
