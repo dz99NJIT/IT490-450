@@ -128,8 +128,11 @@
                     $date=date("M d, Y");
                     $query="SELECT * FROM Teams WHERE ID='$teamId'";
                     $result=$mydb->query($query);
+                    $rownum=mysqli_num_rows($result)
+                    mysqli_free_result($result);
                     //if team doesn't exist insert into database else do nothing
-                    if( mysqli_num_rows($result)==0){
+                    if($rownum==0){
+                      mysqli_free_result($result);
                       $query = "INSERT INTO Teams Values ('$teamId','$teamName','$sportName','$date')";
                       $result=$mydb->query($query);
                     }
