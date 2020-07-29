@@ -257,6 +257,7 @@
                                         $change=1;
                                       }
                                     }
+                                    echo $query . "<br>";
                                     mysqli_free_result($result);
                                     if($a==1){
                                       //removes comma at end if it's there
