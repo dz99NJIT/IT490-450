@@ -121,7 +121,7 @@
                     mysqli_free_result($result);
                     //if team doesn't exist insert into database else do nothing
                     if($rownum==0){
-                      $query = "INSERT INTO Teams (ID,Name,Sport) Values ('$teamId','$teamName','$sportName','$date')";
+                      $query = "INSERT INTO Teams  Values ('$teamId','$teamName','$sportName','$date')";
                       $result=$mydb->query($query);
                     }
                     //loop over the player for each team
