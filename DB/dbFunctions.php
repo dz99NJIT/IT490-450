@@ -110,47 +110,157 @@
         echo "<br>Processing Json<br>";
         require_once("dbConnect.php");
         $json=json_decode($response,true);
-        //add every sport into database
+        //loops through each sport
         foreach($json as $sport){
             $sportName=$sport["sport"];
             $query = "SELECT * FROM Sports WHERE Name='$sportName'";
             $result=$mydb->query($query);
             //if sport exist insert if not do nothing
-            if( mysqli_num_rows($response)==0){
+            if( mysqli_num_rows($result)==0){
               $query ="INSERT INTO Sports Values('$sportName')";
+              $result=$mydb->query($query);
             }
-            //add every  team into teamId
+            //see if sport has a teamsID
             if(array_key_exists("teamsId",$sport)){
                 foreach(array_keys($sport["teamsId"]) as $teamId){
                     $teamName=$sport["teamsId"][$teamId]["name"];
                     $date=date("M d, Y");
-                    $query = "INSERT INTO Teams Values ('$teamId','$teamName','$sportName','$date')";
+                    $query="SELECT * FROM Teams WHERE ID='$teamId'";
                     $result=$mydb->query($query);
-                    //add every player
+                    //if team doesn't exist insert into database else do nothing
+                    if( mysqli_num_rows($result)==0){
+                      $query = "INSERT INTO Teams Values ('$teamId','$teamName','$sportName','$date')";
+                      $result=$mydb->query($query);
+                    }
+                    //loop over the player for each team
                     if(array_key_exists("players",$sport["teamsId"][$teamId])){
                         foreach(array_keys($sport["teamsId"][$teamId]["players"]) as $playerId){
+                            $query = "SELECT * FROM Players WHERE ID='$playerId'";
+                            $result=$mydb->query($query);
                             $playerName=$sport["teamsId"][$teamId]["players"][$playerId]["name"];
                             $nationality=$sport["teamsId"][$teamId]["players"][$playerId]["nationality"];
                             $birthday=$sport["teamsId"][$teamId]["players"][$playerId]["Birth_day"];
                             $gender=$sport["teamsId"][$teamId]["players"][$playerId]["gender"];
-                            $query="INSERT INTO Players Values('$playerName','$playerId','$teamId','$nationality','$birthday','$gender')";
-                            $result=$mydb->query($query);
+                            //if player exist update if needed else insert
+                            if( mysqli_num_rows($result)==0){
+                              $query = "INSERT INTO Teams Values ('$teamId','$teamName','$sportName','$date')";
+                              $result=$mydb->query($query);
+                            }
+                            else{
+                              $query= "UPDATE Players SET ";
+                              //comma check
+                              $a=0;
+                              $change=0;
+                              while($row = mysqli_fetch_array($response)){
+                                  if($row[3]==null and $nationality!=null){
+                                    $query.= "nationality='$nationality',";
+                                    $a=1;
+                                    $change=1;
+                                  }
+                                  if($row[4]==null and $birthday!= null){
+                                    $query.= "Birth_day='$birthday',";
+                                    $a=1;
+                                    $change=1;
+                                  }
+                                  if($row[5]==null and $gender!= null){
+                                    $query.= "gender='$gender'";
+                                    $a=0;
+                                    $change=1;
+                                  }
+                              }
+                              if($a==1){
+                                //removes comma at end if it's there
+                                $query=substr($query, 0, -1);
+                              }
+                              //update on players table is needed
+                              if($change==1){
+                                  $query.="WHERE ID='$playerId'";
+                                  $result=$mydb->query($query);
+                              }
+                            }
                             if(array_key_exists("stats",$sport["teamsId"][$teamId]["players"][$playerId])){
-                                $query="INSERT INTO ";
-                                if($sportName=="lol-t1" or $sportName=="dota2-t1" or $sportName=="csgo-t1"){
-                                    $maps_played=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_played"];
-                                    $maps_won=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_won"];
-                                    $maps_lost=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_lost"];
-                                    $rounds_played=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["rounds_played"];
-                                    $rounds_won=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["rounds_won"];
-                                    $rounds_lost=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["rounds_lost"];
-                                    $kills=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["kills"];
-                                    $deaths=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["deaths"];
-                                    $assists=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["assists"];
-                                    $headshots=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["headshots"];
-                                    $query.="Esport_Stats Values('$playerId',$maps_played,$maps_won,$maps_lost,$rounds_played,$rounds_won,$rounds_lost,$kills,$deaths,$assists,$headshots)";
-                                }
+                                $query="SELECT * FROM Esport_Stats WHERE Player_ID='$playerId'";
                                 $result=$mydb->query($query);
+                                $maps_played=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_played"];
+                                $maps_won=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_won"];
+                                $maps_lost=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_lost"];
+                                $rounds_played=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["rounds_played"];
+                                $rounds_won=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["rounds_won"];
+                                $rounds_lost=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["rounds_lost"];
+                                $kills=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["kills"];
+                                $deaths=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["deaths"];
+                                $assists=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["assists"];
+                                $headshots=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["headshots"];
+                                if(mysqli_num_rows($result)==0){
+                                  $query="INSERT INTO Esport_Stats Values('$playerId',$maps_played,$maps_won,$maps_lost,$rounds_played,$rounds_won,$rounds_lost,$kills,$deaths,$assists,$headshots)";
+                                  $result=$mydb->query($query);
+                                }
+                                else{
+                                    $change=0;
+                                    $a=0;
+                                    $query="UPDATE Esport_Stats SET ";
+                                    while($row = mysqli_fetch_array($response)){
+                                      if($row[1]==0 and $maps_played!=0){
+                                        $query.="Maps_Played='$maps_played',";
+                                        $a=1;
+                                        $change=1;
+                                      }
+                                      if($row[2]==0 and $maps_won!=0){
+                                        $query.="Maps_Won='$maps_won',";
+                                        $a=1;
+                                        $change=1;
+                                      }
+                                      if($row[3]==0 and $maps_lost!=0){
+                                        $query.="Maps_Lost='$maps_lost',";
+                                        $a=1;
+                                        $change=1;
+                                      }
+                                      if($row[4]==0 and $rounds_played!=0){
+                                        $query.="Rounds_Played='$rounds_played',";
+                                        $a=1;
+                                        $change=1;
+                                      }
+                                      if($row[5]==0 and $rounds_won!=0){
+                                        $query.="Rounds_Won='$rounds_won',";
+                                        $a=1;
+                                        $change=1;
+                                      }
+                                      if($row[6]==0 and $rounds_lost!=0){
+                                        $query.="Rounds_Lost='$rounds_lost',";
+                                        $a=1;
+                                        $change=1;
+                                      }
+                                      if($row[7]==0 and $kills!=0){
+                                        $query.="Kills='$kills',";
+                                        $a=1;
+                                        $change=1;
+                                      }
+                                      if($row[8]==0 and $deaths!=0){
+                                        $query.="Deaths='$deaths',";
+                                        $a=1;
+                                        $change=1;
+                                      }
+                                      if($row[9]==0 and $assists!=0){
+                                        $query.="Assists='$assists',";
+                                        $a=1;
+                                        $change=1;
+                                      }
+                                      if($row[1]==0 and $headshots!=0){
+                                        $query.="Headshots='$headshots'";
+                                        $a=0;
+                                        $change=1;
+                                      }
+                                    }
+                                    if($a==1){
+                                      //removes comma at end if it's there
+                                      $query=substr($query, 0, -1);
+                                    }
+                                    //update on players table is needed
+                                    if($change==1){
+                                        $query.="WHERE Player_ID='$playerId'";
+                                        $result=$mydb->query($query);
+                                    }
+                                }
                             }
                         }
                     }
@@ -250,5 +360,5 @@
       }
       return $returnval;
     }
-
+    process(file_get_contents("saved.json"));
 ?>
