@@ -184,7 +184,6 @@
                               }
                             }
                             if(array_key_exists("stats",$sport["teamsId"][$teamId]["players"][$playerId])){
-                                continue;
                                 $query="SELECT * FROM Esport_Stats WHERE Player_ID='$playerId'";
                                 $result=$mydb->query($query);
                                 $maps_played=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["maps_played"];
@@ -198,7 +197,6 @@
                                 $assists=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["assists"];
                                 $headshots=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["headshots"];
                                 $rownum=mysqli_num_rows($result);
-                                mysqli_free_result($result);
                                 if($rownum==0){
                                   $query="INSERT INTO Esport_Stats Values('$playerId',$maps_played,$maps_won,$maps_lost,$rounds_played,$rounds_won,$rounds_lost,$kills,$deaths,$assists,$headshots)";
                                   $result=$mydb->query($query);
@@ -259,6 +257,7 @@
                                         $change=1;
                                       }
                                     }
+                                    mysqli_free_result($result);
                                     if($a==1){
                                       //removes comma at end if it's there
                                       $query=substr($query, 0, -1);
