@@ -140,12 +140,14 @@
                         foreach(array_keys($sport["teamsId"][$teamId]["players"]) as $playerId){
                             $query = "SELECT * FROM Players WHERE ID='$playerId'";
                             $result=$mydb->query($query);
+                            $rownum=mysqli_num_rows($result);
+                            mysqli_free_result($result);
                             $playerName=$sport["teamsId"][$teamId]["players"][$playerId]["name"];
                             $nationality=$sport["teamsId"][$teamId]["players"][$playerId]["nationality"];
                             $birthday=$sport["teamsId"][$teamId]["players"][$playerId]["Birth_day"];
                             $gender=$sport["teamsId"][$teamId]["players"][$playerId]["gender"];
                             //if player exist update if needed else insert
-                            if( mysqli_num_rows($result)==0){
+                            if($rownum==0){
                               $query = "INSERT INTO Teams Values ('$teamId','$teamName','$sportName','$date')";
                               $result=$mydb->query($query);
                             }
@@ -194,7 +196,9 @@
                                 $deaths=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["deaths"];
                                 $assists=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["assists"];
                                 $headshots=$sport["teamsId"][$teamId]["players"][$playerId]["stats"]["headshots"];
-                                if(mysqli_num_rows($result)==0){
+                                $rownum=mysqli_num_rows($result);
+                                mysqli_free_result($result);
+                                if($rownum==0){
                                   $query="INSERT INTO Esport_Stats Values('$playerId',$maps_played,$maps_won,$maps_lost,$rounds_played,$rounds_won,$rounds_lost,$kills,$deaths,$assists,$headshots)";
                                   $result=$mydb->query($query);
                                 }
