@@ -205,7 +205,7 @@
                                     $change=0;
                                     $a=0;
                                     $query="UPDATE Esport_Stats SET ";
-                                    while($row = mysqli_fetch_array($response)){
+                                    while($row = mysqli_fetch_array($result)){
                                       if($row[1]==0 and $maps_played!=0){
                                         $query.="Maps_Played='$maps_played',";
                                         $a=1;
