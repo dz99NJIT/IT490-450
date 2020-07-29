@@ -42,37 +42,26 @@
     //searches for team in database and if exist then send team and players to APP
     function search($searchText){
         //if team hasnt been updated in a day it'll update it
-	$test="Hello PHP\n";
- 	$test2="Hello PHP2\n";
-	$test3="Hello PHP3\n";
-	$test4="Hello PHP4\n";
-	$test5="Hello PHP5\n";
-     	$json=json_decode(file_get_contents("saved.json"),true);
-        $index=0;
-	      print $test;
-        foreach($json as $sport){
-          foreach(array_keys($sport["teamsId"]) as $teamId){
-		          print $test2;
-              if($json[$index]["teamsId"][$teamId]["name"]==$searchText){
-                  if($json[$index]["teamsId"][$teamId]["last_updated"]==date("M d, Y")){
-                    echo "Team is up to date<br>";
-                  }
-                  else{
-			              print $test3;
-                    echo "Team needs to be updated<br>";
-                    $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
-			                 print $test4;
-                    $response=createClientForAPI($request);
-                    //$json[$index]["teamsId"][$teamId]["last_updated"]=date("M d, Y");
-			print $test5;
-                    process($response);
-                  }
-              }
-          }
-          $index+=1;
-        }
-        $mydb = dbConnect();
+    	  $mydb = dbConnect();
+        $test="Hello PHP\n";
+       	$test2="Hello PHP2\n";
+      	$test3="Hello PHP3\n";
+      	$test4="Hello PHP4\n";
+      	$test5="Hello PHP5\n";
+        $query="SELECT FROM Teams WHERE Name='$searchText'";
+        $result = $mydb->query($query);
+        while($row = mysqli_fetch_array($result)){
+            if($row[3]!=date("M d, Y")){
+              $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
+              $response=createClientForAPI($request);
+              process($response);
+              $date=date("M d, Y");
+              $query="UPDATE Teams SET Created='$date' WHERE Name=$searchText";
+              $result = $mydb->query($query);
 
+            }
+        }
+        mysqli_free_result($result);
         $query = "SELECT Players.Name AS 'Player_Name', Teams.Name, Teams.Sport,Teams.ID FROM Players INNER JOIN Teams ON Players.Team_ID = Teams.ID WHERE Teams.Name = '$searchText';";
 
       	$response = $mydb->query($query);
@@ -132,7 +121,7 @@
                     mysqli_free_result($result);
                     //if team doesn't exist insert into database else do nothing
                     if($rownum==0){
-                      $query = "INSERT INTO Teams (ID,Name,Sport) Values ('$teamId','$teamName','$sportName')";
+                      $query = "INSERT INTO Teams (ID,Name,Sport) Values ('$teamId','$teamName','$sportName','$date')";
                       $result=$mydb->query($query);
                     }
                     //loop over the player for each team
@@ -367,4 +356,5 @@
       }
       return $returnval;
     }
+    process(file_get_contents("saved.json"));
 ?>
