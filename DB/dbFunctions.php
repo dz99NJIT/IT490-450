@@ -335,28 +335,35 @@
       $returnval="";
       //inserts all teamsId for the favorited team for that user into a array
       while($row = mysqli_fetch_array($result)){
+          //$row[1] is Team Id
+          //$row[3] is Team Name
           $teamIds[$row[1]]=$row[3];
       }
       foreach(array_keys($teamIds) as $teamId){
-        $query="SELECT * FROM Favorite_Team INNER JOIN Players  INNER JOIN Teams WHERE Favorite_Team.TeamId=Players.Team_ID AND Username='$user' AND TeamId='$teamId'  AND Favorite_Team.TeamId=Teams.ID";
+        $query="SELECT * FROM Favorite_Team INNER JOIN Players   WHERE Favorite_Team.TeamId=Players.Team_ID AND Username='$user' AND TeamId='$teamId'";
         $result=$mydb->query($query);
         $index=0;
         $returnval.="<div id='$teamId' class='FavoriteTeams'>";
         $returnval.="<h1>{$teamIds[$teamId]}</h1>";
-        $returnVal.="<button type='button' onclick='deleteFavorite(this)'>Click Me!</button>";
-        $returnVal.="<table border=1px style='width:100%'>";
-        $returnVal.="<tr>";
-        $returnVal.="<th>Player Name</th>";
-        $returnVal.="<th>Sport</th>";
-        $returnVal.="</tr>";
+        $returnval.="<button type='button' onclick='deleteFavorite(this)'>Click Me!</button>";
+        $returnval.="<table border=1px style='width:100%'>";
+        $returnval.="<tr>";
+        $returnval.="<th>Player Name</th>";
+        $returnval.="<th>Sport</th>";
+        $returnval.="</tr>";
         while($row = mysqli_fetch_array($result)){
-          $returnVal.="<tr>";
-          $returnVal.="<td>" . $row[2] . "</td>";
-          $returnVal.="<td>" . $row[7] . "</td>";
-          $returnVal.="</tr>";
+          $returnval.="<tr>";
+          $returnval.="<td>" . $row[2] . "</td>";
+          $returnval.="<td>" . $row[7] . "</td>";
+          $returnval.="</tr>";
         }
         $returnval.="</div>";
       }
-      return $returnval;
+      if($returnval==""){
+        return "EMPTY";
+      }
+      else{
+      return $returnval;}
     }
+    echo FavoriteTeam("testUser");
 ?>
