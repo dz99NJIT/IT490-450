@@ -30,7 +30,6 @@ switch ($type){
     $email = $_POST["email"];
     $uname = $_POST["uname"];
     $pw = $_POST["pw"];
-    //$pw = md5($pw);
 	  $confirmPw = $_POST["confirmPw"];
 
   	if ($confirmPw!=$pw){
@@ -54,6 +53,24 @@ switch ($type){
 			echo $response;
 		}
     break;
+		
+  //Edit profile Case
+  case "editProfile":
+    $Fullname = $_POST["Fullname"];
+    $email = $_POST["email"];
+    $uname = $_POST["uname"];
+    $pw = $_POST["pw"];
+	$confirmPw = $_POST["confirmPw"];
+
+  	if ($confirmPw!=$pw){
+          echo '<div class="alert alert-danger" role="alert">Passwords do not match, try again</div>';
+  	}
+    else{
+    	$response = editProfile($Fullname, $email, $uname, $pw);
+		return $response;
+  	}
+  	break;
+
 	
   default:
     return "Default Case";

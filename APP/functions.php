@@ -54,6 +54,22 @@ require_once('AppRabbitMQClient.php');
         return $returnedValue;
     }
 
+    //Edit profile function
+    function editProfile($Fullname, $email, $uname, $pw){
+
+        $request = array();
+
+        $request['type'] = "editProfile";
+	$request['Fullname'] = $Fullname;
+	$request['email'] = $email;
+        $request['uname'] = $uname;
+        $request['pw'] = $pw;
+	    
+        $returnedValue = createClientForDb($request);
+
+        return $returnedValue;
+    }
+
     //Search team function
     function search($searchText){
 
