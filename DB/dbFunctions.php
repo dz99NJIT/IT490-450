@@ -362,7 +362,9 @@
         $index=0;
         $returnval.="<div id='$teamId' class='FavoriteTeams'>";
         $returnval.="<h1>{$teamIds[$teamId]}</h1>";
-        $returnval.="<button type='button' onclick='deleteFavorite(this)'>Delete Team</button>";
+        $returnval.="<button type='button' onclick=";
+        $returnval.= "deleteFavorite('this')";
+        $returnval.=">Delete Team</button>";
         $returnval.="<table border=1px style='width:100%'>";
         $returnval.="<tr>";
         $returnval.="<th>Player Name</th>";
@@ -408,4 +410,5 @@
       else{
       return $returnval;}
     }
+    echo FavoriteTeam("testUser");
 ?>

@@ -10,7 +10,7 @@ function show(){
   http.open("GET","favorite.php?username=" + username,true);
   http.send();
 }
-function deleteFavorite(){
+function deleteFavorite(this){
     var username=document.getElementById("username").value;
     var teamId=document.getElementById("teamId").value;
     var action="delete";
