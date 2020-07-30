@@ -39,6 +39,23 @@
         $response = mysqli_query($mydb, $query);
     	  return true;
     }
+
+    //Edit profile function
+    function editProfile($Fullname, $uname, $email, $pw){
+        $pw = password_hash($pw, PASSWORD_DEFAULT);
+        $mydb = dbConnect();
+        $query = "UPDATE users SET ";
+	if(!is_null($Fullname) && $Fullname!="")
+		$query.="fullname = '$Fullname'";
+	if(!is_null($email) && $email!="")
+		$query.="email = '$email'";
+	if(!is_null($pw) && $pw!="")
+		$query.="pw = '$pw'";
+	$query.="WHERE username = '$uname';";
+        $response = mysqli_query($mydb, $query);
+    	return true;
+    }
+
     //searches for team in database and if exist then send team and players to APP
     function search($searchText){
         //if team hasnt been updated in a day it'll update it
