@@ -374,7 +374,7 @@
           $returnval.="<td>" . $row[7] . "</td>";
           $returnval.="</tr>";
         }
-        $returnval.="</div>";
+        $returnval.="</table></div>";
       }
       if($returnval==""){
         return "EMPTY";
