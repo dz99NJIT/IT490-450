@@ -357,7 +357,7 @@
           $teamIds[$row[1]]=$row[3];
       }
       foreach(array_keys($teamIds) as $teamId){
-        $query="SELECT * FROM Favorite_Team INNER JOIN Players   WHERE Favorite_Team.TeamId=Players.Team_ID AND Username='$user' AND TeamId='$teamId'";
+        $query="SELECT * FROM Favorite_Team INNER JOIN Players INNER JOIN Esport_Stats  WHERE Favorite_Team.TeamId=Players.Team_ID AND Players.ID=Esport_Stats.Player_ID AND Username='$user' AND TeamId='$teamId'";
         $result=$mydb->query($query);
         $index=0;
         $returnval.="<div id='$teamId' class='FavoriteTeams'>";
@@ -366,12 +366,38 @@
         $returnval.="<table border=1px style='width:100%'>";
         $returnval.="<tr>";
         $returnval.="<th>Player Name</th>";
-        $returnval.="<th>Sport</th>";
+        $returnval.="<th>Nationality</th>";
+        $returnval.="<th>Birth Day</th>";
+        $returnval.="<th>Gender</th>";
+        $returnval.="<th>Maps Played</th>";
+        $returnval.="<th>Maps Won</th>";
+        $returnval.="<th>Maps Lost</th>";
+        $returnval.="<th>Rounds Played</th>";
+        $returnval.="<th>Rounds Won</th>";
+        $returnval.="<th>Rounds Lost</th>";
+        $returnval.="<th>Kills</th>";
+        $returnval.="<th>Deaths</th>";
+        $returnval.="<th>Assists</th>";
+        $returnval.="<th>Headshots</th>";
+
         $returnval.="</tr>";
         while($row = mysqli_fetch_array($result)){
           $returnval.="<tr>";
-          $returnval.="<td>" . $row[2] . "</td>";
-          $returnval.="<td>" . $row[7] . "</td>";
+          $returnval.="<td>" . $row[2] . "</td>";//Player Name
+          $returnval.="<td>" . $row[5] . "</td>";//Nationality
+          $returnval.="<td>" . $row[6] . "</td>";//birthday
+          $returnval.="<td>" . $row[7] . "</td>";//gender
+          $returnval.="<td>" . $row[9] . "</td>";//maps played
+          $returnval.="<td>" . $row[10] . "</td>";//maps won
+          $returnval.="<td>" . $row[11] . "</td>";//maps lost
+          $returnval.="<td>" . $row[12] . "</td>";//rounds played
+          $returnval.="<td>" . $row[13] . "</td>";//rounds won
+          $returnval.="<td>" . $row[14] . "</td>";//rounds lost
+          $returnval.="<td>" . $row[15] . "</td>";//kills
+          $returnval.="<td>" . $row[16] . "</td>";//deaths
+          $returnval.="<td>" . $row[17] . "</td>";//assists
+          $returnval.="<td>" . $row[18] . "</td>";//headshots
+
           $returnval.="</tr>";
         }
         $returnval.="</table></div>";
