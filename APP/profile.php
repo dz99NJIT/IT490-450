@@ -42,10 +42,24 @@ session_start();
 			<br>
 			<div class="row">
 				<div class="col">
-					Profile data here	
+					<h4>This is your current profile info</h4>	
 				</div>
 				<div class="col">
-					Changed data here	
+					<h4>Fill in boxes of info you'd like to update</h4>
+					<form action = "cases.php" method="POST">
+						<input type="hidden" id="type" name="type" value="editProfile">
+				  		<label for Fullname>Full Name:</label><br>
+				  		<input type="text" id="Fullname" name="Fullname" required ><br><br>
+							<label for email>Email:</label><br>
+				  		<input type="email" id="email" name="email" required ><br><br>
+							<label for uname>Username:</label><br>
+				  		<input type="text" id="uname" name="uname" required ><br><br>
+				  		<label for pw>Password:</label><br>
+				  		<input type="password" id="pw" name="pw" required ><br><br>
+							<label for confirmPw>Confirm password:</label><br>
+				  		<input type="password" id="confirmPw" name="confirmPw" required ><br><br>
+							<input type="submit" class="btn btn-dark" value="Sign Up"><br><br><br>
+					</form>	
 				</div>
 			</div>
 		</div>
