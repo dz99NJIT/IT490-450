@@ -36,10 +36,10 @@ session_start();
 				</ul>
 		</nav>
 			<br><br><br>
-	
 		<div class="container-fluid">
 			<h1>Edit Your Profile Here</h1>
 			<?php $uname = $_SESSION["uname"]; echo "<h2>$uname</h2>"; ?>
+			<br>
 			<div class="row">
 				<div class="col">
 					Profile data here	
