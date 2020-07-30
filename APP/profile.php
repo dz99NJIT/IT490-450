@@ -36,12 +36,18 @@ session_start();
 				</ul>
 		</nav>
 			<br><br><br>
+	
 		<div class="container-fluid">
-			<h1>Edit your profile here</h1>
+			<h1>Edit Your Profile Here</h1>
 			<?php $uname = $_SESSION["uname"]; echo "<h2>$uname</h2>"; ?>
-		</div>
-		<div class="row">
-			Profile data here	
+			<div class="row">
+				<div class="col">
+					Profile data here	
+				</div>
+				<div class="col">
+					Changed data here	
+				</div>
+			</div>
 		</div>
 </body>
 </html>
