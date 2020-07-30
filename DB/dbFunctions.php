@@ -360,10 +360,9 @@
         $query="SELECT * FROM Favorite_Team INNER JOIN Players INNER JOIN Esport_Stats  WHERE Favorite_Team.TeamId=Players.Team_ID AND Players.ID=Esport_Stats.Player_ID AND Username='$user' AND TeamId='$teamId'";
         $result=$mydb->query($query);
         $index=0;
-        $var="'this'";
         $returnval.="<div id='$teamId' class='FavoriteTeams'>";
         $returnval.="<h1>{$teamIds[$teamId]}</h1>";
-        $returnval.="<button type='button' onclick='deleteFavorite($var)'>Delete Team</button>";
+        $returnval.="<button type='button' onclick=\"deleteFavorite('this')\">Delete Team</button>";
         $returnval.="<table border=1px style='width:100%'>";
         $returnval.="<tr>";
         $returnval.="<th>Player Name</th>";
