@@ -88,7 +88,7 @@
        	$numRows = mysqli_num_rows($response);
 
       	$returnVal = "<h1>$searchText</h1>";
-        $returnVal.="<button type='button' onclick='favoriteteam()'>Click Me!</button>";
+        $returnVal.="<button type='button' onclick='favoriteteam()'>Add Favorite Team</button>";
       	$returnVal.="<table border=1px style='width:100%'>";
       	$returnVal.="<tr>";
       	$returnVal.="<th>Player</th>";
@@ -362,7 +362,7 @@
         $index=0;
         $returnval.="<div id='$teamId' class='FavoriteTeams'>";
         $returnval.="<h1>{$teamIds[$teamId]}</h1>";
-        $returnval.="<button type='button' onclick='deleteFavorite(this)'>Click Me!</button>";
+        $returnval.="<button type='button' onclick='deleteFavorite(this)'>Delete Team</button>";
         $returnval.="<table border=1px style='width:100%'>";
         $returnval.="<tr>";
         $returnval.="<th>Player Name</th>";
