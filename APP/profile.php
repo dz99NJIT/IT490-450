@@ -52,8 +52,7 @@ session_start();
 				  		<input type="text" id="Fullname" name="Fullname"><br><br>
 							<label for email>Email:</label><br>
 				  		<input type="email" id="email" name="email"><br><br>
-							<label for uname>Username:</label><br>
-				  		<input type="text" id="uname" name="uname"><br><br>
+						<input type="hidden" id="uname" name="uname" value="<?php $uname=$_SESSION["uname"];echo "$uname";?>">
 				  		<label for pw>Password:</label><br>
 				  		<input type="password" id="pw" name="pw"><br><br>
 							<label for confirmPw>Confirm password:</label><br>
