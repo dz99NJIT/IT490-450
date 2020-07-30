@@ -408,5 +408,4 @@
       else{
       return $returnval;}
     }
-    echo FavoriteTeam("testUser");
 ?>
