@@ -1,7 +1,6 @@
 function deleteFavorite(element){
     var username=document.getElementById("username").value;
-    alert(element);
-    var teamId="things";
+    var teamId=element.parentElement.id;
     var action="delete";
     var teamresult=document.getElementById("teamresult");
     var http=new XMLHttpRequest();
