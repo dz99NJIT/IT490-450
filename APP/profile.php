@@ -41,47 +41,14 @@ session_start();
 						<br><br><br>
 
 						<div class="container-fluid">
-							 <?php $uname = $_SESSION["uname"]; echo "<h1>Welcome $uname</h1>"; ?>
+							<h1>Edit your profile here</h1>
+							 <?php $uname = $_SESSION["uname"]; echo "<h2>$uname</h2>"; ?>
 
 						</div>
 				</div>
-				<div id="teamsearch">
-						<div id="teamSearchbox">
-								<input type="hidden" id="type" name="type" value="Search">
-								<input type="text" id="searchText" placeholder="Search for a Team" name="searchText">
-								<input type="button" onclick="teamsearch()" class="btn btn-dark" value="Search">
-								<div id="teamresult"></div>
-						</div>
-				</div>
-				<div id="post">
-						<input type="hidden" id="username" name="username" value="<?php echo $_SESSION['uname']?>">
-						<div id=messagebox>
-								<input id= "message" type="text"  name="message">
-								<input type="button" onclick="sendMessage()" class="btn btn-dark" value="Search"><br><br><br>
-						</div>
-						<div id="posts"></div>
-				</div>
-				<div id="sport_feed">
-						<button type="button" value= "espn" onclick="buttonclick(this)">ESPN</button>
-						<button type="button" value= "lol" onclick="buttonclick(this)">League Of Legends</button>
-						<button type="button" value="csgo"onclick="buttonclick(this)">CSGO</button>
-						<button type="button" value="dota2" onclick="buttonclick(this)">DOTA2</button>
-						<div id="espn" class="sportNews">
-								<a id="espn" class="twitter-timeline" href="https://twitter.com/espn?ref_src=twsrc%5Etfw">ESPN</a>
-								<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-						</div>
-						<div id="lol" class="sportNews">
-								<a id= "lol" class="twitter-timeline" href="https://twitter.com/LCSOfficial?ref_src=twsrc%5Etfw">Tweets by LCSOfficial</a>
-								<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-						</div>
-						<div id="csgo" class="sportNews">
-								<a id="csgo" class="twitter-timeline" href="https://twitter.com/ESLCS?ref_src=twsrc%5Etfw">Tweets by ESLCS</a>
-								<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-						</div>
-						<div id ="dota2" class="sportNews">
-								<a id= "dota2" class="twitter-timeline" href="https://twitter.com/ESLDota2?ref_src=twsrc%5Etfw">Tweets by ESLDota2</a>
-								<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-						</div>
+			
+				<div>
+				Profile data here	
 				</div>
 		</main>
 </body>
