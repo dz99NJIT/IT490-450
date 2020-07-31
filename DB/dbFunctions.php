@@ -42,8 +42,6 @@
 
     //Edit profile function
     function editProfile($Fullname, $email, $uname, $pw){
-        if(is_null($pw))
-	    $pw = password_hash($pw, PASSWORD_DEFAULT);
 	if(!is_null($Fullname) && $Fullname!="")
 	{
 		$mydb = dbConnect();
@@ -62,6 +60,7 @@
 	}
 	if(!is_null($pw) && $pw!="")
 	{
+		$pw = password_hash($pw, PASSWORD_DEFAULT);
 	        $mydb2 = dbConnect();
 	        $query2 = "";
 		$query2 = "UPDATE users SET pw = '$pw' WHERE username = '$uname';";
