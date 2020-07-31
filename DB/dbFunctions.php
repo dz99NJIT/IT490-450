@@ -52,6 +52,7 @@
 	if(!is_null($pw) && $pw!="")
 		$query.="pw = '$pw'";
 	$query.="WHERE username = '$uname';";
+	echo $query;
         $response = mysqli_query($mydb, $query);
     	return true;
     }
