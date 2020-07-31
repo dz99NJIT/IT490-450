@@ -426,5 +426,4 @@
       return $returnval;}
     }
     echo FavoriteTeam("testUser");
-    $mydb->close(); 
 ?>
