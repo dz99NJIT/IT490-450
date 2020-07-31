@@ -44,17 +44,30 @@
     function editProfile($Fullname, $email, $uname, $pw){
         if(is_null($pw))
 	    $pw = password_hash($pw, PASSWORD_DEFAULT);
-        $mydb = dbConnect();
-        $query = "UPDATE users SET ";
 	if(!is_null($Fullname) && $Fullname!="")
-		$query.=" fullname = '$Fullname'";
+	{
+		$mydb = dbConnect();
+		$query = "";
+		$query = "UPDATE users SET fullname = '$Fullname' WHERE username = '$uname';";
+		echo $query;
+		$response = mysqli_query($mydb, $query);
+	}
 	if(!is_null($email) && $email!="")
-		$query.=" ,email = '$email'";
+	{
+	        $mydb1 = dbConnect();
+	        $query1 = "";
+		$query1 = "UPDATE users SET email = '$email' WHERE username = '$uname';";
+		echo $query1;
+		$response = mysqli_query($mydb1, $query1);
+	}
 	if(!is_null($pw) && $pw!="")
-		$query.=" ,pw = '$pw'";
-	$query.="WHERE username = '$uname';";
-	echo $query;
-        $response = mysqli_query($mydb, $query);
+	{
+	        $mydb2 = dbConnect();
+	        $query2 = "";
+		$query2 = "UPDATE users SET pw = '$pw' WHERE username = '$uname';";
+		echo $query2;
+		$response = mysqli_query($mydb2, $query2);
+	}
     	return true;
     }
 
