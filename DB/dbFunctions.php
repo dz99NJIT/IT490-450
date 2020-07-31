@@ -49,6 +49,7 @@
 		$query = "UPDATE users SET fullname = '$Fullname' WHERE username = '$uname';";
 		echo $query;
 		$response = mysqli_query($mydb, $query);
+		$mydb->close(); 
 	}
 	if(!is_null($email) && $email!="")
 	{
@@ -57,6 +58,7 @@
 		$query1 = "UPDATE users SET email = '$email' WHERE username = '$uname';";
 		echo $query1;
 		$response = mysqli_query($mydb1, $query1);
+		$mydb1->close(); 
 	}
 	if(!is_null($pw) && $pw!="")
 	{
@@ -66,6 +68,7 @@
 		$query2 = "UPDATE users SET pw = '$pw' WHERE username = '$uname';";
 		echo $query2;
 		$response = mysqli_query($mydb2, $query2);
+		$mydb2->close(); 
 	}
     	return true;
     }
@@ -423,4 +426,5 @@
       return $returnval;}
     }
     echo FavoriteTeam("testUser");
+    $mydb->close(); 
 ?>
