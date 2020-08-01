@@ -83,7 +83,7 @@
             if($row[3]!=date("M d, Y")){
               echo "Team needs to be updated<br>";
               echo gettype($row[3]) . ":" . $row[3] .  "<br>";
-              echo date("M d, Y") . ":" . date("M d, Y") .  "<br>"; 
+              echo gettype(date("M d, Y")) . ":" . date("M d, Y") .  "<br>"; 
               $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
               //$response=createClientForAPI($request);
               //process($response);
