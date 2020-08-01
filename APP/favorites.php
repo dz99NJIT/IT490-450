@@ -15,7 +15,7 @@ session_start();
 </head>
 <body>
 		<main>
-				<div id="header">
+				<div>
 						<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 							<a class="navbar-brand" href="landingPage.php">SportWatch</a>
 								<ul class="navbar-nav">
