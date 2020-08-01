@@ -14,7 +14,6 @@ session_start();
 	<link rel="stylesheet" href="landingPage.css">
 </head>
 <body>
-		<main>
 				<div>
 						<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 							<a class="navbar-brand" href="landingPage.php">SportWatch</a>
@@ -46,6 +45,5 @@ session_start();
             Favorites page
 
             </div>
-		</main>
 </body>
 </html>
