@@ -86,8 +86,8 @@
               $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
               //$response=createClientForAPI($request);
               //process($response);
-              //$date=date("M d, Y");
-              $query="UPDATE Teams SET Created='$date' WHERE Name=$searchText";
+              $date=date("M d, Y");
+              $query="UPDATE Teams SET Created='$date' WHERE Name='$searchText'";
               $result = $mydb->query($query);
             }
             else{
