@@ -1,10 +1,5 @@
 window.onload=function(){
-  timer();
-}
-function timer(){
-  setInterval(function(){
-    update();
-  }, 5000);
+  update();
 }
 function update(){
     var http=new XMLHttpRequest();
