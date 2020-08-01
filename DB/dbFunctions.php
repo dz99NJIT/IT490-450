@@ -77,22 +77,19 @@
     function search($searchText){
         //if team hasnt been updated in a day it'll update it
     	  $mydb = dbConnect();
-        $test="Hello PHP\n";
-       	$test2="Hello PHP2\n";
-      	$test3="Hello PHP3\n";
-      	$test4="Hello PHP4\n";
-      	$test5="Hello PHP5\n";
         $query="SELECT * FROM Teams WHERE Name='$searchText'";
         $result = $mydb->query($query);
         while($row = mysqli_fetch_array($result)){
             if($row[3]!=date("M d, Y")){
               echo "Team needs to be updated<br>";
+              echo gettype($row[3]) . ":" . $row[3] .  "<br>";
+              echo date("M d, Y") . ":" . date("M d, Y") .  "<br>"; 
               $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
-              $response=createClientForAPI($request);
-              process($response);
-              $date=date("M d, Y");
-              $query="UPDATE Teams SET Created='$date' WHERE Name=$searchText";
-              $result = $mydb->query($query);
+              //$response=createClientForAPI($request);
+              //process($response);
+              //$date=date("M d, Y");
+              //$query="UPDATE Teams SET Created='$date' WHERE Name=$searchText";
+              //$result = $mydb->query($query);
             }
             else{
               echo "Team is already updated<br>";
@@ -425,5 +422,5 @@
       else{
       return $returnval;}
     }
-    echo FavoriteTeam("testUser");
+    echo search("100 Thieves");
 ?>
