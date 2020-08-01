@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('functions.php');
-	//loggedCheck();
+	loggedCheck();
 ?>
 <!DOCTYPE html>
 <html lang="en">
