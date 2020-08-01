@@ -81,11 +81,9 @@
         $result = $mydb->query($query);
         while($row = mysqli_fetch_array($result)){
             if($row[3]!=date("M d, Y")){
-              echo "Team needs to be updated<br>";
-              echo $row[3] . ":" . date("M d, Y") .  "<br>";
               $request = array('type'=>"Search_Team",'TeamName'=>$searchText);
-              //$response=createClientForAPI($request);
-              //process($response);
+              $response=createClientForAPI($request);
+              process($response);
               $date=date("M d, Y");
               $query="UPDATE Teams SET Created='$date' WHERE Name='$searchText'";
               $result = $mydb->query($query);
@@ -421,5 +419,4 @@
       else{
       return $returnval;}
     }
-    echo search("100 Thieves");
 ?>
