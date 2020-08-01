@@ -9,7 +9,6 @@ main{
 }
 #header{
   grid-area:hd;
-  overflow:hidden;
 }
 #teamsearch{
   grid-area:ts;
@@ -31,7 +30,6 @@ main{
 }
 main > *{
     padding:5px;
-    border:1px solid black;
 }
 #searchText{
   width:80%;
