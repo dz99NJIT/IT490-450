@@ -324,7 +324,7 @@
     //return messages for APP
     function update(){
         $mydb = dbConnect();
-        $query="SELECT * FROM `Chat` ORDER BY TIME(Created) ASC";
+        $query="SELECT * FROM `Chat` ORDER BY DATE(Created) DESC, TIME(Created) DESC";
         $result=$mydb->query($query);
         $returnval="";
         $index=0;
