@@ -16,7 +16,7 @@ main{
 }
 #posts{
   grid-area: p;
-  overflow:scroll;
+  overflow:auto;
 }
 #sport_feed{
   grid-area:sn;
