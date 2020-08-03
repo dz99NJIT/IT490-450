@@ -30,6 +30,7 @@ main{
 }
 main > *{
     padding:5px;
+  OVERFLOW: scroll;
 }
 #searchText{
   width:80%;
