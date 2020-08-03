@@ -14,7 +14,7 @@ main{
   grid-area:ts;
   display:inline;
 }
-#posts{
+#post{
   grid-area: p;
   overflow:auto;
 }
