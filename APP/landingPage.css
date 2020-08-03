@@ -5,7 +5,6 @@ main{
   grid-template-rows: 150px 700px;
   grid-template-areas: "hd hd hd"
                        "ts p  sn";
-  overflow:hidden;
 }
 #header{
   grid-area:hd;
