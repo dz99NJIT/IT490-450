@@ -57,7 +57,7 @@ require_once('functions.php');
 						<input type="hidden" id="username" name="username" value="<?php echo $_SESSION['uname']?>">
 						<div id=messagebox>
 								<input id= "message" type="text"  name="message">
-								<input type="button" onclick="sendMessage()" class="btn btn-dark" value="Search">
+								<input type="button" onclick="sendMessage()" class="btn btn-dark" value="Post">
 								<input type="button" onclick="update()" class="btn btn-dark" value="Refresh"><br><br><br>
 							<br><br><br>
 						</div>
